@@ -1,0 +1,50 @@
+[
+  {
+    "id": 401,
+    "description": "Pat your head gently for 10 seconds",
+    "gender": "male",
+    "difficulty": "easy",
+    "activity": "body-explorer",
+    "timer": 10
+  },
+  {
+    "id": 402,
+    "description": "Touch your nose with your finger",
+    "gender": "female",
+    "difficulty": "easy",
+    "activity": "body-explorer",
+    "timer": 5
+  },
+  {
+    "id": 403,
+    "description": "Raise both arms above your head",
+    "gender": "male",
+    "difficulty": "easy",
+    "activity": "body-explorer",
+    "timer": 10
+  },
+  {
+    "id": 404,
+    "description": "Place your hands on your hips",
+    "gender": "female",
+    "difficulty": "easy",
+    "activity": "body-explorer",
+    "timer": 10
+  },
+  {
+    "id": 405,
+    "description": "Touch your shoulders alternately",
+    "gender": "male",
+    "difficulty": "easy",
+    "activity": "body-explorer",
+    "timer": 15
+  },
+  {
+    "id": 406,
+    "description": "Wave your hands in the air",
+    "gender": "female",
+    "difficulty": "easy",
+    "activity": "body-explorer",
+    "timer": 10
+  }
+]

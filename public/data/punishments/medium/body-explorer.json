@@ -1,0 +1,50 @@
+[
+  {
+    "id": 801,
+    "description": "Rub your belly in circles",
+    "gender": "male",
+    "difficulty": "medium",
+    "activity": "body-explorer",
+    "timer": 15
+  },
+  {
+    "id": 802,
+    "description": "Massage your temples gently",
+    "gender": "female",
+    "difficulty": "medium",
+    "activity": "body-explorer",
+    "timer": 20
+  },
+  {
+    "id": 803,
+    "description": "Flex your biceps and hold",
+    "gender": "male",
+    "difficulty": "medium",
+    "activity": "body-explorer",
+    "timer": 15
+  },
+  {
+    "id": 804,
+    "description": "Touch your elbows behind your back",
+    "gender": "female",
+    "difficulty": "medium",
+    "activity": "body-explorer",
+    "timer": 10
+  },
+  {
+    "id": 805,
+    "description": "Slap your thighs rhythmically",
+    "gender": "male",
+    "difficulty": "medium",
+    "activity": "body-explorer",
+    "timer": 20
+  },
+  {
+    "id": 806,
+    "description": "Stretch your arms behind your back",
+    "gender": "female",
+    "difficulty": "medium",
+    "activity": "body-explorer",
+    "timer": 15
+  }
+]

@@ -1,0 +1,66 @@
+[
+  {
+    "id": 601,
+    "description": "Kiss your partner's neck slowly for 30 seconds",
+    "gender": "male",
+    "difficulty": "medium",
+    "activity": "scratch-card",
+    "timer": 30
+  },
+  {
+    "id": 602,
+    "description": "Let your partner remove one piece of your clothing",
+    "gender": "female",
+    "difficulty": "medium",
+    "activity": "scratch-card",
+    "timer": 0
+  },
+  {
+    "id": 603,
+    "description": "Give your partner a sensual back massage for 45 seconds",
+    "gender": "male",
+    "difficulty": "medium",
+    "activity": "scratch-card",
+    "timer": 45
+  },
+  {
+    "id": 604,
+    "description": "Bite your partner's earlobe gently and whisper something naughty",
+    "gender": "female",
+    "difficulty": "medium",
+    "activity": "scratch-card",
+    "timer": 0
+  },
+  {
+    "id": 605,
+    "description": "Kiss your partner passionately for 30 seconds",
+    "gender": "male",
+    "difficulty": "medium",
+    "activity": "scratch-card",
+    "timer": 30
+  },
+  {
+    "id": 606,
+    "description": "Let your partner kiss your body wherever they want for 45 seconds",
+    "gender": "female",
+    "difficulty": "medium",
+    "activity": "scratch-card",
+    "timer": 45
+  },
+  {
+    "id": 607,
+    "description": "Run your hands through your partner's hair and pull gently",
+    "gender": "male",
+    "difficulty": "medium",
+    "activity": "scratch-card",
+    "timer": 20
+  },
+  {
+    "id": 608,
+    "description": "Straddle your partner and kiss them deeply",
+    "gender": "female",
+    "difficulty": "medium",
+    "activity": "scratch-card",
+    "timer": 30
+  }
+]

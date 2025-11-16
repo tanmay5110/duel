@@ -1,0 +1,267 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;600;700;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================
+   SEDUCTIVE BRUTALIST DARK THEME
+   Mix of minimalist elegance + bold brutalism
+   ============================================ */
+
+:root {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  line-height: 1.3;
+  font-weight: 300;
+
+  color-scheme: dark;
+  color: rgba(255, 255, 255, 0.95);
+  background-color: #000000;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  place-items: center;
+  min-width: 320px;
+  min-height: 100vh;
+  overflow-x: hidden;
+  background: #000000;
+  -webkit-tap-highlight-color: transparent;
+}
+
+#root {
+  width: 100%;
+  min-height: 100vh;
+  background: #000000;
+}
+
+/* ============================================
+   BRUTALIST MINIMALIST COMPONENTS
+   ============================================ */
+
+@layer components {
+  /* Brutal buttons - sharp, direct, no fluff */
+  .btn-primary {
+    @apply px-8 py-4 font-light text-sm uppercase tracking-[0.2em]
+           text-white/90 border border-white/20
+           transition-all duration-300 active:scale-[0.98]
+           hover:bg-white/5 hover:border-white/40
+           disabled:opacity-30 disabled:cursor-not-allowed;
+  }
+
+  .btn-male {
+    @apply btn-primary border-purple-500/50 hover:bg-purple-500/10 
+           hover:border-purple-400;
+  }
+
+  .btn-female {
+    @apply btn-primary border-rose-500/50 hover:bg-rose-500/10 
+           hover:border-rose-400;
+  }
+
+  .btn-accent {
+    @apply px-8 py-5 font-extralight text-base uppercase tracking-[0.3em]
+           text-black bg-white
+           transition-all duration-300 active:scale-[0.98]
+           hover:bg-white/90
+           disabled:opacity-30 disabled:cursor-not-allowed;
+  }
+
+  /* Removed cards - using raw sections with single border */
+  .section {
+    @apply border border-white/10 p-8;
+  }
+
+  /* Minimal input - thin border, no background */
+  .input-field {
+    @apply w-full px-0 py-3 bg-transparent
+           border-0 border-b border-white/20
+           focus:border-white/60 focus:outline-none
+           transition-colors duration-300
+           text-white/90 font-light text-lg
+           placeholder:text-white/30 placeholder:font-extralight;
+  }
+
+  /* Headers - thin and elegant */
+  .heading-main {
+    @apply text-7xl sm:text-8xl font-extralight tracking-tight
+           text-white/95 uppercase;
+  }
+
+  .heading-sub {
+    @apply text-xl sm:text-2xl font-thin tracking-[0.2em]
+           text-white/50 uppercase;
+  }
+
+  .heading-brutal {
+    @apply text-4xl sm:text-6xl font-black tracking-tighter
+           text-white uppercase;
+  }
+}
+
+/* ============================================
+   SITE-WIDE HOVER EFFECTS
+   ============================================ */
+
+button:not(:disabled),
+a {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+button:hover:not(:disabled) {
+  filter: brightness(1.3) !important;
+  transform: scale(1.03) translateY(-2px) !important;
+  border-color: rgba(255, 255, 255, 0.6) !important;
+}
+
+a:hover {
+  filter: brightness(1.3) !important;
+  transform: scale(1.02) !important;
+}
+
+/* ============================================
+   GLASS MORPHISM OVERLAYS
+   ============================================ */
+
+.glass {
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.glass-strong {
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(40px);
+  -webkit-backdrop-filter: blur(40px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+/* ============================================
+   MINIMAL ANIMATIONS - SLOW & ELEGANT
+   ============================================ */
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.6s ease-out;
+}
+
+.slide-up {
+  animation: slideUp 0.8s ease-out;
+}
+
+/* ============================================
+   MOBILE OPTIMIZATIONS
+   ============================================ */
+
+@media (max-width: 768px) {
+  .heading-main {
+    @apply text-5xl;
+  }
+  
+  .heading-brutal {
+    @apply text-3xl;
+  }
+
+  .btn-primary {
+    @apply px-6 py-3 text-xs;
+  }
+}
+
+/* Prevent pull-to-refresh */
+body {
+  overscroll-behavior-y: contain;
+}
+
+/* Prevent text selection for game elements */
+.no-select {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+}
+
+/* ============================================
+   GRADIENT ACCENTS - SUBTLE & SEDUCTIVE
+   ============================================ */
+
+.gradient-accent {
+  background: linear-gradient(135deg, #8B5CF6 0%, #EC4899 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.gradient-border {
+  position: relative;
+}
+
+.gradient-border::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  padding: 1px;
+  background: linear-gradient(135deg, #8B5CF6, #EC4899);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+/* ============================================
+   HIDE SCROLLBARS
+   ============================================ */
+
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* ============================================
+   CUSTOM SELECTION
+   ============================================ */
+
+::selection {
+  background: rgba(139, 92, 246, 0.3);
+  color: white;
+}
+
+::-moz-selection {
+  background: rgba(139, 92, 246, 0.3);
+  color: white;
+}

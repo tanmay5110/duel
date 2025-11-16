@@ -1,0 +1,354 @@
+[
+  {
+    "id": 2001,
+    "description": "Gently kiss their lips for 10 seconds",
+    "timer": 10,
+    "difficulty": "easy",
+    "activity": "body-explorer",
+    "gender": "male",
+    "bodyPart": "lips"
+  },
+  {
+    "id": 2002,
+    "description": "Softly bite their lower lip",
+    "timer": 5,
+    "difficulty": "medium",
+    "activity": "body-explorer",
+    "gender": "male",
+    "bodyPart": "lips"
+  },
+  {
+    "id": 2003,
+    "description": "Give them a passionate French kiss",
+    "timer": 20,
+    "difficulty": "hard",
+    "activity": "body-explorer",
+    "gender": "male",
+    "bodyPart": "lips"
+  },
+  {
+    "id": 2004,
+    "description": "Kiss along their jawline slowly",
+    "timer": 15,
+    "difficulty": "easy",
+    "activity": "body-explorer",
+    "gender": "male",
+    "bodyPart": "neck"
+  },
+  {
+    "id": 2005,
+    "description": "Gently nibble on their neck",
+    "timer": 10,
+    "difficulty": "medium",
+    "activity": "body-explorer",
+    "gender": "male",
+    "bodyPart": "neck"
+  },
+  {
+    "id": 2006,
+    "description": "Leave a hickey on their neck",
+    "timer": 30,
+    "difficulty": "hard",
+    "activity": "body-explorer",
+    "gender": "male",
+    "bodyPart": "neck"
+  },
+  {
+    "id": 2007,
+    "description": "Whisper something sweet in their ear",
+    "timer": 5,
+    "difficulty": "easy",
+    "activity": "body-explorer",
+    "gender": "male",
+    "bodyPart": "ears"
+  },
+  {
+    "id": 2008,
+    "description": "Gently nibble on their earlobe",
+    "timer": 10,
+    "difficulty": "medium",
+    "activity": "body-explorer",
+    "gender": "male",
+    "bodyPart": "ears"
+  },
+  {
+    "id": 2009,
+    "description": "Trace their ear with your tongue",
+    "timer": 15,
+    "difficulty": "hard",
+    "activity": "body-explorer",
+    "gender": "male",
+    "bodyPart": "ears"
+  },
+  {
+    "id": 2010,
+    "description": "Massage their shoulders gently",
+    "timer": 30,
+    "difficulty": "easy",
+    "activity": "body-explorer",
+    "gender": "male",
+    "bodyPart": "shoulders"
+  },
+  {
+    "id": 2011,
+    "description": "Kiss both of their shoulders",
+    "timer": 15,
+    "difficulty": "medium",
+    "activity": "body-explorer",
+    "gender": "male",
+    "bodyPart": "shoulders"
+  },
+  {
+    "id": 2012,
+    "description": "Bite their shoulder playfully",
+    "timer": 10,
+    "difficulty": "hard",
+    "activity": "body-explorer",
+    "gender": "male",
+    "bodyPart": "shoulders"
+  },
+  {
+    "id": 2013,
+    "description": "Place your hand on their chest while kissing them",
+    "timer": 20,
+    "difficulty": "easy",
+    "activity": "body-explorer",
+    "gender": "male",
+    "bodyPart": "chest"
+  },
+  {
+    "id": 2014,
+    "description": "Kiss their chest slowly",
+    "timer": 20,
+    "difficulty": "medium",
+    "activity": "body-explorer",
+    "gender": "male",
+    "bodyPart": "chest"
+  },
+  {
+    "id": 2015,
+    "description": "Trace their chest with your tongue",
+    "timer": 25,
+    "difficulty": "hard",
+    "activity": "body-explorer",
+    "gender": "male",
+    "bodyPart": "chest"
+  },
+  {
+    "id": 2016,
+    "description": "Massage their upper back",
+    "timer": 30,
+    "difficulty": "easy",
+    "activity": "body-explorer",
+    "gender": "male",
+    "bodyPart": "back"
+  },
+  {
+    "id": 2017,
+    "description": "Kiss down their spine slowly",
+    "timer": 25,
+    "difficulty": "medium",
+    "activity": "body-explorer",
+    "gender": "male",
+    "bodyPart": "back"
+  },
+  {
+    "id": 2018,
+    "description": "Scratch their back lightly with your nails",
+    "timer": 20,
+    "difficulty": "hard",
+    "activity": "body-explorer",
+    "gender": "male",
+    "bodyPart": "back"
+  },
+  {
+    "id": 2019,
+    "description": "Hold their arms while gazing into their eyes",
+    "timer": 15,
+    "difficulty": "easy",
+    "activity": "body-explorer",
+    "gender": "male",
+    "bodyPart": "arms"
+  },
+  {
+    "id": 2020,
+    "description": "Kiss along their forearm slowly",
+    "timer": 20,
+    "difficulty": "medium",
+    "activity": "body-explorer",
+    "gender": "male",
+    "bodyPart": "arms"
+  },
+  {
+    "id": 2021,
+    "description": "Gently bite their bicep",
+    "timer": 10,
+    "difficulty": "hard",
+    "activity": "body-explorer",
+    "gender": "male",
+    "bodyPart": "arms"
+  },
+  {
+    "id": 2022,
+    "description": "Hold their hands and interlock fingers",
+    "timer": 15,
+    "difficulty": "easy",
+    "activity": "body-explorer",
+    "gender": "male",
+    "bodyPart": "hands"
+  },
+  {
+    "id": 2023,
+    "description": "Kiss their palm softly",
+    "timer": 10,
+    "difficulty": "medium",
+    "activity": "body-explorer",
+    "gender": "male",
+    "bodyPart": "hands"
+  },
+  {
+    "id": 2024,
+    "description": "Suck on their finger gently",
+    "timer": 10,
+    "difficulty": "hard",
+    "activity": "body-explorer",
+    "gender": "male",
+    "bodyPart": "hands"
+  },
+  {
+    "id": 2025,
+    "description": "Place your hands on their waist and pull them close",
+    "timer": 15,
+    "difficulty": "easy",
+    "activity": "body-explorer",
+    "gender": "male",
+    "bodyPart": "waist"
+  },
+  {
+    "id": 2026,
+    "description": "Kiss their waistline slowly",
+    "timer": 20,
+    "difficulty": "medium",
+    "activity": "body-explorer",
+    "gender": "male",
+    "bodyPart": "waist"
+  },
+  {
+    "id": 2027,
+    "description": "Trace their waist with your fingertips",
+    "timer": 20,
+    "difficulty": "hard",
+    "activity": "body-explorer",
+    "gender": "male",
+    "bodyPart": "waist"
+  },
+  {
+    "id": 2028,
+    "description": "Gently hold their hips",
+    "timer": 15,
+    "difficulty": "easy",
+    "activity": "body-explorer",
+    "gender": "male",
+    "bodyPart": "hips"
+  },
+  {
+    "id": 2029,
+    "description": "Kiss their hip bones",
+    "timer": 20,
+    "difficulty": "medium",
+    "activity": "body-explorer",
+    "gender": "male",
+    "bodyPart": "hips"
+  },
+  {
+    "id": 2030,
+    "description": "Grip their hips firmly while kissing them",
+    "timer": 25,
+    "difficulty": "hard",
+    "activity": "body-explorer",
+    "gender": "male",
+    "bodyPart": "hips"
+  },
+  {
+    "id": 2031,
+    "description": "Gently caress their thigh",
+    "timer": 20,
+    "difficulty": "easy",
+    "activity": "body-explorer",
+    "gender": "male",
+    "bodyPart": "thighs"
+  },
+  {
+    "id": 2032,
+    "description": "Kiss the inside of their thigh",
+    "timer": 25,
+    "difficulty": "medium",
+    "activity": "body-explorer",
+    "gender": "male",
+    "bodyPart": "thighs"
+  },
+  {
+    "id": 2033,
+    "description": "Bite their inner thigh gently",
+    "timer": 15,
+    "difficulty": "hard",
+    "activity": "body-explorer",
+    "gender": "male",
+    "bodyPart": "thighs"
+  },
+  {
+    "id": 2034,
+    "description": "Massage their calves",
+    "timer": 30,
+    "difficulty": "easy",
+    "activity": "body-explorer",
+    "gender": "male",
+    "bodyPart": "legs"
+  },
+  {
+    "id": 2035,
+    "description": "Kiss down their leg slowly",
+    "timer": 25,
+    "difficulty": "medium",
+    "activity": "body-explorer",
+    "gender": "male",
+    "bodyPart": "legs"
+  },
+  {
+    "id": 2036,
+    "description": "Trace the back of their knee with your tongue",
+    "timer": 15,
+    "difficulty": "hard",
+    "activity": "body-explorer",
+    "gender": "male",
+    "bodyPart": "legs"
+  },
+  {
+    "id": 2037,
+    "description": "Give them a gentle foot massage",
+    "timer": 60,
+    "difficulty": "easy",
+    "activity": "body-explorer",
+    "gender": "male",
+    "bodyPart": "feet"
+  },
+  {
+    "id": 2038,
+    "description": "Kiss the top of their foot",
+    "timer": 10,
+    "difficulty": "medium",
+    "activity": "body-explorer",
+    "gender": "male",
+    "bodyPart": "feet"
+  },
+  {
+    "id": 2039,
+    "description": "Suck on their toe playfully",
+    "timer": 15,
+    "difficulty": "hard",
+    "activity": "body-explorer",
+    "gender": "male",
+    "bodyPart": "feet"
+  }
+]
+

@@ -1,0 +1,66 @@
+[
+  {
+    "id": 201,
+    "description": "Give your partner a 30-second shoulder massage",
+    "gender": "male",
+    "difficulty": "easy",
+    "activity": "scratch-card",
+    "timer": 30
+  },
+  {
+    "id": 202,
+    "description": "Compliment your partner's eyes for 20 seconds",
+    "gender": "female",
+    "difficulty": "easy",
+    "activity": "scratch-card",
+    "timer": 20
+  },
+  {
+    "id": 203,
+    "description": "Whisper something sweet in your partner's ear",
+    "gender": "male",
+    "difficulty": "easy",
+    "activity": "scratch-card",
+    "timer": 0
+  },
+  {
+    "id": 204,
+    "description": "Hold hands and stare into each other's eyes for 30 seconds",
+    "gender": "female",
+    "difficulty": "easy",
+    "activity": "scratch-card",
+    "timer": 30
+  },
+  {
+    "id": 205,
+    "description": "Give your partner 3 soft kisses on the cheek",
+    "gender": "male",
+    "difficulty": "easy",
+    "activity": "scratch-card",
+    "timer": 0
+  },
+  {
+    "id": 206,
+    "description": "Tell your partner why you're attracted to them",
+    "gender": "female",
+    "difficulty": "easy",
+    "activity": "scratch-card",
+    "timer": 0
+  },
+  {
+    "id": 207,
+    "description": "Trace your finger along your partner's arm slowly",
+    "gender": "male",
+    "difficulty": "easy",
+    "activity": "scratch-card",
+    "timer": 20
+  },
+  {
+    "id": 208,
+    "description": "Let your partner kiss you anywhere they choose",
+    "gender": "female",
+    "difficulty": "easy",
+    "activity": "scratch-card",
+    "timer": 0
+  }
+]

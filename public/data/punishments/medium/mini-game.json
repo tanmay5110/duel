@@ -1,0 +1,50 @@
+[
+  {
+    "id": 501,
+    "description": "Do 10 push-ups",
+    "gender": "male",
+    "difficulty": "medium",
+    "activity": "mini-game",
+    "timer": 60
+  },
+  {
+    "id": 502,
+    "description": "Perform a 30-second dance",
+    "gender": "female",
+    "difficulty": "medium",
+    "activity": "mini-game",
+    "timer": 30
+  },
+  {
+    "id": 503,
+    "description": "Hold a plank position for 20 seconds",
+    "gender": "male",
+    "difficulty": "medium",
+    "activity": "mini-game",
+    "timer": 20
+  },
+  {
+    "id": 504,
+    "description": "Recite a tongue twister 3 times fast",
+    "gender": "female",
+    "difficulty": "medium",
+    "activity": "mini-game",
+    "timer": 30
+  },
+  {
+    "id": 505,
+    "description": "Do 15 squats",
+    "gender": "male",
+    "difficulty": "medium",
+    "activity": "mini-game",
+    "timer": 45
+  },
+  {
+    "id": 506,
+    "description": "Sing the chorus of a popular song",
+    "gender": "female",
+    "difficulty": "medium",
+    "activity": "mini-game",
+    "timer": 30
+  }
+]

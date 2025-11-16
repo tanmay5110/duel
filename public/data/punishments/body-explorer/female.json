@@ -1,0 +1,354 @@
+[
+  {
+    "id": 3001,
+    "description": "Gently kiss their lips for 10 seconds",
+    "timer": 10,
+    "difficulty": "easy",
+    "activity": "body-explorer",
+    "gender": "female",
+    "bodyPart": "lips"
+  },
+  {
+    "id": 3002,
+    "description": "Softly bite their lower lip",
+    "timer": 5,
+    "difficulty": "medium",
+    "activity": "body-explorer",
+    "gender": "female",
+    "bodyPart": "lips"
+  },
+  {
+    "id": 3003,
+    "description": "Give them a passionate French kiss",
+    "timer": 20,
+    "difficulty": "hard",
+    "activity": "body-explorer",
+    "gender": "female",
+    "bodyPart": "lips"
+  },
+  {
+    "id": 3004,
+    "description": "Kiss along their jawline slowly",
+    "timer": 15,
+    "difficulty": "easy",
+    "activity": "body-explorer",
+    "gender": "female",
+    "bodyPart": "neck"
+  },
+  {
+    "id": 3005,
+    "description": "Gently nibble on their neck",
+    "timer": 10,
+    "difficulty": "medium",
+    "activity": "body-explorer",
+    "gender": "female",
+    "bodyPart": "neck"
+  },
+  {
+    "id": 3006,
+    "description": "Leave a hickey on their neck",
+    "timer": 30,
+    "difficulty": "hard",
+    "activity": "body-explorer",
+    "gender": "female",
+    "bodyPart": "neck"
+  },
+  {
+    "id": 3007,
+    "description": "Whisper something sweet in their ear",
+    "timer": 5,
+    "difficulty": "easy",
+    "activity": "body-explorer",
+    "gender": "female",
+    "bodyPart": "ears"
+  },
+  {
+    "id": 3008,
+    "description": "Gently nibble on their earlobe",
+    "timer": 10,
+    "difficulty": "medium",
+    "activity": "body-explorer",
+    "gender": "female",
+    "bodyPart": "ears"
+  },
+  {
+    "id": 3009,
+    "description": "Trace their ear with your tongue",
+    "timer": 15,
+    "difficulty": "hard",
+    "activity": "body-explorer",
+    "gender": "female",
+    "bodyPart": "ears"
+  },
+  {
+    "id": 3010,
+    "description": "Massage their shoulders gently",
+    "timer": 30,
+    "difficulty": "easy",
+    "activity": "body-explorer",
+    "gender": "female",
+    "bodyPart": "shoulders"
+  },
+  {
+    "id": 3011,
+    "description": "Kiss both of their shoulders",
+    "timer": 15,
+    "difficulty": "medium",
+    "activity": "body-explorer",
+    "gender": "female",
+    "bodyPart": "shoulders"
+  },
+  {
+    "id": 3012,
+    "description": "Bite their shoulder playfully",
+    "timer": 10,
+    "difficulty": "hard",
+    "activity": "body-explorer",
+    "gender": "female",
+    "bodyPart": "shoulders"
+  },
+  {
+    "id": 3013,
+    "description": "Gently caress their chest",
+    "timer": 20,
+    "difficulty": "easy",
+    "activity": "body-explorer",
+    "gender": "female",
+    "bodyPart": "chest"
+  },
+  {
+    "id": 3014,
+    "description": "Kiss around their chest softly",
+    "timer": 25,
+    "difficulty": "medium",
+    "activity": "body-explorer",
+    "gender": "female",
+    "bodyPart": "chest"
+  },
+  {
+    "id": 3015,
+    "description": "Tease their chest with your tongue",
+    "timer": 30,
+    "difficulty": "hard",
+    "activity": "body-explorer",
+    "gender": "female",
+    "bodyPart": "chest"
+  },
+  {
+    "id": 3016,
+    "description": "Massage their upper back",
+    "timer": 30,
+    "difficulty": "easy",
+    "activity": "body-explorer",
+    "gender": "female",
+    "bodyPart": "back"
+  },
+  {
+    "id": 3017,
+    "description": "Kiss down their spine slowly",
+    "timer": 25,
+    "difficulty": "medium",
+    "activity": "body-explorer",
+    "gender": "female",
+    "bodyPart": "back"
+  },
+  {
+    "id": 3018,
+    "description": "Scratch their back lightly with your nails",
+    "timer": 20,
+    "difficulty": "hard",
+    "activity": "body-explorer",
+    "gender": "female",
+    "bodyPart": "back"
+  },
+  {
+    "id": 3019,
+    "description": "Hold their arms while gazing into their eyes",
+    "timer": 15,
+    "difficulty": "easy",
+    "activity": "body-explorer",
+    "gender": "female",
+    "bodyPart": "arms"
+  },
+  {
+    "id": 3020,
+    "description": "Kiss along their forearm slowly",
+    "timer": 20,
+    "difficulty": "medium",
+    "activity": "body-explorer",
+    "gender": "female",
+    "bodyPart": "arms"
+  },
+  {
+    "id": 3021,
+    "description": "Gently bite their arm playfully",
+    "timer": 10,
+    "difficulty": "hard",
+    "activity": "body-explorer",
+    "gender": "female",
+    "bodyPart": "arms"
+  },
+  {
+    "id": 3022,
+    "description": "Hold their hands and interlock fingers",
+    "timer": 15,
+    "difficulty": "easy",
+    "activity": "body-explorer",
+    "gender": "female",
+    "bodyPart": "hands"
+  },
+  {
+    "id": 3023,
+    "description": "Kiss their palm softly",
+    "timer": 10,
+    "difficulty": "medium",
+    "activity": "body-explorer",
+    "gender": "female",
+    "bodyPart": "hands"
+  },
+  {
+    "id": 3024,
+    "description": "Suck on their finger gently",
+    "timer": 10,
+    "difficulty": "hard",
+    "activity": "body-explorer",
+    "gender": "female",
+    "bodyPart": "hands"
+  },
+  {
+    "id": 3025,
+    "description": "Place your hands on their waist and pull them close",
+    "timer": 15,
+    "difficulty": "easy",
+    "activity": "body-explorer",
+    "gender": "female",
+    "bodyPart": "waist"
+  },
+  {
+    "id": 3026,
+    "description": "Kiss their waistline slowly",
+    "timer": 20,
+    "difficulty": "medium",
+    "activity": "body-explorer",
+    "gender": "female",
+    "bodyPart": "waist"
+  },
+  {
+    "id": 3027,
+    "description": "Trace their waist with your fingertips",
+    "timer": 20,
+    "difficulty": "hard",
+    "activity": "body-explorer",
+    "gender": "female",
+    "bodyPart": "waist"
+  },
+  {
+    "id": 3028,
+    "description": "Gently hold their hips",
+    "timer": 15,
+    "difficulty": "easy",
+    "activity": "body-explorer",
+    "gender": "female",
+    "bodyPart": "hips"
+  },
+  {
+    "id": 3029,
+    "description": "Kiss their hip bones",
+    "timer": 20,
+    "difficulty": "medium",
+    "activity": "body-explorer",
+    "gender": "female",
+    "bodyPart": "hips"
+  },
+  {
+    "id": 3030,
+    "description": "Grip their hips firmly while kissing them",
+    "timer": 25,
+    "difficulty": "hard",
+    "activity": "body-explorer",
+    "gender": "female",
+    "bodyPart": "hips"
+  },
+  {
+    "id": 3031,
+    "description": "Gently caress their thigh",
+    "timer": 20,
+    "difficulty": "easy",
+    "activity": "body-explorer",
+    "gender": "female",
+    "bodyPart": "thighs"
+  },
+  {
+    "id": 3032,
+    "description": "Kiss the inside of their thigh",
+    "timer": 25,
+    "difficulty": "medium",
+    "activity": "body-explorer",
+    "gender": "female",
+    "bodyPart": "thighs"
+  },
+  {
+    "id": 3033,
+    "description": "Bite their inner thigh gently",
+    "timer": 15,
+    "difficulty": "hard",
+    "activity": "body-explorer",
+    "gender": "female",
+    "bodyPart": "thighs"
+  },
+  {
+    "id": 3034,
+    "description": "Massage their calves",
+    "timer": 30,
+    "difficulty": "easy",
+    "activity": "body-explorer",
+    "gender": "female",
+    "bodyPart": "legs"
+  },
+  {
+    "id": 3035,
+    "description": "Kiss down their leg slowly",
+    "timer": 25,
+    "difficulty": "medium",
+    "activity": "body-explorer",
+    "gender": "female",
+    "bodyPart": "legs"
+  },
+  {
+    "id": 3036,
+    "description": "Trace the back of their knee with your tongue",
+    "timer": 15,
+    "difficulty": "hard",
+    "activity": "body-explorer",
+    "gender": "female",
+    "bodyPart": "legs"
+  },
+  {
+    "id": 3037,
+    "description": "Give them a gentle foot massage",
+    "timer": 60,
+    "difficulty": "easy",
+    "activity": "body-explorer",
+    "gender": "female",
+    "bodyPart": "feet"
+  },
+  {
+    "id": 3038,
+    "description": "Kiss the top of their foot",
+    "timer": 10,
+    "difficulty": "medium",
+    "activity": "body-explorer",
+    "gender": "female",
+    "bodyPart": "feet"
+  },
+  {
+    "id": 3039,
+    "description": "Suck on their toe playfully",
+    "timer": 15,
+    "difficulty": "hard",
+    "activity": "body-explorer",
+    "gender": "female",
+    "bodyPart": "feet"
+  }
+]
+

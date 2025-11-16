@@ -1,0 +1,50 @@
+[
+  {
+    "id": 901,
+    "description": "Do 20 push-ups (no resting)",
+    "gender": "male",
+    "difficulty": "hard",
+    "activity": "mini-game",
+    "timer": 90
+  },
+  {
+    "id": 902,
+    "description": "Freestyle rap for 30 seconds",
+    "gender": "female",
+    "difficulty": "hard",
+    "activity": "mini-game",
+    "timer": 30
+  },
+  {
+    "id": 903,
+    "description": "Hold a plank for 45 seconds",
+    "gender": "male",
+    "difficulty": "hard",
+    "activity": "mini-game",
+    "timer": 45
+  },
+  {
+    "id": 904,
+    "description": "Do an interpretive dance about your day",
+    "gender": "female",
+    "difficulty": "hard",
+    "activity": "mini-game",
+    "timer": 45
+  },
+  {
+    "id": 905,
+    "description": "Do 25 burpees",
+    "gender": "male",
+    "difficulty": "hard",
+    "activity": "mini-game",
+    "timer": 120
+  },
+  {
+    "id": 906,
+    "description": "Perform a dramatic monologue",
+    "gender": "female",
+    "difficulty": "hard",
+    "activity": "mini-game",
+    "timer": 40
+  }
+]
