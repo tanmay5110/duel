@@ -22,14 +22,6 @@ export default function Settings({ isOpen, onClose }: SettingsProps) {
     changeDifficulty(newDifficulty);
   };
 
-  const getDifficultyValue = (diff: Difficulty): number => {
-    return diff === 'easy' ? 1 : diff === 'medium' ? 2 : 3;
-  };
-
-  const getDifficultyLabel = (diff: Difficulty): string => {
-    return diff === 'easy' ? '💚 Gentle' : diff === 'medium' ? '🧡 Teasing' : '❤️‍🔥 Passionate';
-  };
-
   return (
     <AnimatePresence>
       {isOpen && (
