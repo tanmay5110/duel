@@ -11,7 +11,6 @@ interface TimerProps {
 export default function Timer({ seconds, onComplete, autoStart = true }: TimerProps) {
   const {
     seconds: remainingSeconds,
-    isActive,
     start,
     formatTime
   } = useTimer(seconds, onComplete);
