@@ -263,7 +263,6 @@ export default function ScratchCard({ onComplete }: ScratchCardProps) {
     setShowPunishment(false);
     setIsRevealed(false);
     setScratchPercentage(0);
-    setIsInitialized(false);
     
     // Check if all cards are scratched
     const allScratched = cards.filter(c => c.isScratched).length + 1 >= cards.length;
@@ -282,14 +281,6 @@ export default function ScratchCard({ onComplete }: ScratchCardProps) {
     setSelectedCardIndex(index);
     setIsRevealed(false);
     setScratchPercentage(0);
-  };
-
-  const handleSkipTurn = () => {
-    setShowPunishment(false);
-    setSelectedCardIndex(null);
-    setIsRevealed(false);
-    setScratchPercentage(0);
-    switchTurn();
   };
 
   if (showPunishment && currentCard) {
