@@ -1,0 +1,122 @@
+[
+  {
+    "id": 1,
+    "text": "Do 10 squats",
+    "type": "regular",
+    "timer": 55
+  },
+  {
+    "id": 2,
+    "text": "Do 10 jumping jacks",
+    "type": "regular",
+    "timer": 45
+  },
+  {
+    "id": 3,
+    "text": "Hold plank for 15 seconds",
+    "type": "regular",
+    "timer": 25
+  },
+  {
+    "id": 4,
+    "text": "Dance for 20 seconds",
+    "type": "regular",
+    "timer": 30
+  },
+  {
+    "id": 5,
+    "text": "Strike 3 different poses",
+    "type": "regular",
+    "timer": 40
+  },
+  {
+    "id": 6,
+    "text": "Do your best catwalk across the room",
+    "type": "regular",
+    "timer": 35
+  },
+  {
+    "id": 7,
+    "text": "Do 5 lunges on each leg",
+    "type": "regular",
+    "timer": 60
+  },
+  {
+    "id": 8,
+    "text": "Sing 10 seconds of any song",
+    "type": "regular",
+    "timer": 20
+  },
+  {
+    "id": 9,
+    "text": "Do 5 slow squats",
+    "type": "regular",
+    "timer": 40
+  },
+  {
+    "id": 10,
+    "text": "Spin around 5 times and walk straight",
+    "type": "regular",
+    "timer": 25
+  },
+  {
+    "id": 101,
+    "text": "Do 10 jumping jacks in front of him",
+    "type": "double",
+    "timer": 30
+  },
+  {
+    "id": 102,
+    "text": "Hold a plank position for 15 seconds",
+    "type": "double",
+    "timer": 20
+  },
+  {
+    "id": 103,
+    "text": "Do 5 slow squats while looking at him",
+    "type": "double",
+    "timer": 40
+  },
+  {
+    "id": 104,
+    "text": "Do your sexiest walk from door to bed",
+    "type": "double",
+    "timer": 30
+  },
+  {
+    "id": 105,
+    "text": "Say the cheesiest pickup line you know",
+    "type": "double",
+    "timer": 20
+  },
+  {
+    "id": 106,
+    "text": "Whisper something you want him to focus on later",
+    "type": "double",
+    "timer": 25
+  },
+  {
+    "id": 107,
+    "text": "Strike your best sexy pose for 10 seconds",
+    "type": "double",
+    "timer": 15
+  },
+  {
+    "id": 108,
+    "text": "Dance for 15 seconds to imaginary music",
+    "type": "double",
+    "timer": 20
+  },
+  {
+    "id": 109,
+    "text": "Do 5 squats with attitude",
+    "type": "double",
+    "timer": 35
+  },
+  {
+    "id": 110,
+    "text": "Give him your best seductive look for 10 seconds",
+    "type": "double",
+    "timer": 15
+  }
+]

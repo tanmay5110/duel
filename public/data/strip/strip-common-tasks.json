@@ -1,0 +1,74 @@
+[
+  {
+    "id": 1,
+    "text": "First to touch the bedroom door and come back",
+    "type": "regular",
+    "timer": 45
+  },
+  {
+    "id": 2,
+    "text": "First to do 5 squats and tap Done",
+    "type": "regular",
+    "timer": 60
+  },
+  {
+    "id": 3,
+    "text": "First to grab something red and show it",
+    "type": "regular",
+    "timer": 30
+  },
+  {
+    "id": 4,
+    "text": "First to touch the light switch and come back",
+    "type": "regular",
+    "timer": 40
+  },
+  {
+    "id": 5,
+    "text": "First to bring any shoe to your partner",
+    "type": "regular",
+    "timer": 35
+  },
+  {
+    "id": 6,
+    "text": "First to spin around 3 times and tap Done",
+    "type": "regular",
+    "timer": 25
+  },
+  {
+    "id": 7,
+    "text": "First to touch your partner's nose",
+    "type": "regular",
+    "timer": 20
+  },
+  {
+    "id": 8,
+    "text": "First to lie on the bed and sit back up",
+    "type": "regular",
+    "timer": 30
+  },
+  {
+    "id": 9,
+    "text": "First to touch the floor with both hands",
+    "type": "regular",
+    "timer": 15
+  },
+  {
+    "id": 10,
+    "text": "First to bring a pillow not on the bed",
+    "type": "regular",
+    "timer": 40
+  },
+  {
+    "id": 11,
+    "text": "First to do 3 push-ups and tap Done",
+    "type": "regular",
+    "timer": 50
+  },
+  {
+    "id": 12,
+    "text": "First to find something made of metal",
+    "type": "regular",
+    "timer": 35
+  }
+]

@@ -1,0 +1,122 @@
+[
+  {
+    "id": 1,
+    "text": "Do 10 push-ups",
+    "type": "regular",
+    "timer": 60
+  },
+  {
+    "id": 2,
+    "text": "Do 15 squats",
+    "type": "regular",
+    "timer": 70
+  },
+  {
+    "id": 3,
+    "text": "Hold a wall sit for 20 seconds",
+    "type": "regular",
+    "timer": 30
+  },
+  {
+    "id": 4,
+    "text": "Do 10 jumping jacks",
+    "type": "regular",
+    "timer": 45
+  },
+  {
+    "id": 5,
+    "text": "Strike 3 different superhero poses",
+    "type": "regular",
+    "timer": 40
+  },
+  {
+    "id": 6,
+    "text": "Dance to imaginary music for 20 seconds",
+    "type": "regular",
+    "timer": 30
+  },
+  {
+    "id": 7,
+    "text": "Do your best moonwalk across the room",
+    "type": "regular",
+    "timer": 35
+  },
+  {
+    "id": 8,
+    "text": "Do 5 burpees",
+    "type": "regular",
+    "timer": 50
+  },
+  {
+    "id": 9,
+    "text": "Hold plank position for 20 seconds",
+    "type": "regular",
+    "timer": 30
+  },
+  {
+    "id": 10,
+    "text": "Spin around 5 times and walk straight",
+    "type": "regular",
+    "timer": 25
+  },
+  {
+    "id": 101,
+    "text": "Do 10 jumping jacks in front of her",
+    "type": "double",
+    "timer": 30
+  },
+  {
+    "id": 102,
+    "text": "Hold a plank position for 15 seconds",
+    "type": "double",
+    "timer": 20
+  },
+  {
+    "id": 103,
+    "text": "Do 5 slow squats while looking at her",
+    "type": "double",
+    "timer": 40
+  },
+  {
+    "id": 104,
+    "text": "Do your sexiest walk from door to bed",
+    "type": "double",
+    "timer": 30
+  },
+  {
+    "id": 105,
+    "text": "Say the cheesiest pickup line you know",
+    "type": "double",
+    "timer": 20
+  },
+  {
+    "id": 106,
+    "text": "Whisper something naughty you want to do tonight",
+    "type": "double",
+    "timer": 25
+  },
+  {
+    "id": 107,
+    "text": "Flex your muscles for 10 seconds without laughing",
+    "type": "double",
+    "timer": 15
+  },
+  {
+    "id": 108,
+    "text": "Dance for 15 seconds to imaginary music",
+    "type": "double",
+    "timer": 20
+  },
+  {
+    "id": 109,
+    "text": "Do 5 push-ups right now",
+    "type": "double",
+    "timer": 35
+  },
+  {
+    "id": 110,
+    "text": "Give her your best smolder look for 10 seconds",
+    "type": "double",
+    "timer": 15
+  }
+]
