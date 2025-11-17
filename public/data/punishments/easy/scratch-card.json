@@ -2,15 +2,15 @@
   {
     "id": 201,
     "description": "Give your partner a 30-second shoulder massage",
-    "gender": "male",
+    "gender": "neutral",
     "difficulty": "easy",
     "activity": "scratch-card",
     "timer": 30
   },
   {
     "id": 202,
-    "description": "Compliment your partner's eyes for 20 seconds",
-    "gender": "female",
+    "description": "Stare into each other's eyes for 20 seconds without laughing",
+    "gender": "neutral",
     "difficulty": "easy",
     "activity": "scratch-card",
     "timer": 20
@@ -18,49 +18,65 @@
   {
     "id": 203,
     "description": "Whisper something sweet in your partner's ear",
-    "gender": "male",
+    "gender": "neutral",
     "difficulty": "easy",
     "activity": "scratch-card",
-    "timer": 0
+    "timer": 15
   },
   {
     "id": 204,
-    "description": "Hold hands and stare into each other's eyes for 30 seconds",
-    "gender": "female",
+    "description": "Hold hands and compliment each other for 30 seconds",
+    "gender": "neutral",
     "difficulty": "easy",
     "activity": "scratch-card",
     "timer": 30
   },
   {
     "id": 205,
-    "description": "Give your partner 3 soft kisses on the cheek",
-    "gender": "male",
+    "description": "Give your partner 5 soft kisses anywhere on their face",
+    "gender": "neutral",
     "difficulty": "easy",
     "activity": "scratch-card",
-    "timer": 0
+    "timer": 20
   },
   {
     "id": 206,
-    "description": "Tell your partner why you're attracted to them",
-    "gender": "female",
+    "description": "Tell your partner 3 things you love about them",
+    "gender": "neutral",
     "difficulty": "easy",
     "activity": "scratch-card",
-    "timer": 0
+    "timer": 25
   },
   {
     "id": 207,
-    "description": "Trace your finger along your partner's arm slowly",
-    "gender": "male",
+    "description": "Slowly trace your finger along your partner's arm",
+    "gender": "neutral",
     "difficulty": "easy",
     "activity": "scratch-card",
     "timer": 20
   },
   {
     "id": 208,
-    "description": "Let your partner kiss you anywhere they choose",
-    "gender": "female",
+    "description": "Give your partner a gentle hug for 30 seconds",
+    "gender": "neutral",
     "difficulty": "easy",
     "activity": "scratch-card",
-    "timer": 0
+    "timer": 30
+  },
+  {
+    "id": 209,
+    "description": "Kiss your partner's forehead tenderly 3 times",
+    "gender": "neutral",
+    "difficulty": "easy",
+    "activity": "scratch-card",
+    "timer": 15
+  },
+  {
+    "id": 210,
+    "description": "Compliment your partner's smile for 20 seconds",
+    "gender": "neutral",
+    "difficulty": "easy",
+    "activity": "scratch-card",
+    "timer": 20
   }
 ]

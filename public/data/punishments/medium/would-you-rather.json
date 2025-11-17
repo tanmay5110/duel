@@ -1,0 +1,62 @@
+[
+  {
+    "id": "wyr_medium_m1",
+    "description": "Would you rather: Kiss their neck for 30 seconds OR kiss 5 different spots passionately?",
+    "optionA": "Kiss their neck for 30 seconds",
+    "optionB": "Kiss 5 different spots passionately",
+    "difficulty": "medium",
+    "activity": "would-you-rather",
+    "gender": "male",
+    "timer": 60
+  },
+  {
+    "id": "wyr_medium_m2",
+    "description": "Would you rather: Let them blindfold you OR slowly undress them?",
+    "optionA": "Let them blindfold you",
+    "optionB": "Slowly undress them",
+    "difficulty": "medium",
+    "activity": "would-you-rather",
+    "gender": "male",
+    "timer": 0
+  },
+  {
+    "id": "wyr_medium_m3",
+    "description": "Would you rather: Give a sensual body massage OR trace their body with your fingertips?",
+    "optionA": "Give a sensual body massage",
+    "optionB": "Trace their body with your fingertips",
+    "difficulty": "medium",
+    "activity": "would-you-rather",
+    "gender": "male",
+    "timer": 180
+  },
+  {
+    "id": "wyr_medium_f1",
+    "description": "Would you rather: Receive passionate kisses on your neck OR let them explore with their hands?",
+    "optionA": "Receive passionate kisses on your neck",
+    "optionB": "Let them explore with their hands",
+    "difficulty": "medium",
+    "activity": "would-you-rather",
+    "gender": "female",
+    "timer": 120
+  },
+  {
+    "id": "wyr_medium_f2",
+    "description": "Would you rather: Strip one item slowly for them OR let them remove one item from you?",
+    "optionA": "Strip one item slowly for them",
+    "optionB": "Let them remove one item from you",
+    "difficulty": "medium",
+    "activity": "would-you-rather",
+    "gender": "female",
+    "timer": 0
+  },
+  {
+    "id": "wyr_medium_f3",
+    "description": "Would you rather: Sit on their lap and kiss OR let them pin you against the wall?",
+    "optionA": "Sit on their lap and kiss",
+    "optionB": "Let them pin you against the wall",
+    "difficulty": "medium",
+    "activity": "would-you-rather",
+    "gender": "female",
+    "timer": 90
+  }
+]

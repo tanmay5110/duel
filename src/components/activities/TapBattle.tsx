@@ -96,14 +96,14 @@ export default function TapBattle({ onBack }: TapBattleProps) {
     <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      className="min-h-screen flex items-center justify-center p-8"
+      className="p-4 md:p-8"
     >
-      <div className="w-full max-w-4xl">
-        <div className="flex items-center justify-between mb-12">
-          <h2 className="text-5xl font-thin tracking-tight uppercase text-white/90">Tap Battle</h2>
+      <div className="w-full max-w-4xl mx-auto mt-4 md:mt-8">
+        <div className="flex flex-col md:flex-row items-center justify-between mb-4 md:mb-6 gap-3 md:gap-0">
+          <h2 className="text-3xl md:text-5xl font-thin tracking-tight uppercase text-white/90">Tap Battle</h2>
           <button
             onClick={onBack}
-            className="px-6 py-3 border border-white/20 hover:border-white/40 hover:bg-white/5 transition-all text-xs uppercase tracking-[0.2em] text-white/60 font-light"
+            className="px-4 md:px-6 py-2 md:py-3 border border-white/20 hover:border-white/40 hover:bg-white/5 transition-all text-xs uppercase tracking-[0.2em] text-white/60 font-light self-end md:self-auto"
           >
             Back
           </button>
@@ -117,41 +117,41 @@ export default function TapBattle({ onBack }: TapBattleProps) {
           animate={{ scale: 1, opacity: 1 }}
           exit={{ scale: 1.1, opacity: 0 }}
           transition={{ duration: 0.3 }}
-          className="flex items-center justify-center py-32"
+          className="flex items-center justify-center py-16 md:py-32"
         >
-          <div className="text-9xl font-thin text-white/90">{countdown}</div>
+          <div className="text-7xl md:text-9xl font-thin text-white/90">{countdown}</div>
         </motion.div>
       )}
 
       {/* Game in progress */}
       {(gameState === 'playing' || gameState === 'finished') && (
-        <div className="space-y-8">
+        <div className="space-y-4 md:space-y-8">
           {/* Timer */}
-          <div className="text-center py-6 border-y border-white/10">
-            <div className="text-7xl font-thin text-white/90 mb-2">{gameTime}</div>
+          <div className="text-center py-4 md:py-6 border-y border-white/10">
+            <div className="text-5xl md:text-7xl font-thin text-white/90 mb-1 md:mb-2">{gameTime}</div>
             <div className="text-xs uppercase tracking-[0.2em] text-white/40 font-light">Seconds</div>
           </div>
 
           {/* Scores */}
-          <div className="grid grid-cols-2 gap-6 mb-8">
-            <div className="p-8 border border-white/10 text-center">
-              <div className="text-sm uppercase tracking-[0.15em] text-white/40 font-light mb-4">{state.players[0].name}</div>
-              <div className="text-6xl font-thin text-white/90">{player1Score}</div>
+          <div className="grid grid-cols-2 gap-3 md:gap-6">
+            <div className="p-4 md:p-8 border border-white/10 text-center">
+              <div className="text-xs md:text-sm uppercase tracking-[0.15em] text-white/40 font-light mb-2 md:mb-4">{state.players[0].name}</div>
+              <div className="text-4xl md:text-6xl font-thin text-white/90">{player1Score}</div>
             </div>
             
-            <div className="p-8 border border-white/10 text-center">
-              <div className="text-sm uppercase tracking-[0.15em] text-white/40 font-light mb-4">{state.players[1].name}</div>
-              <div className="text-6xl font-thin text-white/90">{player2Score}</div>
+            <div className="p-4 md:p-8 border border-white/10 text-center">
+              <div className="text-xs md:text-sm uppercase tracking-[0.15em] text-white/40 font-light mb-2 md:mb-4">{state.players[1].name}</div>
+              <div className="text-4xl md:text-6xl font-thin text-white/90">{player2Score}</div>
             </div>
           </div>
 
           {/* Tap Buttons */}
           {gameState === 'playing' && (
-            <div className="grid grid-cols-2 gap-6">
+            <div className="grid grid-cols-2 gap-3 md:gap-6">
               <motion.button
                 onClick={handlePlayer1Click}
                 whileTap={{ scale: 0.97 }}
-                className="h-48 bg-white text-black hover:bg-white/90 transition-all duration-150 text-3xl font-thin uppercase tracking-tight"
+                className="h-32 md:h-48 bg-white text-black hover:bg-white/90 transition-all duration-150 text-2xl md:text-3xl font-thin uppercase tracking-tight"
               >
                 Tap
               </motion.button>
@@ -159,7 +159,7 @@ export default function TapBattle({ onBack }: TapBattleProps) {
               <motion.button
                 onClick={handlePlayer2Click}
                 whileTap={{ scale: 0.97 }}
-                className="h-48 bg-white text-black hover:bg-white/90 transition-all duration-150 text-3xl font-thin uppercase tracking-tight"
+                className="h-32 md:h-48 bg-white text-black hover:bg-white/90 transition-all duration-150 text-2xl md:text-3xl font-thin uppercase tracking-tight"
               >
                 Tap
               </motion.button>
@@ -172,12 +172,12 @@ export default function TapBattle({ onBack }: TapBattleProps) {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.5 }}
-              className="text-center py-12 border border-white/20"
+              className="text-center py-8 md:py-12 border border-white/20"
             >
-              <div className="text-5xl font-thin text-white/90 mb-6 uppercase tracking-tight">
+              <div className="text-3xl md:text-5xl font-thin text-white/90 mb-4 md:mb-6 uppercase tracking-tight">
                 {player1Score > player2Score ? state.players[0].name : state.players[1].name} Wins
               </div>
-              <div className="text-sm uppercase tracking-[0.2em] text-white/40 font-light">
+              <div className="text-xs md:text-sm uppercase tracking-[0.2em] text-white/40 font-light">
                 {player1Score > player2Score ? state.players[1].name : state.players[0].name} receives punishment
               </div>
             </motion.div>

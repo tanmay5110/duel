@@ -2,23 +2,23 @@
   {
     "id": 601,
     "description": "Kiss your partner's neck slowly for 30 seconds",
-    "gender": "male",
+    "gender": "neutral",
     "difficulty": "medium",
     "activity": "scratch-card",
     "timer": 30
   },
   {
     "id": 602,
-    "description": "Let your partner remove one piece of your clothing",
-    "gender": "female",
+    "description": "Remove one piece of your clothing",
+    "gender": "neutral",
     "difficulty": "medium",
     "activity": "scratch-card",
-    "timer": 0
+    "timer": 20
   },
   {
     "id": 603,
     "description": "Give your partner a sensual back massage for 45 seconds",
-    "gender": "male",
+    "gender": "neutral",
     "difficulty": "medium",
     "activity": "scratch-card",
     "timer": 45
@@ -26,23 +26,23 @@
   {
     "id": 604,
     "description": "Bite your partner's earlobe gently and whisper something naughty",
-    "gender": "female",
+    "gender": "neutral",
     "difficulty": "medium",
     "activity": "scratch-card",
-    "timer": 0
+    "timer": 25
   },
   {
     "id": 605,
     "description": "Kiss your partner passionately for 30 seconds",
-    "gender": "male",
+    "gender": "neutral",
     "difficulty": "medium",
     "activity": "scratch-card",
     "timer": 30
   },
   {
     "id": 606,
-    "description": "Let your partner kiss your body wherever they want for 45 seconds",
-    "gender": "female",
+    "description": "Let your partner kiss you wherever they want for 45 seconds",
+    "gender": "neutral",
     "difficulty": "medium",
     "activity": "scratch-card",
     "timer": 45
@@ -50,17 +50,33 @@
   {
     "id": 607,
     "description": "Run your hands through your partner's hair and pull gently",
-    "gender": "male",
+    "gender": "neutral",
     "difficulty": "medium",
     "activity": "scratch-card",
-    "timer": 20
+    "timer": 25
   },
   {
     "id": 608,
-    "description": "Straddle your partner and kiss them deeply",
-    "gender": "female",
+    "description": "Straddle your partner and kiss them deeply for 30 seconds",
+    "gender": "neutral",
     "difficulty": "medium",
     "activity": "scratch-card",
     "timer": 30
+  },
+  {
+    "id": 609,
+    "description": "Give your partner a sensual hand massage for 40 seconds",
+    "gender": "neutral",
+    "difficulty": "medium",
+    "activity": "scratch-card",
+    "timer": 40
+  },
+  {
+    "id": 610,
+    "description": "Trace kisses from your partner's shoulder to their ear",
+    "gender": "neutral",
+    "difficulty": "medium",
+    "activity": "scratch-card",
+    "timer": 35
   }
 ]

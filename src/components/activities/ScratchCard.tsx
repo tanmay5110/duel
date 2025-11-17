@@ -18,11 +18,11 @@ export default function ScratchCard({ onComplete }: ScratchCardProps) {
   const { punishments, loading } = usePunishments(state.difficulty, 'scratch-card');
   
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
   const [isScratching, setIsScratching] = useState(false);
   const [scratchPercentage, setScratchPercentage] = useState(0);
   const [isRevealed, setIsRevealed] = useState(false);
   const [showPunishment, setShowPunishment] = useState(false);
-  const [isInitialized, setIsInitialized] = useState(false);
   
   // Card deck with scratched state
   const [cards, setCards] = useState<CardState[]>([]);
@@ -72,10 +72,9 @@ export default function ScratchCard({ onComplete }: ScratchCardProps) {
       return;
     }
     
-    const playerPunishments = punishments.filter(p => p.gender === currentPlayer.gender);
-    
-    if (playerPunishments.length === 0) {
-      console.log('⚠️ Cards: No punishments for gender:', currentPlayer.gender);
+    // Scratch card is gender-neutral - use all punishments
+    if (punishments.length === 0) {
+      console.log('⚠️ Cards: No punishments available');
       return;
     }
     
@@ -85,65 +84,72 @@ export default function ScratchCard({ onComplete }: ScratchCardProps) {
       
       const newCards: CardState[] = [];
       for (let i = 0; i < 10; i++) {
-        const randomIndex = Math.floor(Math.random() * playerPunishments.length);
+        const randomIndex = Math.floor(Math.random() * punishments.length);
         newCards.push({
-          punishment: playerPunishments[randomIndex],
+          punishment: punishments[randomIndex],
           isScratched: false
         });
       }
       
-      console.log('✅ Cards loaded with punishments:', newCards.map(c => ({ id: c.punishment.id, difficulty: c.punishment.difficulty })));
+      console.log('✅ Cards loaded:', newCards.length);
       
       setCards(newCards);
     }
-  }, [loading, punishments, currentPlayer.gender, state.difficulty, cards.length]);
+  }, [loading, punishments, state.difficulty, cards.length]);
 
-  // Initialize canvas
+  // Initialize canvas when card is selected
   useEffect(() => {
-    if (loading || isInitialized || !currentCard || selectedCardIndex === null) return;
+    if (!currentCard || selectedCardIndex === null || loading) return;
     
     const canvas = canvasRef.current;
-    if (!canvas) return;
+    const container = containerRef.current;
+    if (!canvas || !container) return;
 
-    const ctx = canvas.getContext('2d');
-    if (!ctx) return;
-
-    const rect = canvas.getBoundingClientRect();
+    // Set canvas size to match container
+    const rect = container.getBoundingClientRect();
     canvas.width = rect.width;
     canvas.height = rect.height;
 
-    ctx.fillStyle = '#888888';
+    const ctx = canvas.getContext('2d', { willReadFrequently: true });
+    if (!ctx) return;
+
+    // Draw gray scratch overlay
+    ctx.fillStyle = '#666666';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-    ctx.fillStyle = '#999999';
-    for (let i = 0; i < 50; i++) {
+    // Add texture
+    ctx.fillStyle = '#888888';
+    for (let i = 0; i < 100; i++) {
       ctx.fillRect(
         Math.random() * canvas.width,
         Math.random() * canvas.height,
-        Math.random() * 20,
-        Math.random() * 20
+        Math.random() * 15 + 5,
+        Math.random() * 15 + 5
       );
     }
 
-    ctx.fillStyle = '#555555';
-    ctx.font = 'bold 24px Arial';
+    // Draw text
+    ctx.fillStyle = '#FFFFFF';
+    ctx.font = `bold ${Math.min(canvas.width / 15, 32)}px Arial`;
     ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
     ctx.fillText('SCRATCH HERE', canvas.width / 2, canvas.height / 2);
 
-    setIsInitialized(true);
-  }, [loading, isInitialized, currentCard, selectedCardIndex]);
+    console.log('✅ Canvas initialized:', canvas.width, 'x', canvas.height);
+  }, [currentCard, selectedCardIndex, loading]);
 
   const scratch = (x: number, y: number) => {
     const canvas = canvasRef.current;
-    if (!canvas) return;    const ctx = canvas.getContext('2d');
+    if (!canvas || isRevealed) return;
+
+    const ctx = canvas.getContext('2d', { willReadFrequently: true });
     if (!ctx) return;
 
     ctx.globalCompositeOperation = 'destination-out';
     ctx.beginPath();
-    ctx.arc(x, y, 30, 0, 2 * Math.PI);
+    ctx.arc(x, y, 25, 0, 2 * Math.PI);
     ctx.fill();
 
-    // Calculate scratch percentage
     checkScratchPercentage();
   };
 
@@ -151,7 +157,7 @@ export default function ScratchCard({ onComplete }: ScratchCardProps) {
     const canvas = canvasRef.current;
     if (!canvas) return;
 
-    const ctx = canvas.getContext('2d');
+    const ctx = canvas.getContext('2d', { willReadFrequently: true });
     if (!ctx) return;
 
     const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
@@ -159,19 +165,25 @@ export default function ScratchCard({ onComplete }: ScratchCardProps) {
     let transparent = 0;
 
     for (let i = 3; i < pixels.length; i += 4) {
-      if (pixels[i] === 0) transparent++;
+      if (pixels[i] < 128) transparent++;
     }
 
     const percentage = (transparent / (pixels.length / 4)) * 100;
     setScratchPercentage(percentage);
 
-    if (percentage > 50 && !isRevealed) {      setIsRevealed(true);
-      // Clear the entire canvas to fully reveal
-      setTimeout(() => {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-      }, 300);
+    if (percentage > 50 && !isRevealed) {
+      setIsRevealed(true);
+      console.log('🎉 Card revealed at', Math.round(percentage), '%');
       
-      // Automatically record and show punishment after reveal
+      // Clear canvas
+      setTimeout(() => {
+        const ctx = canvas.getContext('2d');
+        if (ctx) {
+          ctx.clearRect(0, 0, canvas.width, canvas.height);
+        }
+      }, 200);
+      
+      // Show punishment
       setTimeout(() => {
         if (currentCard) {
           recordPunishment({
@@ -183,12 +195,13 @@ export default function ScratchCard({ onComplete }: ScratchCardProps) {
           });
           setShowPunishment(true);
         }
-      }, 1000);
+      }, 800);
     }
   };
 
   const handleMouseDown = (e: React.MouseEvent<HTMLCanvasElement>) => {
     if (isRevealed) return;
+    e.preventDefault();
     setIsScratching(true);
     const rect = canvasRef.current?.getBoundingClientRect();
     if (rect) {
@@ -210,7 +223,6 @@ export default function ScratchCard({ onComplete }: ScratchCardProps) {
 
   const handleTouchStart = (e: React.TouchEvent<HTMLCanvasElement>) => {
     if (isRevealed) return;
-    e.preventDefault();
     setIsScratching(true);
     const rect = canvasRef.current?.getBoundingClientRect();
     const touch = e.touches[0];
@@ -221,7 +233,6 @@ export default function ScratchCard({ onComplete }: ScratchCardProps) {
 
   const handleTouchMove = (e: React.TouchEvent<HTMLCanvasElement>) => {
     if (!isScratching || isRevealed) return;
-    e.preventDefault();
     const rect = canvasRef.current?.getBoundingClientRect();
     const touch = e.touches[0];
     if (rect && touch) {
@@ -267,17 +278,13 @@ export default function ScratchCard({ onComplete }: ScratchCardProps) {
 
   const handleCardSelect = (index: number) => {
     if (cards[index].isScratched) return;
-    console.log('Selected card:', index);
+    console.log('🎴 Selected card:', index);
     setSelectedCardIndex(index);
     setIsRevealed(false);
     setScratchPercentage(0);
-    setIsInitialized(false);
   };
 
   const handleSkipTurn = () => {
-    console.log('⏭️ Skipping turn - switching to next player');
-    // Just switch turn without completing punishment
-    // The turn change will trigger cards refresh automatically
     setShowPunishment(false);
     setSelectedCardIndex(null);
     setIsRevealed(false);
@@ -286,6 +293,8 @@ export default function ScratchCard({ onComplete }: ScratchCardProps) {
   };
 
   if (showPunishment && currentCard) {
+    console.log('🎯 Showing punishment:', currentCard.punishment);
+    console.log('Timer value:', currentCard.punishment.timer);
     return (
       <PunishmentDisplay
         punishment={currentCard.punishment}
@@ -298,18 +307,18 @@ export default function ScratchCard({ onComplete }: ScratchCardProps) {
   // Show card selection carousel
   if (selectedCardIndex === null) {
     return (
-      <div className="min-h-screen flex items-center justify-center p-8">
-        <div className="w-full max-w-2xl">
-          <div className="flex items-center justify-between mb-12">
+      <div className="p-4 md:p-8">
+        <div className="w-full max-w-2xl mx-auto mt-4 md:mt-8">
+          <div className="flex flex-col md:flex-row items-center justify-between mb-4 md:mb-6 gap-4 md:gap-0">
             <button
               onClick={onComplete}
-              className="px-6 py-3 border border-white/20 hover:border-white/40 hover:bg-white/5 transition-all text-xs uppercase tracking-[0.2em] text-white/60 font-light"
+              className="px-4 md:px-6 py-2 md:py-3 border border-white/20 hover:border-white/40 hover:bg-white/5 transition-all text-xs uppercase tracking-[0.2em] text-white/60 font-light self-start md:self-auto"
             >
               Back
             </button>
             <div className="text-center">
-              <h2 className="text-6xl font-thin tracking-tight uppercase text-white/90 mb-2">Scratch</h2>
-              <div className="flex items-center gap-3 justify-center">
+              <h2 className="text-4xl md:text-6xl font-thin tracking-tight uppercase text-white/90 mb-1 md:mb-2">Scratch</h2>
+              <div className="flex items-center gap-2 md:gap-3 justify-center">
                 <span className="text-xs uppercase tracking-[0.2em] text-white/40 font-light">
                   {currentPlayer.name}
                 </span>
@@ -319,7 +328,7 @@ export default function ScratchCard({ onComplete }: ScratchCardProps) {
                 </span>
               </div>
             </div>
-            <div className="w-28"></div>
+            <div className="hidden md:block w-28"></div>
           </div>
 
           {loading || cards.length === 0 ? (
@@ -328,40 +337,47 @@ export default function ScratchCard({ onComplete }: ScratchCardProps) {
             </div>
           ) : (
             <>
-              {/* Vertical Card Stack */}
-              <div className="space-y-4 max-h-[600px] overflow-y-auto scrollbar-hide">
+              {/* Card Grid */}
+              <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4">
                 {cards.map((card, index) => (
                   <motion.div
                     key={index}
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: index * 0.03, duration: 0.3 }}
-                    whileHover={!card.isScratched ? { scale: 1.01 } : {}}
-                    whileTap={!card.isScratched ? { scale: 0.99 } : {}}
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ delay: index * 0.05, duration: 0.3 }}
+                    whileHover={!card.isScratched ? { scale: 1.03 } : {}}
+                    whileTap={!card.isScratched ? { scale: 0.97 } : {}}
                     onClick={() => handleCardSelect(index)}
-                    className={`w-full h-64 border transition-all ${
+                    className={`aspect-[3/4] border transition-all relative overflow-hidden ${
                       card.isScratched
-                        ? 'border-white/40 bg-white/5 cursor-default'
+                        ? 'border-white/60 bg-white/10 cursor-default'
                         : 'border-white/20 hover:border-white/40 hover:bg-white/5 cursor-pointer'
                     }`}
                   >
-                    <div className="h-full flex flex-col items-center justify-center p-8 text-center">
+                    <div className="h-full flex flex-col items-center justify-center p-4 text-center">
                       {card.isScratched ? (
                         <>
-                          <p className="text-xs uppercase tracking-[0.2em] text-white/40 font-light mb-4">
-                            Revealed
-                          </p>
-                          <p className="text-base font-light text-white/80 leading-relaxed">
+                          <div className="absolute top-2 left-2 right-2">
+                            <p className="text-[8px] uppercase tracking-[0.15em] text-white/40 font-light">
+                              Card {index + 1}
+                            </p>
+                          </div>
+                          <p className="text-xs md:text-sm font-light text-white/90 leading-relaxed px-2">
                             {card.punishment.description}
                           </p>
+                          <div className="absolute bottom-2 left-2 right-2">
+                            <p className="text-[8px] uppercase tracking-[0.15em] text-white/30 font-light">
+                              Revealed
+                            </p>
+                          </div>
                         </>
                       ) : (
                         <>
-                          <p className="text-6xl font-thin text-white/90 mb-6">
+                          <p className="text-4xl md:text-5xl font-thin text-white/90 mb-3">
                             {index + 1}
                           </p>
-                          <p className="text-xs uppercase tracking-[0.2em] text-white/40 font-light">
-                            Tap to Scratch
+                          <p className="text-[9px] uppercase tracking-[0.2em] text-white/40 font-light">
+                            Scratch
                           </p>
                         </>
                       )}
@@ -369,21 +385,6 @@ export default function ScratchCard({ onComplete }: ScratchCardProps) {
                   </motion.div>
                 ))}
               </div>
-
-              <p className="text-center text-white/30 text-xs uppercase tracking-[0.2em] mt-6 mb-6 font-light">
-                Scroll for More
-              </p>
-
-              {/* Skip Turn Button */}
-              <motion.button
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.3 }}
-                onClick={handleSkipTurn}
-                className="w-full py-4 border border-white/20 hover:border-white/40 hover:bg-white/5 transition-all text-xs uppercase tracking-[0.2em] text-white/60 font-light"
-              >
-                Skip to {state.players[(state.currentTurn + 1) % state.players.length].name}
-              </motion.button>
             </>
           )}
         </div>
@@ -393,22 +394,21 @@ export default function ScratchCard({ onComplete }: ScratchCardProps) {
 
   // Show scratch card view
   return (
-    <div className="min-h-screen flex items-center justify-center p-8">
-      <div className="w-full max-w-2xl">
-        <div className="flex items-center justify-between mb-12">
+    <div className="p-4 md:p-8">
+      <div className="w-full max-w-2xl mx-auto mt-4 md:mt-8">
+        <div className="flex flex-col md:flex-row items-center justify-between mb-4 md:mb-6 gap-4 md:gap-0">
           <button
             onClick={() => {
               setSelectedCardIndex(null);
-              setIsInitialized(false);
             }}
-            className="px-6 py-3 border border-white/20 hover:border-white/40 hover:bg-white/5 transition-all text-xs uppercase tracking-[0.2em] text-white/60 font-light"
+            className="px-4 md:px-6 py-2 md:py-3 border border-white/20 hover:border-white/40 hover:bg-white/5 transition-all text-xs uppercase tracking-[0.2em] text-white/60 font-light self-start md:self-auto"
           >
             Back
           </button>
           <div className="text-center">
-            <h2 className="text-5xl font-thin tracking-tight uppercase text-white/90">Card {selectedCardIndex !== null ? selectedCardIndex + 1 : '?'}</h2>
+            <h2 className="text-3xl md:text-5xl font-thin tracking-tight uppercase text-white/90">Card {selectedCardIndex !== null ? selectedCardIndex + 1 : '?'}</h2>
           </div>
-          <div className="w-28"></div>
+          <div className="hidden md:block w-28"></div>
         </div>
         
         {loading && cards.length === 0 ? (
@@ -417,45 +417,51 @@ export default function ScratchCard({ onComplete }: ScratchCardProps) {
           </div>
         ) : (
           <>
-            <div className="text-center mb-8">
+            <div className="text-center mb-6 md:mb-8">
               <p className="text-xs uppercase tracking-[0.2em] text-white/40 font-light">Scratch to Reveal</p>
             </div>
 
             {/* Scratch Card */}
-            <div className="relative mb-8">
+            <div 
+              ref={containerRef}
+              className="relative mb-6 md:mb-8 w-full h-64 md:h-80 border-2 border-white/30 overflow-hidden bg-black"
+            >
               {/* Hidden content (revealed punishment) */}
-              <div className="absolute inset-0 border border-white/30 p-8 flex items-center justify-center bg-black">
+              <div className="absolute inset-0 p-4 md:p-8 flex items-center justify-center">
                 {currentCard ? (
                   <motion.p
-                    initial={{ opacity: 0, scale: 0.95 }}
-                    animate={{ opacity: isRevealed ? 1 : 0, scale: isRevealed ? 1 : 0.95 }}
-                    className="text-xl font-light text-white/90 text-center leading-relaxed"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: isRevealed ? 1 : 0 }}
+                    transition={{ duration: 0.3 }}
+                    className="text-base md:text-xl font-light text-white/90 text-center leading-relaxed"
                   >
                     {currentCard.punishment.description}
                   </motion.p>
                 ) : (
-                  <p className="text-lg text-white/60 font-light">Loading...</p>
+                  <p className="text-sm md:text-lg text-white/60 font-light">Loading...</p>
                 )}
               </div>
 
-              {/* Scratch overlay */}
-              <canvas
-                ref={canvasRef}
-                onMouseDown={handleMouseDown}
-                onMouseMove={handleMouseMove}
-                onMouseUp={handleMouseUp}
-                onMouseLeave={handleMouseUp}
-                onTouchStart={handleTouchStart}
-                onTouchMove={handleTouchMove}
-                onTouchEnd={handleTouchEnd}
-                className="relative w-full h-64 cursor-pointer touch-none"
-                style={{ touchAction: 'none' }}
-              />
+              {/* Scratch overlay canvas */}
+              {!isRevealed && (
+                <canvas
+                  ref={canvasRef}
+                  onMouseDown={handleMouseDown}
+                  onMouseMove={handleMouseMove}
+                  onMouseUp={handleMouseUp}
+                  onMouseLeave={handleMouseUp}
+                  onTouchStart={handleTouchStart}
+                  onTouchMove={handleTouchMove}
+                  onTouchEnd={handleTouchEnd}
+                  className="absolute inset-0 w-full h-full cursor-pointer"
+                  style={{ touchAction: 'none' }}
+                />
+              )}
             </div>
 
             {/* Progress bar */}
             {!isRevealed && (
-              <div className="mb-8">
+              <div className="mb-6 md:mb-8">
                 <div className="flex justify-between text-xs uppercase tracking-[0.2em] text-white/40 font-light mb-3">
                   <span>Progress</span>
                   <span>{Math.round(scratchPercentage)}%</span>

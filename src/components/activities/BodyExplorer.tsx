@@ -176,18 +176,18 @@ export default function BodyExplorer({ onComplete }: BodyExplorerProps) {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center p-8">
+    <div className="min-h-screen flex items-center justify-center p-4 md:p-8">
       <div className="w-full max-w-4xl">
-        <div className="flex items-center justify-between mb-12">
+        <div className="flex flex-col md:flex-row items-center justify-between mb-8 md:mb-12 gap-4 md:gap-0">
           <button
             onClick={onComplete}
-            className="px-6 py-3 border border-white/20 hover:border-white/40 hover:bg-white/5 transition-all text-xs uppercase tracking-[0.2em] text-white/60 font-light"
+            className="px-4 md:px-6 py-2 md:py-3 border border-white/20 hover:border-white/40 hover:bg-white/5 transition-all text-xs uppercase tracking-[0.2em] text-white/60 font-light self-start md:self-auto"
           >
             Back
           </button>
           <div className="text-center">
-            <h2 className="text-6xl font-thin tracking-tight uppercase text-white/90 mb-2">Body</h2>
-            <div className="flex items-center gap-3 justify-center">
+            <h2 className="text-4xl md:text-6xl font-thin tracking-tight uppercase text-white/90 mb-1 md:mb-2">Body</h2>
+            <div className="flex items-center gap-2 md:gap-3 justify-center">
               <span className="text-xs uppercase tracking-[0.2em] text-white/40 font-light">
                 {currentPlayer.name}
               </span>
@@ -197,10 +197,10 @@ export default function BodyExplorer({ onComplete }: BodyExplorerProps) {
               </span>
             </div>
           </div>
-          <div className="w-28"></div>
+          <div className="hidden md:block w-28"></div>
         </div>
 
-        <div className="text-center mb-8">
+        <div className="text-center mb-6 md:mb-8">
           <p className="text-sm font-light text-white/60 mb-1">
             Random Selection
           </p>
@@ -210,14 +210,14 @@ export default function BodyExplorer({ onComplete }: BodyExplorerProps) {
         </div>
 
         {/* Body Display with Front/Back Toggle */}
-        <div className="relative w-full max-w-lg mx-auto mb-8">
-          <div className="border border-white/10 p-8 relative">
+        <div className="relative w-full max-w-lg mx-auto mb-6 md:mb-8">
+          <div className="border border-white/10 p-4 md:p-8 relative">
             {/* View Toggle */}
-            <div className="flex gap-4 mb-6 justify-center">
+            <div className="flex gap-3 md:gap-4 mb-4 md:mb-6 justify-center">
               <button
                 onClick={() => setBodyView('front')}
                 disabled={isSpinning}
-                className={`px-8 py-3 border transition-all text-xs uppercase tracking-[0.2em] font-light ${
+                className={`px-6 md:px-8 py-2 md:py-3 border transition-all text-xs uppercase tracking-[0.2em] font-light ${
                   bodyView === 'front' 
                     ? 'border-white bg-white text-black' 
                     : 'border-white/20 text-white/60 hover:border-white/40 hover:bg-white/5'
@@ -228,7 +228,7 @@ export default function BodyExplorer({ onComplete }: BodyExplorerProps) {
               <button
                 onClick={() => setBodyView('back')}
                 disabled={isSpinning}
-                className={`px-8 py-3 border transition-all text-xs uppercase tracking-[0.2em] font-light ${
+                className={`px-6 md:px-8 py-2 md:py-3 border transition-all text-xs uppercase tracking-[0.2em] font-light ${
                   bodyView === 'back' 
                     ? 'border-white bg-white text-black' 
                     : 'border-white/20 text-white/60 hover:border-white/40 hover:bg-white/5'
@@ -241,19 +241,19 @@ export default function BodyExplorer({ onComplete }: BodyExplorerProps) {
             {/* Body Outline Placeholder */}
             <div className="relative w-full aspect-[2/3] border border-white/20 bg-black flex items-center justify-center">
               <div className="text-center">
-                <p className="text-white/40 text-sm uppercase tracking-[0.2em] font-light mb-8">
+                <p className="text-white/40 text-xs md:text-sm uppercase tracking-[0.2em] font-light mb-6 md:mb-8">
                   {bodyView === 'front' ? 'Front View' : 'Back View'}
                 </p>
                 {selectedBodyPart && (
                   <motion.div
                     initial={{ scale: 0 }}
                     animate={{ scale: 1 }}
-                    className="mt-6 border border-white/40 bg-white/5 px-12 py-6"
+                    className="mt-4 md:mt-6 border border-white/40 bg-white/5 px-8 md:px-12 py-4 md:py-6\"
                   >
-                    <p className="text-white text-4xl font-thin uppercase tracking-tight">
+                    <p className="text-white text-2xl md:text-4xl font-thin uppercase tracking-tight">
                       {selectedBodyPart.name}
                     </p>
-                    <p className="text-white/40 text-xs uppercase tracking-[0.2em] font-light mt-3">
+                    <p className="text-white/40 text-xs uppercase tracking-[0.2em] font-light mt-2 md:mt-3">
                       Selected
                     </p>
                   </motion.div>

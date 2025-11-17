@@ -1,0 +1,62 @@
+[
+  {
+    "id": "wyr_easy_m1",
+    "description": "Would you rather: Give a 10-minute back massage OR receive a foot massage?",
+    "optionA": "Give a 10-minute back massage",
+    "optionB": "Receive a foot massage",
+    "difficulty": "easy",
+    "activity": "would-you-rather",
+    "gender": "male",
+    "timer": 600
+  },
+  {
+    "id": "wyr_easy_m2",
+    "description": "Would you rather: Slow dance in silence OR sing to each other?",
+    "optionA": "Slow dance in silence",
+    "optionB": "Sing to each other",
+    "difficulty": "easy",
+    "activity": "would-you-rather",
+    "gender": "male",
+    "timer": 180
+  },
+  {
+    "id": "wyr_easy_m3",
+    "description": "Would you rather: Share 3 compliments OR write a love note?",
+    "optionA": "Share 3 compliments",
+    "optionB": "Write a love note",
+    "difficulty": "easy",
+    "activity": "would-you-rather",
+    "gender": "male",
+    "timer": 120
+  },
+  {
+    "id": "wyr_easy_f1",
+    "description": "Would you rather: Give a shoulder massage OR play with their hair for 5 minutes?",
+    "optionA": "Give a shoulder massage",
+    "optionB": "Play with their hair for 5 minutes",
+    "difficulty": "easy",
+    "activity": "would-you-rather",
+    "gender": "female",
+    "timer": 300
+  },
+  {
+    "id": "wyr_easy_f2",
+    "description": "Would you rather: Whisper sweet things OR receive gentle forehead kisses?",
+    "optionA": "Whisper sweet things",
+    "optionB": "Receive gentle forehead kisses",
+    "difficulty": "easy",
+    "activity": "would-you-rather",
+    "gender": "female",
+    "timer": 120
+  },
+  {
+    "id": "wyr_easy_f3",
+    "description": "Would you rather: Give 5 soft kisses OR receive a warm hug from behind?",
+    "optionA": "Give 5 soft kisses",
+    "optionB": "Receive a warm hug from behind",
+    "difficulty": "easy",
+    "activity": "would-you-rather",
+    "gender": "female",
+    "timer": 60
+  }
+]

@@ -1,16 +1,16 @@
 [
   {
     "id": 1001,
-    "description": "Give your partner a full body massage for 60 seconds focusing on their most sensitive areas",
-    "gender": "male",
+    "description": "Give your partner a full body massage for 60 seconds focusing on their sensitive areas",
+    "gender": "neutral",
     "difficulty": "hard",
     "activity": "scratch-card",
     "timer": 60
   },
   {
     "id": 1002,
-    "description": "Remove your shirt/top and let your partner touch you anywhere for 45 seconds",
-    "gender": "female",
+    "description": "Remove your shirt/top and let your partner touch you for 45 seconds",
+    "gender": "neutral",
     "difficulty": "hard",
     "activity": "scratch-card",
     "timer": 45
@@ -18,15 +18,15 @@
   {
     "id": 1003,
     "description": "Kiss and nibble your partner's body from neck to waist for 60 seconds",
-    "gender": "male",
+    "gender": "neutral",
     "difficulty": "hard",
     "activity": "scratch-card",
     "timer": 60
   },
   {
     "id": 1004,
-    "description": "Give your partner a lap dance for 45 seconds",
-    "gender": "female",
+    "description": "Give your partner a sensual lap dance for 45 seconds",
+    "gender": "neutral",
     "difficulty": "hard",
     "activity": "scratch-card",
     "timer": 45
@@ -34,23 +34,23 @@
   {
     "id": 1005,
     "description": "Blindfold your partner and tease them with kisses for 60 seconds",
-    "gender": "male",
+    "gender": "neutral",
     "difficulty": "hard",
     "activity": "scratch-card",
     "timer": 60
   },
   {
     "id": 1006,
-    "description": "Let your partner undress you while you kiss them passionately",
-    "gender": "female",
+    "description": "Let your partner slowly undress you while making out passionately",
+    "gender": "neutral",
     "difficulty": "hard",
     "activity": "scratch-card",
-    "timer": 0
+    "timer": 50
   },
   {
     "id": 1007,
     "description": "Pin your partner against the wall and make out intensely for 45 seconds",
-    "gender": "male",
+    "gender": "neutral",
     "difficulty": "hard",
     "activity": "scratch-card",
     "timer": 45
@@ -58,9 +58,25 @@
   {
     "id": 1008,
     "description": "Massage your partner's inner thighs slowly for 60 seconds",
-    "gender": "female",
+    "gender": "neutral",
     "difficulty": "hard",
     "activity": "scratch-card",
     "timer": 60
+  },
+  {
+    "id": 1009,
+    "description": "Give your partner a passionate kiss on their stomach for 40 seconds",
+    "gender": "neutral",
+    "difficulty": "hard",
+    "activity": "scratch-card",
+    "timer": 40
+  },
+  {
+    "id": 1010,
+    "description": "Trace your tongue along your partner's collarbone for 35 seconds",
+    "gender": "neutral",
+    "difficulty": "hard",
+    "activity": "scratch-card",
+    "timer": 35
   }
 ]

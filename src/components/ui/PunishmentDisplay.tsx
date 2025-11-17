@@ -23,26 +23,26 @@ export default function PunishmentDisplay({
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      className="min-h-screen flex items-center justify-center p-8"
+      className="min-h-screen flex items-center justify-center p-4 md:p-8"
     >
       <div className="w-full max-w-2xl">
         {/* Header */}
-        <div className="text-center mb-12">
+        <div className="text-center mb-8 md:mb-12">
           <motion.h2
             initial={{ scale: 0.9 }}
             animate={{ scale: 1 }}
-            className="text-6xl font-thin tracking-tight uppercase text-white/90 mb-4"
+            className="text-4xl md:text-6xl font-thin tracking-tight uppercase text-white/90 mb-2 md:mb-4"
           >
             Punishment
           </motion.h2>
-          <p className="text-sm font-light text-white/60 mb-6">
+          <p className="text-sm font-light text-white/60 mb-4 md:mb-6">
             {playerName}
           </p>
-          <div className="flex items-center justify-center gap-4 text-xs uppercase tracking-[0.2em] text-white/40 font-light">
-            <span className="px-4 py-2 border border-white/20">
+          <div className="flex items-center justify-center gap-3 md:gap-4 text-xs uppercase tracking-[0.2em] text-white/40 font-light">
+            <span className="px-3 md:px-4 py-2 border border-white/20">
               {punishment.difficulty}
             </span>
-            <span className="px-4 py-2 border border-white/20">
+            <span className="px-3 md:px-4 py-2 border border-white/20">
               {punishment.activity.replace('-', ' ')}
             </span>
           </div>
@@ -53,16 +53,16 @@ export default function PunishmentDisplay({
           initial={{ scale: 0.95 }}
           animate={{ scale: 1 }}
           transition={{ delay: 0.2 }}
-          className="p-12 border border-white/20 bg-black mb-8"
+          className="p-6 md:p-12 border border-white/20 bg-black mb-6 md:mb-8"
         >
-          <p className="text-2xl md:text-3xl font-light text-center text-white/90 leading-relaxed">
+          <p className="text-lg md:text-2xl lg:text-3xl font-light text-center text-white/90 leading-relaxed">
             {punishment.description}
           </p>
         </motion.div>
 
         {/* Timer */}
         {hasTimer && (
-          <div className="mb-8">
+          <div className="mb-6 md:mb-8">
             <Timer 
               seconds={punishment.timer!} 
               onComplete={onComplete}
@@ -78,7 +78,7 @@ export default function PunishmentDisplay({
             animate={{ opacity: 1 }}
             transition={{ delay: 0.5 }}
             onClick={handleComplete}
-            className="w-full py-6 border border-white/20 hover:border-white/40 hover:bg-white/5 transition-all text-xs uppercase tracking-[0.2em] text-white/60 font-light"
+            className="w-full py-4 md:py-6 border border-white/20 hover:border-white/40 hover:bg-white/5 transition-all text-xs uppercase tracking-[0.2em] text-white/60 font-light"
           >
             Complete
           </motion.button>

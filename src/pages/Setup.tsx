@@ -41,6 +41,14 @@ export default function Setup() {
     }
     
     setPlayer1Error('');
+    
+    // Auto-select opposite gender for player 2
+    if (player1Gender === 'male') {
+      setPlayer2Gender('female');
+    } else {
+      setPlayer2Gender('male');
+    }
+    
     setStep(2);
   };
 
@@ -91,7 +99,7 @@ export default function Setup() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center p-8">
+    <div className="min-h-screen flex items-center justify-center p-4 md:p-8">
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -100,21 +108,21 @@ export default function Setup() {
       >
         {/* Logo - Minimalist */}
         <motion.div
-          className="text-center mb-16"
+          className="text-center mb-8 md:mb-16"
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2, duration: 0.6 }}
         >
-          <h1 className="text-8xl font-extralight tracking-tight text-white mb-4">
+          <h1 className="text-5xl md:text-8xl font-extralight tracking-tight text-white mb-2 md:mb-4">
             DUEL
           </h1>
-          <p className="text-sm font-light tracking-[0.3em] text-white/40 uppercase">
+          <p className="text-xs md:text-sm font-light tracking-[0.3em] text-white/40 uppercase">
             For Two
           </p>
         </motion.div>
 
         {/* Progress - Minimal dots */}
-        <div className="flex justify-center gap-2 mb-12">
+        <div className="flex justify-center gap-2 mb-8 md:mb-12">
           {[1, 2, 3].map((num) => (
             <div
               key={num}
@@ -140,8 +148,8 @@ export default function Setup() {
               transition={{ duration: 0.3 }}
               className="space-y-8"
             >
-              <div className="text-center mb-12">
-                <h2 className="text-6xl font-thin tracking-tight text-white/90 uppercase">
+              <div className="text-center mb-8 md:mb-12">
+                <h2 className="text-4xl md:text-6xl font-thin tracking-tight text-white/90 uppercase">
                   Player One
                 </h2>
               </div>
@@ -156,28 +164,28 @@ export default function Setup() {
                 autoFocus
               />
 
-              <div className="grid grid-cols-2 gap-4 mt-12">
+              <div className="grid grid-cols-2 gap-3 md:gap-4 mt-8 md:mt-12">
                 <button
                   onClick={() => setPlayer1Gender('male')}
-                  className={`py-8 border transition-all duration-300 ${
+                  className={`py-6 md:py-8 border transition-all duration-300 ${
                     player1Gender === 'male'
                       ? 'bg-white text-black border-white'
                       : 'bg-transparent text-white/60 border-white/20 hover:border-white/40 hover:text-white/80'
                   }`}
                 >
-                  <div className="text-3xl mb-2">♂</div>
+                  <div className="text-2xl md:text-3xl mb-1 md:mb-2">♂</div>
                   <div className="text-xs font-light tracking-[0.2em] uppercase">Him</div>
                 </button>
                 
                 <button
                   onClick={() => setPlayer1Gender('female')}
-                  className={`py-8 border transition-all duration-300 ${
+                  className={`py-6 md:py-8 border transition-all duration-300 ${
                     player1Gender === 'female'
                       ? 'bg-white text-black border-white'
                       : 'bg-transparent text-white/60 border-white/20 hover:border-white/40 hover:text-white/80'
                   }`}
                 >
-                  <div className="text-3xl mb-2">♀</div>
+                  <div className="text-2xl md:text-3xl mb-1 md:mb-2">♀</div>
                   <div className="text-xs font-light tracking-[0.2em] uppercase">Her</div>
                 </button>
               </div>
@@ -194,7 +202,7 @@ export default function Setup() {
 
               <button
                 onClick={handlePlayer1Submit}
-                className="btn-accent w-full mt-12"
+                className="w-full py-4 md:py-6 bg-white text-black border border-white transition-all text-xs uppercase tracking-[0.3em] font-light mt-8 md:mt-12"
               >
                 Continue
               </button>
@@ -211,8 +219,8 @@ export default function Setup() {
               transition={{ duration: 0.3 }}
               className="space-y-8"
             >
-              <div className="text-center mb-12">
-                <h2 className="text-6xl font-thin tracking-tight text-white/90 uppercase">
+              <div className="text-center mb-8 md:mb-12">
+                <h2 className="text-4xl md:text-6xl font-thin tracking-tight text-white/90 uppercase">
                   Player Two
                 </h2>
               </div>
@@ -227,31 +235,31 @@ export default function Setup() {
                 autoFocus
               />
 
-              <div className="grid grid-cols-2 gap-4 mt-12">
+              <div className="grid grid-cols-2 gap-3 md:gap-4 mt-8 md:mt-12">
                 <button
                   onClick={() => setPlayer2Gender('male')}
                   disabled={player1Gender === 'male'}
-                  className={`py-8 border transition-all duration-300 ${
+                  className={`py-6 md:py-8 border transition-all duration-300 ${
                     player2Gender === 'male'
                       ? 'bg-white text-black border-white'
                       : player1Gender === 'male'
-                      ? 'bg-transparent text-white/10 border-white/5 cursor-not-allowed'
-                      : 'bg-transparent text-white/60 border-white/20 hover:border-white/40 hover:text-white/80'
+                      ? 'bg-transparent text-white/60 border-white/20 cursor-not-allowed'
+                      : 'bg-transparent text-white/60 border-white/20'
                   }`}
                 >
-                  <div className="text-3xl mb-2">♂</div>
+                  <div className="text-2xl md:text-3xl mb-1 md:mb-2">♂</div>
                   <div className="text-xs font-light tracking-[0.2em] uppercase">Him</div>
                 </button>
                 
                 <button
                   onClick={() => setPlayer2Gender('female')}
                   disabled={player1Gender === 'female'}
-                  className={`py-8 border transition-all duration-300 ${
+                  className={`py-6 md:py-8 border transition-all duration-300 ${
                     player2Gender === 'female'
                       ? 'bg-white text-black border-white'
                       : player1Gender === 'female'
-                      ? 'bg-transparent text-white/10 border-white/5 cursor-not-allowed'
-                      : 'bg-transparent text-white/60 border-white/20 hover:border-white/40 hover:text-white/80'
+                      ? 'bg-transparent text-white/60 border-white/20 cursor-not-allowed'
+                      : 'bg-transparent text-white/60 border-white/20'
                   }`}
                 >
                   <div className="text-3xl mb-2">♀</div>
@@ -269,16 +277,16 @@ export default function Setup() {
                 </motion.p>
               )}
 
-              <div className="flex gap-4 mt-12">
+              <div className="flex gap-3 md:gap-4 mt-8 md:mt-12">
                 <button
                   onClick={() => setStep(1)}
-                  className="btn-primary flex-1"
+                  className="flex-1 py-3 md:py-4 border border-white/20 text-white/60 bg-transparent transition-all text-xs uppercase tracking-[0.2em] font-light"
                 >
                   Back
                 </button>
                 <button
                   onClick={handlePlayer2Submit}
-                  className="btn-accent flex-1"
+                  className="flex-1 py-4 md:py-6 bg-white text-black border border-white transition-all text-xs uppercase tracking-[0.3em] font-light"
                 >
                   Continue
                 </button>
@@ -296,8 +304,8 @@ export default function Setup() {
               transition={{ duration: 0.3 }}
               className="space-y-8"
             >
-              <div className="text-center mb-12">
-                <h2 className="text-6xl font-thin tracking-tight text-white/90 uppercase mb-4">
+              <div className="text-center mb-8 md:mb-12">
+                <h2 className="text-4xl md:text-6xl font-thin tracking-tight text-white/90 uppercase mb-2 md:mb-4">
                   Intensity
                 </h2>
                 <p className="text-xs font-light tracking-[0.3em] text-white/40 uppercase">
@@ -305,16 +313,16 @@ export default function Setup() {
                 </p>
               </div>
               
-              <div className="space-y-4">
+              <div className="space-y-3 md:space-y-4">
                 <button
                   onClick={() => setDifficulty('easy')}
-                  className={`w-full py-10 border transition-all duration-300 ${
+                  className={`w-full py-8 md:py-10 border transition-all duration-300 ${
                     difficulty === 'easy'
                       ? 'bg-white text-black border-white'
                       : 'bg-transparent text-white/60 border-white/20 hover:border-white/40 hover:text-white/80'
                   }`}
                 >
-                  <div className="text-4xl font-thin tracking-tight uppercase">Gentle</div>
+                  <div className="text-3xl md:text-4xl font-thin tracking-tight uppercase">Gentle</div>
                   <div className="text-xs font-light tracking-[0.2em] text-current/60 uppercase mt-2">
                     Sweet & Playful
                   </div>
@@ -322,13 +330,13 @@ export default function Setup() {
                 
                 <button
                   onClick={() => setDifficulty('medium')}
-                  className={`w-full py-10 border transition-all duration-300 ${
+                  className={`w-full py-8 md:py-10 border transition-all duration-300 ${
                     difficulty === 'medium'
                       ? 'bg-white text-black border-white'
                       : 'bg-transparent text-white/60 border-white/20 hover:border-white/40 hover:text-white/80'
                   }`}
                 >
-                  <div className="text-4xl font-thin tracking-tight uppercase">Teasing</div>
+                  <div className="text-3xl md:text-4xl font-thin tracking-tight uppercase">Teasing</div>
                   <div className="text-xs font-light tracking-[0.2em] text-current/60 uppercase mt-2">
                     Flirty & Fun
                   </div>
@@ -336,29 +344,29 @@ export default function Setup() {
                 
                 <button
                   onClick={() => setDifficulty('hard')}
-                  className={`w-full py-10 border transition-all duration-300 ${
+                  className={`w-full py-8 md:py-10 border transition-all duration-300 ${
                     difficulty === 'hard'
                       ? 'bg-white text-black border-white'
                       : 'bg-transparent text-white/60 border-white/20 hover:border-white/40 hover:text-white/80'
                   }`}
                 >
-                  <div className="text-4xl font-thin tracking-tight uppercase">Passionate</div>
+                  <div className="text-3xl md:text-4xl font-thin tracking-tight uppercase">Passionate</div>
                   <div className="text-xs font-light tracking-[0.2em] text-current/60 uppercase mt-2">
                     Daring & Bold
                   </div>
                 </button>
               </div>
 
-              <div className="flex gap-4 mt-12">
+              <div className="flex gap-3 md:gap-4 mt-8 md:mt-12">
                 <button
                   onClick={() => setStep(2)}
-                  className="btn-primary flex-1"
+                  className="flex-1 py-3 md:py-4 border border-white/20 text-white/60 bg-transparent transition-all text-xs uppercase tracking-[0.2em] font-light"
                 >
                   Back
                 </button>
                 <button
                   onClick={handleStartGame}
-                  className="btn-accent flex-1"
+                  className="flex-1 py-4 md:py-6 bg-white text-black border border-white transition-all text-xs uppercase tracking-[0.3em] font-light"
                 >
                   Begin
                 </button>

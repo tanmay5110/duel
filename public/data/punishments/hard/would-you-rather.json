@@ -1,0 +1,62 @@
+[
+  {
+    "id": "wyr_hard_m1",
+    "description": "Would you rather: Take complete control for 5 minutes OR let them dominate you for 10 minutes?",
+    "optionA": "Take complete control for 5 minutes",
+    "optionB": "Let them dominate you for 10 minutes",
+    "difficulty": "hard",
+    "activity": "would-you-rather",
+    "gender": "male",
+    "timer": 300
+  },
+  {
+    "id": "wyr_hard_m2",
+    "description": "Would you rather: Make them beg for more OR tease them until they can't take it?",
+    "optionA": "Make them beg for more",
+    "optionB": "Tease them until they can't take it",
+    "difficulty": "hard",
+    "activity": "would-you-rather",
+    "gender": "male",
+    "timer": 180
+  },
+  {
+    "id": "wyr_hard_m3",
+    "description": "Would you rather: Try a daring new position OR take them somewhere risky?",
+    "optionA": "Try a daring new position",
+    "optionB": "Take them somewhere risky",
+    "difficulty": "hard",
+    "activity": "would-you-rather",
+    "gender": "male",
+    "timer": 0
+  },
+  {
+    "id": "wyr_hard_f1",
+    "description": "Would you rather: Be blindfolded and silent OR experience full sensory overload?",
+    "optionA": "Be blindfolded and silent",
+    "optionB": "Experience full sensory overload",
+    "difficulty": "hard",
+    "activity": "would-you-rather",
+    "gender": "female",
+    "timer": 300
+  },
+  {
+    "id": "wyr_hard_f2",
+    "description": "Would you rather: Surrender all control for 10 minutes OR be in charge completely?",
+    "optionA": "Surrender all control for 10 minutes",
+    "optionB": "Be in charge completely",
+    "difficulty": "hard",
+    "activity": "would-you-rather",
+    "gender": "female",
+    "timer": 300
+  },
+  {
+    "id": "wyr_hard_f3",
+    "description": "Would you rather: Let them tie your hands OR edge you without finishing?",
+    "optionA": "Let them tie your hands",
+    "optionB": "Edge you without finishing",
+    "difficulty": "hard",
+    "activity": "would-you-rather",
+    "gender": "female",
+    "timer": 180
+  }
+]

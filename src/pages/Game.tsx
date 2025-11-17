@@ -10,6 +10,7 @@ import TicTacToe from '../components/activities/TicTacToe';
 import ScratchCard from '../components/activities/ScratchCard';
 import SpinWheel from '../components/activities/SpinWheel';
 import BodyExplorer from '../components/activities/BodyExplorer';
+import WouldYouRather from '../components/activities/WouldYouRather';
 import Settings from '../components/ui/Settings';
 
 type MiniGameType = 'tap-battle' | 'reaction-test' | 'tic-tac-toe';
@@ -76,7 +77,7 @@ export default function Game() {
   }
 
   return (
-    <div className="min-h-screen p-8">
+    <div className="min-h-screen p-4 md:p-8 pt-3 md:pt-6">
       {/* Settings Modal */}
       <Settings isOpen={showSettings} onClose={() => setShowSettings(false)} />
 
@@ -84,22 +85,22 @@ export default function Game() {
       <motion.div
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
-        className="max-w-5xl mx-auto mb-16"
+        className="max-w-5xl mx-auto mb-8 md:mb-16"
       >
         <div className="flex items-center justify-between">
-          <h1 className="text-4xl font-extralight tracking-tight uppercase text-white/90">
+          <h1 className="text-2xl md:text-4xl font-extralight tracking-tight uppercase text-white/90">
             DUEL
           </h1>
-          <div className="flex gap-4">
+          <div className="flex gap-2 md:gap-4">
             <button
               onClick={() => setShowSettings(true)}
-              className="px-6 py-3 border border-white/20 hover:border-white/40 transition-all text-xs uppercase tracking-[0.2em] font-light"
+              className="px-3 md:px-6 py-2 md:py-3 border border-white/20 text-white/60 bg-transparent transition-all text-xs uppercase tracking-[0.2em] font-light"
             >
               Settings
             </button>
             <button
               onClick={handleEndGame}
-              className="px-6 py-3 border border-white/20 hover:bg-white hover:text-black transition-all text-xs uppercase tracking-[0.2em] font-light"
+              className="px-3 md:px-6 py-2 md:py-3 border border-white/20 text-white/60 bg-transparent transition-all text-xs uppercase tracking-[0.2em] font-light"
             >
               End
             </button>
@@ -118,8 +119,8 @@ export default function Game() {
               exit={{ opacity: 0 }}
               transition={{ duration: 0.5 }}
             >
-              <div className="text-center mb-16">
-                <h2 className="text-6xl font-thin tracking-tight uppercase text-white/90 mb-4">
+              <div className="text-center mb-8 md:mb-16">
+                <h2 className="text-4xl md:text-6xl font-thin tracking-tight uppercase text-white/90 mb-1 md:mb-2">
                   Choose
                 </h2>
                 <p className="text-xs uppercase tracking-[0.3em] text-white/40 font-light">
@@ -127,29 +128,42 @@ export default function Game() {
                 </p>
               </div>
               
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
                 {/* Mini-Game */}
                 <button
                   onClick={() => handleActivitySelect('mini-game')}
-                  className="group border border-white/10 hover:border-white/30 transition-all duration-300 p-12 hover:bg-white/5"
+                  className="group border border-white/20 text-white/60 bg-transparent transition-all duration-300 p-8 md:p-12"
                 >
-                  <div className="text-6xl font-thin tracking-tight uppercase text-white/80 mb-4">
+                  <div className="text-4xl md:text-6xl font-thin tracking-tight uppercase mb-2 md:mb-4">
                     Play
                   </div>
-                  <div className="text-xs uppercase tracking-[0.2em] text-white/40 font-light">
+                  <div className="text-xs uppercase tracking-[0.2em] text-current/60 font-light">
                     Competitive Challenge
+                  </div>
+                </button>
+
+                {/* Would You Rather */}
+                <button
+                  onClick={() => handleActivitySelect('would-you-rather')}
+                  className="group border border-white/20 text-white/60 bg-transparent transition-all duration-300 p-8 md:p-12"
+                >
+                  <div className="text-4xl md:text-6xl font-thin tracking-tight uppercase mb-2 md:mb-4">
+                    Choose
+                  </div>
+                  <div className="text-xs uppercase tracking-[0.2em] text-current/60 font-light">
+                    Would You Rather
                   </div>
                 </button>
 
                 {/* Scratch Card */}
                 <button
                   onClick={() => handleActivitySelect('scratch-card')}
-                  className="group border border-white/10 hover:border-white/30 transition-all duration-300 p-12 hover:bg-white/5"
+                  className="group border border-white/20 text-white/60 bg-transparent transition-all duration-300 p-8 md:p-12"
                 >
-                  <div className="text-6xl font-thin tracking-tight uppercase text-white/80 mb-4">
+                  <div className="text-4xl md:text-6xl font-thin tracking-tight uppercase mb-2 md:mb-4">
                     Scratch
                   </div>
-                  <div className="text-xs uppercase tracking-[0.2em] text-white/40 font-light">
+                  <div className="text-xs uppercase tracking-[0.2em] text-current/60 font-light">
                     Reveal Your Fate
                   </div>
                 </button>
@@ -157,12 +171,12 @@ export default function Game() {
                 {/* Spin Wheel */}
                 <button
                   onClick={() => handleActivitySelect('spin-wheel')}
-                  className="group border border-white/10 hover:border-white/30 transition-all duration-300 p-12 hover:bg-white/5"
+                  className="group border border-white/20 text-white/60 bg-transparent transition-all duration-300 p-8 md:p-12"
                 >
-                  <div className="text-6xl font-thin tracking-tight uppercase text-white/80 mb-4">
+                  <div className="text-4xl md:text-6xl font-thin tracking-tight uppercase mb-2 md:mb-4">
                     Spin
                   </div>
-                  <div className="text-xs uppercase tracking-[0.2em] text-white/40 font-light">
+                  <div className="text-xs uppercase tracking-[0.2em] text-current/60 font-light">
                     Turn The Wheel
                   </div>
                 </button>
@@ -170,12 +184,12 @@ export default function Game() {
                 {/* Body Explorer */}
                 <button
                   onClick={() => handleActivitySelect('body-explorer')}
-                  className="group border border-white/10 hover:border-white/30 transition-all duration-300 p-12 hover:bg-white/5"
+                  className="group border border-white/20 text-white/60 bg-transparent transition-all duration-300 p-8 md:p-12"
                 >
-                  <div className="text-6xl font-thin tracking-tight uppercase text-white/80 mb-4">
+                  <div className="text-4xl md:text-6xl font-thin tracking-tight uppercase mb-2 md:mb-4">
                     Explore
                   </div>
-                  <div className="text-xs uppercase tracking-[0.2em] text-white/40 font-light">
+                  <div className="text-xs uppercase tracking-[0.2em] text-current/60 font-light">
                     Body Exploration
                   </div>
                 </button>
@@ -202,6 +216,9 @@ export default function Game() {
               )}
               {selectedActivity === 'mini-game' && selectedMiniGame === 'tic-tac-toe' && (
                 <TicTacToe onComplete={handleActivityComplete} onBack={handleBackToMiniGameSelector} />
+              )}
+              {selectedActivity === 'would-you-rather' && (
+                <WouldYouRather onComplete={handleActivityComplete} />
               )}
               {selectedActivity === 'scratch-card' && (
                 <ScratchCard onComplete={handleActivityComplete} />

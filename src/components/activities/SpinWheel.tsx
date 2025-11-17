@@ -169,19 +169,19 @@ export default function SpinWheel({ onComplete }: SpinWheelProps) {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center p-8">
-      <div className="w-full max-w-2xl">
+    <div className="p-4 md:p-8">
+      <div className="w-full max-w-2xl mx-auto mt-4 md:mt-8">
         {/* Header */}
-        <div className="flex items-center justify-between mb-12">
+        <div className="flex flex-col md:flex-row items-center justify-between mb-4 md:mb-6 gap-3 md:gap-0">
           <button
             onClick={onComplete}
-            className="px-6 py-3 border border-white/20 hover:border-white/40 hover:bg-white/5 transition-all text-xs uppercase tracking-[0.2em] text-white/60 font-light"
+            className="px-4 md:px-6 py-2 md:py-3 border border-white/20 hover:border-white/40 hover:bg-white/5 transition-all text-xs uppercase tracking-[0.2em] text-white/60 font-light self-start md:self-auto"
           >
             Back
           </button>
           <div className="text-center">
-            <h2 className="text-6xl font-thin tracking-tight uppercase text-white/90 mb-2">Spin</h2>
-            <div className="flex items-center gap-3 justify-center">
+            <h2 className="text-4xl md:text-6xl font-thin tracking-tight uppercase text-white/90 mb-1 md:mb-2">Spin</h2>
+            <div className="flex items-center gap-2 md:gap-3 justify-center">
               <span className="text-xs uppercase tracking-[0.2em] text-white/40 font-light">
                 {currentPlayer.name}
               </span>
@@ -191,14 +191,14 @@ export default function SpinWheel({ onComplete }: SpinWheelProps) {
               </span>
             </div>
           </div>
-          <div className="w-28"></div>
+          <div className="hidden md:block w-28"></div>
         </div>
 
         {/* Wheel Container */}
-        <div className="relative w-full max-w-md mx-auto mb-8">
+        <div className="relative w-full max-w-[280px] md:max-w-md mx-auto mb-6 md:mb-8">
           {/* Pointer */}
           <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-2 z-10">
-            <div className="w-[2px] h-8 bg-white" />
+            <div className="w-[2px] h-6 md:h-8 bg-white" />
           </div>
 
           {/* Wheel */}
@@ -237,18 +237,18 @@ export default function SpinWheel({ onComplete }: SpinWheelProps) {
               return (
                 <div
                   key={`task-${index}`}
-                  className="absolute text-white/80 font-light text-[8px] text-center leading-[1.1]"
+                  className="absolute text-white/80 font-light text-[6px] md:text-[7px] text-center leading-[1.1]"
                   style={{
                     left: `${x}%`,
                     top: `${y}%`,
                     transform: `translate(-50%, -50%) rotate(${textRotation}deg)`,
-                    width: '65px',
+                    width: '55px',
                     textShadow: '0 1px 4px rgba(0,0,0,1), 0 0 2px rgba(0,0,0,0.8)',
-                    letterSpacing: '0.02em',
+                    letterSpacing: '0.01em',
                   }}
                 >
-                  {punishment.description.length > 45 
-                    ? punishment.description.substring(0, 42) + '...' 
+                  {punishment.description.length > 35 
+                    ? punishment.description.substring(0, 32) + '...' 
                     : punishment.description}
                 </div>
               );
@@ -285,7 +285,7 @@ export default function SpinWheel({ onComplete }: SpinWheelProps) {
               transition={{ duration: 0.5 }}
               onClick={handleSpin}
               disabled={wheelPunishments.length === 0}
-              className="w-full py-8 bg-white text-black hover:bg-white/90 transition-all duration-300 text-2xl font-thin uppercase tracking-tight disabled:opacity-30"
+              className="w-full py-6 md:py-8 bg-white text-black hover:bg-white/90 transition-all duration-300 text-xl md:text-2xl font-thin uppercase tracking-tight disabled:opacity-30"
             >
               Spin
             </motion.button>
@@ -309,7 +309,7 @@ export default function SpinWheel({ onComplete }: SpinWheelProps) {
             animate={{ opacity: 1 }}
             className="text-center py-8"
           >
-            <p className="text-3xl font-thin uppercase tracking-tight text-white/60 animate-pulse">Spinning</p>
+            <p className="text-2xl md:text-3xl font-thin uppercase tracking-tight text-white/60 animate-pulse">Spinning</p>
           </motion.div>
         )}
 
@@ -321,7 +321,7 @@ export default function SpinWheel({ onComplete }: SpinWheelProps) {
             transition={{ duration: 0.5 }}
             className="text-center py-8 space-y-2"
           >
-            <p className="text-4xl font-thin uppercase tracking-tight text-white/90">Landed</p>
+            <p className="text-3xl md:text-4xl font-thin uppercase tracking-tight text-white/90">Landed</p>
             <p className="text-xs uppercase tracking-[0.2em] text-white/40 font-light">Preparing</p>
           </motion.div>
         )}

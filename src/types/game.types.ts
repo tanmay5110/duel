@@ -6,7 +6,7 @@ export type Gender = 'male' | 'female';
 
 export type Difficulty = 'easy' | 'medium' | 'hard';
 
-export type ActivityType = 'mini-game' | 'scratch-card' | 'spin-wheel' | 'body-explorer';
+export type ActivityType = 'mini-game' | 'scratch-card' | 'spin-wheel' | 'body-explorer' | 'would-you-rather';
 
 export interface Player {
   id: string;

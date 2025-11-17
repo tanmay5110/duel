@@ -141,37 +141,37 @@ export default function ReactionTest({ onBack }: ReactionTestProps) {
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        className="min-h-screen flex items-center justify-center p-8"
+        className="min-h-screen flex items-center justify-center p-4 md:p-8"
       >
         <div className="w-full max-w-2xl">
-          <h2 className="text-5xl font-thin tracking-tight uppercase text-white/90 mb-12 text-center">Results</h2>
+          <h2 className="text-3xl md:text-5xl font-thin tracking-tight uppercase text-white/90 mb-4 md:mb-8 text-center">Results</h2>
           
-          <div className="space-y-6 mb-12">
-            <div className={`p-8 border transition-all ${
+          <div className="space-y-3 md:space-y-6 mb-6 md:mb-12">
+            <div className={`p-4 md:p-8 border transition-all ${
               player1Time !== null && player1Time < (player2Time || Infinity) 
                 ? 'border-white bg-white/5' 
                 : 'border-white/20'
             }`}>
-              <div className="text-sm uppercase tracking-[0.15em] text-white/40 font-light mb-3">{state.players[0].name}</div>
-              <div className="text-4xl font-thin text-white/90">
+              <div className="text-xs md:text-sm uppercase tracking-[0.15em] text-white/40 font-light mb-2 md:mb-3">{state.players[0].name}</div>
+              <div className="text-3xl md:text-4xl font-thin text-white/90">
                 {player1Time !== null ? `${player1Time}ms` : 'Too Early'}
               </div>
             </div>
             
-            <div className={`p-8 border transition-all ${
+            <div className={`p-4 md:p-8 border transition-all ${
               player2Time !== null && player2Time < (player1Time || Infinity) 
                 ? 'border-white bg-white/5' 
                 : 'border-white/20'
             }`}>
-              <div className="text-sm uppercase tracking-[0.15em] text-white/40 font-light mb-3">{state.players[1].name}</div>
-              <div className="text-4xl font-thin text-white/90">
+              <div className="text-xs md:text-sm uppercase tracking-[0.15em] text-white/40 font-light mb-2 md:mb-3">{state.players[1].name}</div>
+              <div className="text-3xl md:text-4xl font-thin text-white/90">
                 {player2Time !== null ? `${player2Time}ms` : 'Too Early'}
               </div>
             </div>
           </div>
 
-          <div className="text-center py-8 border border-white/20">
-            <div className="text-4xl font-thin uppercase tracking-tight text-white/90">{winner.name} Wins</div>
+          <div className="text-center py-6 md:py-8 border border-white/20">
+            <div className="text-2xl md:text-4xl font-thin uppercase tracking-tight text-white/90">{winner.name} Wins</div>
           </div>
         </div>
       </motion.div>
@@ -182,34 +182,34 @@ export default function ReactionTest({ onBack }: ReactionTestProps) {
     <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      className="min-h-screen flex items-center justify-center p-8"
+      className="p-4 md:p-8"
     >
-      <div className="w-full max-w-2xl">
-        <div className="flex items-center justify-between mb-12">
-          <h2 className="text-5xl font-thin tracking-tight uppercase text-white/90">Reaction</h2>
+      <div className="w-full max-w-2xl mx-auto mt-4 md:mt-8">
+        <div className="flex flex-col md:flex-row items-center justify-between mb-4 md:mb-6 gap-3 md:gap-0">
+          <h2 className="text-3xl md:text-5xl font-thin tracking-tight uppercase text-white/90">Reaction</h2>
           <button
             onClick={onBack}
-            className="px-6 py-3 border border-white/20 hover:border-white/40 hover:bg-white/5 transition-all text-xs uppercase tracking-[0.2em] text-white/60 font-light"
+            className="px-4 md:px-6 py-2 md:py-3 border border-white/20 hover:border-white/40 hover:bg-white/5 transition-all text-xs uppercase tracking-[0.2em] text-white/60 font-light self-end md:self-auto"
           >
             Back
           </button>
         </div>
 
         {gameState === 'instructions' && (
-          <div className="text-center space-y-8">
-            <h3 className="text-3xl font-thin uppercase tracking-tight text-white/90 mb-8">
+          <div className="text-center space-y-4 md:space-y-8">
+            <h3 className="text-2xl md:text-3xl font-thin uppercase tracking-tight text-white/90 mb-4 md:mb-8">
               {state.players[currentPlayer].name}'s Turn
             </h3>
             
-            <div className="p-8 border border-white/10 space-y-4">
-              <p className="text-sm uppercase tracking-[0.15em] text-white/60 font-light">Wait for green</p>
-              <p className="text-sm uppercase tracking-[0.15em] text-white/60 font-light">Click as fast as you can</p>
-              <p className="text-sm uppercase tracking-[0.15em] text-white/40 font-light">Don't click before green</p>
+            <div className="p-4 md:p-8 border border-white/10 space-y-2 md:space-y-4">
+              <p className="text-xs md:text-sm uppercase tracking-[0.15em] text-white/60 font-light">Wait for green</p>
+              <p className="text-xs md:text-sm uppercase tracking-[0.15em] text-white/60 font-light">Click as fast as you can</p>
+              <p className="text-xs md:text-sm uppercase tracking-[0.15em] text-white/40 font-light">Don't click before green</p>
             </div>
 
             <button
               onClick={startTest}
-              className="w-full py-8 bg-white text-black hover:bg-white/90 transition-all text-2xl font-thin uppercase tracking-tight"
+              className="w-full py-6 md:py-8 bg-white text-black hover:bg-white/90 transition-all text-xl md:text-2xl font-thin uppercase tracking-tight"
             >
               Start
             </button>
@@ -221,10 +221,10 @@ export default function ReactionTest({ onBack }: ReactionTestProps) {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             onClick={handleClick}
-            className="h-96 bg-black border-2 border-white/20 flex items-center justify-center cursor-pointer"
+            className="h-64 md:h-96 bg-black border-2 border-white/20 flex items-center justify-center cursor-pointer"
           >
             <div className="text-center">
-              <div className="text-5xl font-thin mb-6 uppercase tracking-tight text-white/90">Wait</div>
+              <div className="text-4xl md:text-5xl font-thin mb-4 md:mb-6 uppercase tracking-tight text-white/90">Wait</div>
               <div className="text-xs uppercase tracking-[0.2em] text-white/40 font-light">Click when green</div>
             </div>
           </motion.div>
@@ -235,10 +235,10 @@ export default function ReactionTest({ onBack }: ReactionTestProps) {
             initial={{ scale: 1 }}
             animate={{ scale: [1, 1.05, 1] }}
             transition={{ duration: 0.5 }}
-            className="h-96 border-2 border-white/40 bg-black flex items-center justify-center"
+            className="h-64 md:h-96 border-2 border-white/40 bg-black flex items-center justify-center"
           >
             <div className="text-center">
-              <div className="text-5xl font-thin mb-4 uppercase tracking-tight text-white/90">Too Early</div>
+              <div className="text-4xl md:text-5xl font-thin mb-3 md:mb-4 uppercase tracking-tight text-white/90">Too Early</div>
               <div className="text-xs uppercase tracking-[0.2em] text-white/40 font-light">You lose</div>
             </div>
           </motion.div>
@@ -249,10 +249,10 @@ export default function ReactionTest({ onBack }: ReactionTestProps) {
             initial={{ backgroundColor: '#000000', borderColor: 'rgba(255, 255, 255, 0.2)' }}
             animate={{ backgroundColor: '#ffffff', borderColor: '#ffffff' }}
             onClick={handleClick}
-            className="h-96 border-2 flex items-center justify-center cursor-pointer"
+            className="h-64 md:h-96 border-2 flex items-center justify-center cursor-pointer"
           >
             <div className="text-center">
-              <div className="text-6xl font-thin uppercase tracking-tight text-black">Click</div>
+              <div className="text-5xl md:text-6xl font-thin uppercase tracking-tight text-black">Click</div>
             </div>
           </motion.div>
         )}
@@ -261,10 +261,10 @@ export default function ReactionTest({ onBack }: ReactionTestProps) {
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            className="h-96 border-2 border-white/20 bg-black flex items-center justify-center"
+            className="h-64 md:h-96 border-2 border-white/20 bg-black flex items-center justify-center"
           >
             <div className="text-center">
-              <div className="text-5xl font-thin text-white/90 mb-4">
+              <div className="text-4xl md:text-5xl font-thin text-white/90 mb-3 md:mb-4">
                 {currentPlayer === 0 && player1Time !== null ? `${player1Time}ms` : 
                  currentPlayer === 1 && player2Time !== null ? `${player2Time}ms` : 'Recorded'}
               </div>
