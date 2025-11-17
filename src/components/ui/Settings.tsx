@@ -11,9 +11,6 @@ interface SettingsProps {
 export default function Settings({ isOpen, onClose }: SettingsProps) {
   const { state, changeDifficulty } = useGame();
   const [difficulty, setDifficulty] = useState<Difficulty>(state.difficulty);
-  const [vibration, setVibration] = useState(true);
-  const [sound, setSound] = useState(true);
-  const [timer, setTimer] = useState(true);
 
   const handleDifficultyChange = (value: number) => {
     const difficulties: Difficulty[] = ['easy', 'medium', 'hard'];
@@ -92,72 +89,6 @@ export default function Settings({ isOpen, onClose }: SettingsProps) {
                   }`}
                 >
                   <div className="text-2xl font-thin uppercase">Passionate</div>
-                </button>
-              </div>
-            </div>
-
-            {/* Toggle Settings */}
-            <div className="space-y-6 mb-12">
-              {/* Vibration Toggle */}
-              <div className="flex items-center justify-between p-6 border border-white/10">
-                <div>
-                  <p className="text-sm font-light uppercase tracking-[0.15em] text-white/90">Vibration</p>
-                  <p className="text-xs uppercase tracking-[0.2em] text-white/30 font-light mt-1">Haptic Feedback</p>
-                </div>
-                <button
-                  onClick={() => setVibration(!vibration)}
-                  className={`w-16 h-8 border transition-all duration-300 relative ${
-                    vibration ? 'bg-white border-white' : 'bg-transparent border-white/20'
-                  }`}
-                >
-                  <motion.div
-                    animate={{ x: vibration ? 32 : 0 }}
-                    className={`absolute top-0 left-0 w-8 h-8 transition-colors ${
-                      vibration ? 'bg-black' : 'bg-white/40'
-                    }`}
-                  />
-                </button>
-              </div>
-
-              {/* Sound Toggle */}
-              <div className="flex items-center justify-between p-6 border border-white/10">
-                <div>
-                  <p className="text-sm font-light uppercase tracking-[0.15em] text-white/90">Sound</p>
-                  <p className="text-xs uppercase tracking-[0.2em] text-white/30 font-light mt-1">Audio Feedback</p>
-                </div>
-                <button
-                  onClick={() => setSound(!sound)}
-                  className={`w-16 h-8 border transition-all duration-300 relative ${
-                    sound ? 'bg-white border-white' : 'bg-transparent border-white/20'
-                  }`}
-                >
-                  <motion.div
-                    animate={{ x: sound ? 32 : 0 }}
-                    className={`absolute top-0 left-0 w-8 h-8 transition-colors ${
-                      sound ? 'bg-black' : 'bg-white/40'
-                    }`}
-                  />
-                </button>
-              </div>
-
-              {/* Timer Toggle */}
-              <div className="flex items-center justify-between p-6 border border-white/10">
-                <div>
-                  <p className="text-sm font-light uppercase tracking-[0.15em] text-white/90">Timers</p>
-                  <p className="text-xs uppercase tracking-[0.2em] text-white/30 font-light mt-1">Timed Challenges</p>
-                </div>
-                <button
-                  onClick={() => setTimer(!timer)}
-                  className={`w-16 h-8 border transition-all duration-300 relative ${
-                    timer ? 'bg-white border-white' : 'bg-transparent border-white/20'
-                  }`}
-                >
-                  <motion.div
-                    animate={{ x: timer ? 32 : 0 }}
-                    className={`absolute top-0 left-0 w-8 h-8 transition-colors ${
-                      timer ? 'bg-black' : 'bg-white/40'
-                    }`}
-                  />
                 </button>
               </div>
             </div>

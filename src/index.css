@@ -53,39 +53,7 @@ body {
    ============================================ */
 
 @layer components {
-  /* Brutal buttons - sharp, direct, no fluff */
-  .btn-primary {
-    @apply px-8 py-4 font-light text-sm uppercase tracking-[0.2em]
-           text-white/90 border border-white/20
-           transition-all duration-300 active:scale-[0.98]
-           hover:bg-white/5 hover:border-white/40
-           disabled:opacity-30 disabled:cursor-not-allowed;
-  }
-
-  .btn-male {
-    @apply btn-primary border-purple-500/50 hover:bg-purple-500/10 
-           hover:border-purple-400;
-  }
-
-  .btn-female {
-    @apply btn-primary border-rose-500/50 hover:bg-rose-500/10 
-           hover:border-rose-400;
-  }
-
-  .btn-accent {
-    @apply px-8 py-5 font-extralight text-base uppercase tracking-[0.3em]
-           text-black bg-white
-           transition-all duration-300 active:scale-[0.98]
-           hover:bg-white/90
-           disabled:opacity-30 disabled:cursor-not-allowed;
-  }
-
-  /* Removed cards - using raw sections with single border */
-  .section {
-    @apply border border-white/10 p-8;
-  }
-
-  /* Minimal input - thin border, no background */
+  /* Input - thin border, no background */
   .input-field {
     @apply w-full px-0 py-3 bg-transparent
            border-0 border-b border-white/20
@@ -93,22 +61,6 @@ body {
            transition-colors duration-300
            text-white/90 font-light text-lg
            placeholder:text-white/30 placeholder:font-extralight;
-  }
-
-  /* Headers - thin and elegant */
-  .heading-main {
-    @apply text-7xl sm:text-8xl font-extralight tracking-tight
-           text-white/95 uppercase;
-  }
-
-  .heading-sub {
-    @apply text-xl sm:text-2xl font-thin tracking-[0.2em]
-           text-white/50 uppercase;
-  }
-
-  .heading-brutal {
-    @apply text-4xl sm:text-6xl font-black tracking-tighter
-           text-white uppercase;
   }
 }
 
@@ -186,20 +138,6 @@ a:hover {
    MOBILE OPTIMIZATIONS
    ============================================ */
 
-@media (max-width: 768px) {
-  .heading-main {
-    @apply text-5xl;
-  }
-  
-  .heading-brutal {
-    @apply text-3xl;
-  }
-
-  .btn-primary {
-    @apply px-6 py-3 text-xs;
-  }
-}
-
 /* Prevent pull-to-refresh */
 body {
   overscroll-behavior-y: contain;
@@ -210,33 +148,6 @@ body {
   -webkit-user-select: none;
   -moz-user-select: none;
   user-select: none;
-}
-
-/* ============================================
-   GRADIENT ACCENTS - SUBTLE & SEDUCTIVE
-   ============================================ */
-
-.gradient-accent {
-  background: linear-gradient(135deg, #8B5CF6 0%, #EC4899 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-.gradient-border {
-  position: relative;
-}
-
-.gradient-border::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  padding: 1px;
-  background: linear-gradient(135deg, #8B5CF6, #EC4899);
-  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-  -webkit-mask-composite: xor;
-  mask-composite: exclude;
-  pointer-events: none;
 }
 
 /* ============================================
@@ -252,16 +163,3 @@ body {
   display: none;
 }
 
-/* ============================================
-   CUSTOM SELECTION
-   ============================================ */
-
-::selection {
-  background: rgba(139, 92, 246, 0.3);
-  color: white;
-}
-
-::-moz-selection {
-  background: rgba(139, 92, 246, 0.3);
-  color: white;
-}
