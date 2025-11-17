@@ -40,6 +40,7 @@ export default function BodyExplorer({ onComplete }: BodyExplorerProps) {
   const [bodyView, setBodyView] = useState<'front' | 'back'>('front');
   const [isSpinning, setIsSpinning] = useState(false);
   const [currentTurnPlayer, setCurrentTurnPlayer] = useState(state.currentTurn);
+  const [currentDifficulty, setCurrentDifficulty] = useState(state.difficulty);
 
   const currentPlayer = state.players[state.currentTurn];
   const partnerGender = currentPlayer.gender === 'male' ? 'female' : 'male';
@@ -51,7 +52,10 @@ export default function BodyExplorer({ onComplete }: BodyExplorerProps) {
       try {
         const response = await fetch(`/data/punishments/body-explorer/${partnerGender}.json`);
         const data = await response.json();
-        setBodyPunishments(data);
+        // Filter by difficulty
+        const filteredData = data.filter((p: any) => p.difficulty === state.difficulty);
+        setBodyPunishments(filteredData);
+        console.log(`📚 Loaded ${filteredData.length} body explorer punishments for ${partnerGender} at ${state.difficulty} difficulty`);
       } catch (error) {
         console.error('Error loading body punishments:', error);
         setBodyPunishments([]);
@@ -61,7 +65,20 @@ export default function BodyExplorer({ onComplete }: BodyExplorerProps) {
     };
 
     loadBodyPunishments();
-  }, [partnerGender]);
+  }, [partnerGender, state.difficulty]);
+
+  // Monitor difficulty changes and reset
+  useEffect(() => {
+    if (currentDifficulty !== state.difficulty) {
+      console.log('🔄 BODY EXPLORER DIFFICULTY CHANGED:', currentDifficulty, '→', state.difficulty);
+      setCurrentDifficulty(state.difficulty);
+      setSelectedBodyPart(null);
+      setSelectedPunishment(null);
+      setShowPunishment(false);
+      setIsSpinning(false);
+      setBodyView('front');
+    }
+  }, [state.difficulty, currentDifficulty]);
 
   // Monitor turn changes and reset
   useEffect(() => {
@@ -107,17 +124,20 @@ export default function BodyExplorer({ onComplete }: BodyExplorerProps) {
   };
 
   const selectPunishmentForBodyPart = (bodyPart: BodyPart) => {
-    console.log('🎯 Selecting punishment for body part:', bodyPart.id);
-    console.log('📚 Total punishments loaded:', bodyPunishments.length);
+    console.log('🎯 Selected body part:', bodyPart.name, '(', bodyPart.id, ')');
+    console.log('📚 Total punishments available:', bodyPunishments.length);
     
-    // Filter punishments for this specific body part
-    const bodyPartPunishments = bodyPunishments.filter(p => p.bodyPart === bodyPart.id);
-    console.log('🎲 Found punishments for', bodyPart.id, ':', bodyPartPunishments.length);
-    
-    if (bodyPartPunishments.length > 0) {
-      const randomIndex = Math.floor(Math.random() * bodyPartPunishments.length);
-      const punishment = bodyPartPunishments[randomIndex];
-      console.log('✅ Selected punishment:', punishment);
+    if (bodyPunishments.length > 0) {
+      // Filter punishments by selected body part
+      const matchingPunishments = bodyPunishments.filter((p: any) => p.bodyPart === bodyPart.id);
+      console.log(`🔍 Found ${matchingPunishments.length} punishments for ${bodyPart.id}`);
+      
+      // If no matching punishments for this body part, use any punishment
+      const punishmentsToUse = matchingPunishments.length > 0 ? matchingPunishments : bodyPunishments;
+      
+      const randomIndex = Math.floor(Math.random() * punishmentsToUse.length);
+      const punishment = punishmentsToUse[randomIndex];
+      console.log('✅ Selected punishment:', punishment.description);
       
       setSelectedPunishment(punishment);
       
@@ -130,13 +150,16 @@ export default function BodyExplorer({ onComplete }: BodyExplorerProps) {
         timestamp: Date.now()
       });
 
-      // Wait 2 seconds to show the body part before showing punishment
+      // Wait 1 second to show the body part before showing punishment
       setTimeout(() => {
         console.log('⏰ Now showing punishment display');
         setShowPunishment(true);
-      }, 2000);
+      }, 1000);
     } else {
-      console.error('❌ No punishments found for body part:', bodyPart.id);
+      console.error('❌ No punishments loaded');
+      // Still show something
+      setShowPunishment(false);
+      setIsSpinning(false);
     }
   };
 
@@ -270,13 +293,13 @@ export default function BodyExplorer({ onComplete }: BodyExplorerProps) {
             animate={{ scale: 1 }}
             onClick={handleRandomSelect}
             disabled={isSpinning}
-            className={`w-full py-6 border transition-all text-xs uppercase tracking-[0.2em] font-light mb-4 ${
+            className={`w-full py-6 border transition-all text-lg md:text-xl uppercase tracking-[0.2em] font-light mb-4 ${
               isSpinning
                 ? 'border-white/10 text-white/30 cursor-not-allowed'
-                : 'border-white/20 text-white/60 hover:border-white/40 hover:bg-white/5'
+                : 'border-white bg-white text-black hover:bg-white/90'
             }`}
           >
-            {isSpinning ? 'Selecting' : 'Random Selection'}
+            {isSpinning ? 'Selecting...' : 'Select Random Body Part'}
           </motion.button>
         )}
 
@@ -290,25 +313,6 @@ export default function BodyExplorer({ onComplete }: BodyExplorerProps) {
         >
           Skip to {state.players[(state.currentTurn + 1) % state.players.length].name}
         </motion.button>
-
-        {/* Available Body Parts List */}
-        <div className="mt-8 border border-white/10 p-6">
-          <p className="text-white/40 text-xs uppercase tracking-[0.2em] font-light text-center mb-4">Possible Parts</p>
-          <div className="flex flex-wrap gap-2 justify-center">
-            {bodyParts.map((part) => (
-              <span
-                key={part.id}
-                className={`px-4 py-2 border text-xs uppercase tracking-[0.2em] font-light transition-all ${
-                  selectedBodyPart?.id === part.id
-                    ? 'border-white bg-white text-black'
-                    : 'border-white/20 text-white/40'
-                }`}
-              >
-                {part.name}
-              </span>
-            ))}
-          </div>
-        </div>
       </div>
     </div>
   );

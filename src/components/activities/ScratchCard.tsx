@@ -52,7 +52,8 @@ export default function ScratchCard({ onComplete }: ScratchCardProps) {
       console.log('🔄 CARDS TURN CHANGED: Player', currentTurnPlayer, '→', state.currentTurn);
       console.log('New player gender:', state.players[state.currentTurn].gender);
       setCurrentTurnPlayer(state.currentTurn);
-      setCards([]); // Force reset for new gender
+      // Do NOT reset the deck on turn change; keep scratched state visible
+      // Only reset the current scratch view state
       setSelectedCardIndex(null);
       setShowPunishment(false);
       setIsRevealed(false);
@@ -146,11 +147,17 @@ export default function ScratchCard({ onComplete }: ScratchCardProps) {
     if (!ctx) return;
 
     ctx.globalCompositeOperation = 'destination-out';
+    ctx.lineWidth = 50;
+    ctx.lineCap = 'round';
+    ctx.lineJoin = 'round';
     ctx.beginPath();
-    ctx.arc(x, y, 25, 0, 2 * Math.PI);
+    ctx.arc(x, y, 40, 0, 2 * Math.PI);
     ctx.fill();
 
-    checkScratchPercentage();
+    // Check less frequently for better performance
+    if (Math.random() < 0.3) {
+      checkScratchPercentage();
+    }
   };
 
   const checkScratchPercentage = () => {
@@ -245,29 +252,31 @@ export default function ScratchCard({ onComplete }: ScratchCardProps) {
   };
 
   const handlePunishmentComplete = () => {
+    console.log('🎯 Punishment complete for card:', selectedCardIndex);
     if (selectedCardIndex === null) return;
     
-    // Mark card as scratched
-    setCards(prevCards => {
-      const newCards = [...prevCards];
-      newCards[selectedCardIndex] = {
-        ...newCards[selectedCardIndex],
-        isScratched: true
-      };
-      console.log('Card marked as scratched:', selectedCardIndex);
-      return newCards;
-    });
+    // Mark card as scratched FIRST
+    const updatedCards = [...cards];
+    updatedCards[selectedCardIndex] = {
+      ...updatedCards[selectedCardIndex],
+      isScratched: true
+    };
+    setCards(updatedCards);
+    console.log('✅ Card marked as scratched:', selectedCardIndex);
+    console.log('Updated cards:', updatedCards.map((c, i) => ({ index: i, scratched: c.isScratched })));
     
     // Reset scratch view
-    setSelectedCardIndex(null);
     setShowPunishment(false);
     setIsRevealed(false);
     setScratchPercentage(0);
+    setSelectedCardIndex(null);
     
     // Check if all cards are scratched
-    const allScratched = cards.filter(c => c.isScratched).length + 1 >= cards.length;
+    const scratchedCount = updatedCards.filter(c => c.isScratched).length;
+    console.log(`📊 Scratched cards: ${scratchedCount}/${updatedCards.length}`);
     
-    if (allScratched) {
+    if (scratchedCount >= updatedCards.length) {
+      console.log('🎉 All cards scratched! Ending activity...');
       switchTurn();
       onComplete();
     } else {
@@ -339,40 +348,47 @@ export default function ScratchCard({ onComplete }: ScratchCardProps) {
                     whileHover={!card.isScratched ? { scale: 1.03 } : {}}
                     whileTap={!card.isScratched ? { scale: 0.97 } : {}}
                     onClick={() => handleCardSelect(index)}
-                    className={`aspect-[3/4] border transition-all relative overflow-hidden ${
+                    className={`aspect-[3/4] transition-all relative overflow-hidden ${
                       card.isScratched
-                        ? 'border-white/60 bg-white/10 cursor-default'
-                        : 'border-white/20 hover:border-white/40 hover:bg-white/5 cursor-pointer'
+                        ? 'border-2 border-green-500 bg-gradient-to-br from-green-900/30 to-green-800/20 cursor-default shadow-lg shadow-green-500/20'
+                        : 'border border-white/20 hover:border-white/40 hover:bg-white/5 cursor-pointer'
                     }`}
                   >
-                    <div className="h-full flex flex-col items-center justify-center p-4 text-center">
-                      {card.isScratched ? (
-                        <>
-                          <div className="absolute top-2 left-2 right-2">
-                            <p className="text-[8px] uppercase tracking-[0.15em] text-white/40 font-light">
-                              Card {index + 1}
-                            </p>
-                          </div>
-                          <p className="text-xs md:text-sm font-light text-white/90 leading-relaxed px-2">
+                    {card.isScratched ? (
+                      <div className="h-full w-full flex flex-col items-center justify-center p-3 text-center bg-black/40">
+                        <div className="mb-auto pt-2">
+                          <p className="text-[10px] uppercase tracking-wider text-green-400/80 font-medium">
+                            CARD {index + 1}
+                          </p>
+                        </div>
+                        
+                        <div className="flex-1 flex items-center justify-center px-2">
+                          <p className="text-sm md:text-base font-normal text-white drop-shadow-lg leading-snug">
                             {card.punishment.description}
                           </p>
-                          <div className="absolute bottom-2 left-2 right-2">
-                            <p className="text-[8px] uppercase tracking-[0.15em] text-white/30 font-light">
-                              Revealed
+                        </div>
+                        
+                        <div className="mt-auto pb-2 space-y-1">
+                          {card.punishment.timer > 0 && (
+                            <p className="text-xs text-white/80 font-medium">
+                              ⏱ {card.punishment.timer}s
                             </p>
-                          </div>
-                        </>
-                      ) : (
-                        <>
-                          <p className="text-4xl md:text-5xl font-thin text-white/90 mb-3">
-                            {index + 1}
+                          )}
+                          <p className="text-[10px] uppercase tracking-wider text-green-400 font-bold">
+                            ✓ REVEALED
                           </p>
-                          <p className="text-[9px] uppercase tracking-[0.2em] text-white/40 font-light">
-                            Scratch
-                          </p>
-                        </>
-                      )}
-                    </div>
+                        </div>
+                      </div>
+                    ) : (
+                      <div className="h-full flex flex-col items-center justify-center p-4 text-center">
+                        <p className="text-4xl md:text-5xl font-thin text-white/90 mb-3">
+                          {index + 1}
+                        </p>
+                        <p className="text-[9px] uppercase tracking-[0.2em] text-white/40 font-light">
+                          Scratch to Reveal
+                        </p>
+                      </div>
+                    )}
                   </motion.div>
                 ))}
               </div>
@@ -417,14 +433,14 @@ export default function ScratchCard({ onComplete }: ScratchCardProps) {
               ref={containerRef}
               className="relative mb-6 md:mb-8 w-full h-64 md:h-80 border-2 border-white/30 overflow-hidden bg-black"
             >
-              {/* Hidden content (revealed punishment) */}
-              <div className="absolute inset-0 p-4 md:p-8 flex items-center justify-center">
+              {/* Hidden content (revealed punishment) - z-0 */}
+              <div className="absolute inset-0 p-4 md:p-8 flex items-center justify-center z-0">
                 {currentCard ? (
                   <motion.p
                     initial={{ opacity: 0 }}
                     animate={{ opacity: isRevealed ? 1 : 0 }}
                     transition={{ duration: 0.3 }}
-                    className="text-base md:text-xl font-light text-white/90 text-center leading-relaxed"
+                    className="text-base md:text-xl font-light text-white text-center leading-relaxed"
                   >
                     {currentCard.punishment.description}
                   </motion.p>
@@ -433,7 +449,7 @@ export default function ScratchCard({ onComplete }: ScratchCardProps) {
                 )}
               </div>
 
-              {/* Scratch overlay canvas */}
+              {/* Scratch overlay canvas - z-10 on top */}
               {!isRevealed && (
                 <canvas
                   ref={canvasRef}
@@ -444,7 +460,7 @@ export default function ScratchCard({ onComplete }: ScratchCardProps) {
                   onTouchStart={handleTouchStart}
                   onTouchMove={handleTouchMove}
                   onTouchEnd={handleTouchEnd}
-                  className="absolute inset-0 w-full h-full cursor-pointer"
+                  className="absolute inset-0 w-full h-full cursor-pointer z-10"
                   style={{ touchAction: 'none' }}
                 />
               )}
