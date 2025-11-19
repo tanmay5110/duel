@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { useGame } from '../../context/GameContext';
 import PunishmentDisplay from '../ui/PunishmentDisplay';
+import { FemaleBodyFront, FemaleBodyBack, MaleBodyFront, MaleBodyBack } from './BodySVGs';
 
 interface BodyExplorerProps {
   onComplete: () => void;
@@ -94,7 +95,8 @@ export default function BodyExplorer({ onComplete }: BodyExplorerProps) {
   }, [state.currentTurn, currentTurnPlayer]);
 
   const handleRandomSelect = () => {
-    if (isSpinning) return;    setIsSpinning(true);
+    if (isSpinning) return;
+    setIsSpinning(true);
     console.log('🎲 Randomly selecting body part...');
     
     // Random animation
@@ -111,9 +113,19 @@ export default function BodyExplorer({ onComplete }: BodyExplorerProps) {
         const finalPart = bodyParts[Math.floor(Math.random() * bodyParts.length)];
         setSelectedBodyPart(finalPart);
         
-        // Randomly choose front or back view
-        const randomView = Math.random() > 0.5 ? 'front' : 'back';
-        setBodyView(randomView);
+        // Determine best view
+        let view: 'front' | 'back' = Math.random() > 0.5 ? 'front' : 'back';
+        
+        const frontOnly = ['lips', 'chest', 'ears'];
+        const backOnly = ['back'];
+        
+        if (frontOnly.includes(finalPart.id)) {
+          view = 'front';
+        } else if (backOnly.includes(finalPart.id)) {
+          view = 'back';
+        }
+        
+        setBodyView(view);
         
         setTimeout(() => {
           selectPunishmentForBodyPart(finalPart);
@@ -261,27 +273,58 @@ export default function BodyExplorer({ onComplete }: BodyExplorerProps) {
               </button>
             </div>
 
-            {/* Body Outline Placeholder */}
-            <div className="relative w-full aspect-[2/3] border border-white/20 bg-black flex items-center justify-center">
-              <div className="text-center">
-                <p className="text-white/40 text-xs md:text-sm uppercase tracking-[0.2em] font-light mb-6 md:mb-8">
+            {/* Body Outline SVG */}
+            <div className="relative w-full aspect-[2/5] md:aspect-[1/2] border border-white/20 bg-black/40 flex items-center justify-center p-4 overflow-hidden">
+              <div className="absolute top-4 left-0 right-0 text-center z-10">
+                <p className="text-white/40 text-xs md:text-sm uppercase tracking-[0.2em] font-light">
                   {bodyView === 'front' ? 'Front View' : 'Back View'}
                 </p>
-                {selectedBodyPart && (
-                  <motion.div
-                    initial={{ scale: 0 }}
-                    animate={{ scale: 1 }}
-                    className="mt-4 md:mt-6 border border-white/40 bg-white/5 px-8 md:px-12 py-4 md:py-6\"
-                  >
-                    <p className="text-white text-2xl md:text-4xl font-thin uppercase tracking-tight">
-                      {selectedBodyPart.name}
-                    </p>
-                    <p className="text-white/40 text-xs uppercase tracking-[0.2em] font-light mt-2 md:mt-3">
-                      Selected
-                    </p>
-                  </motion.div>
+              </div>
+              
+              <div className="w-full h-full max-w-[300px] flex items-center justify-center py-8">
+                {partnerGender === 'female' ? (
+                  bodyView === 'front' ? (
+                    <FemaleBodyFront 
+                      highlightedPart={selectedBodyPart?.id || null} 
+                      className="w-full h-full drop-shadow-[0_0_15px_rgba(255,255,255,0.1)]"
+                    />
+                  ) : (
+                    <FemaleBodyBack 
+                      highlightedPart={selectedBodyPart?.id || null} 
+                      className="w-full h-full drop-shadow-[0_0_15px_rgba(255,255,255,0.1)]"
+                    />
+                  )
+                ) : (
+                  bodyView === 'front' ? (
+                    <MaleBodyFront 
+                      highlightedPart={selectedBodyPart?.id || null} 
+                      className="w-full h-full drop-shadow-[0_0_15px_rgba(255,255,255,0.1)]"
+                    />
+                  ) : (
+                    <MaleBodyBack 
+                      highlightedPart={selectedBodyPart?.id || null} 
+                      className="w-full h-full drop-shadow-[0_0_15px_rgba(255,255,255,0.1)]"
+                    />
+                  )
                 )}
               </div>
+
+              {selectedBodyPart && (
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="absolute bottom-8 left-0 right-0 text-center z-10"
+                >
+                  <div className="inline-block border border-white/40 bg-black/80 backdrop-blur-sm px-6 py-3 md:px-8 md:py-4">
+                    <p className="text-white text-xl md:text-3xl font-thin uppercase tracking-tight">
+                      {selectedBodyPart.name}
+                    </p>
+                    <p className="text-white/40 text-[10px] uppercase tracking-[0.2em] font-light mt-1">
+                      Selected
+                    </p>
+                  </div>
+                </motion.div>
+              )}
             </div>
           </div>
         </div>
