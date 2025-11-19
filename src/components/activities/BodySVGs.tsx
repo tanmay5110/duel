@@ -6,26 +6,38 @@ interface BodySVGProps {
   className?: string;
 }
 
+// Highlight: Game-style glow effect
 const highlightStyle = {
-  fill: "rgba(255, 255, 255, 0.6)",
+  fill: "rgba(255, 255, 255, 0.2)",
   stroke: "rgba(255, 255, 255, 1)",
   strokeWidth: "2",
   filter: "url(#glow)",
-  transition: { duration: 0.4 }
-};
-
-const baseStyle = {
-  fill: "transparent",
-  stroke: "rgba(255, 255, 255, 0.6)",
-  strokeWidth: "1.5",
-  strokeLinecap: "round" as const,
-  strokeLinejoin: "round" as const,
+  opacity: 1,
   transition: { duration: 0.3 }
 };
 
-const staticBaseStyle: CSSProperties = {
+// Normal: Invisible (no internal outline)
+const normalPartStyle = {
   fill: "transparent",
-  stroke: "rgba(255, 255, 255, 0.6)",
+  stroke: "transparent",
+  strokeWidth: "0",
+  opacity: 0,
+  transition: { duration: 0.3 }
+};
+
+// Silhouette: Clean, professional medical illustration style outline
+const silhouetteStyle: CSSProperties = {
+  fill: "rgba(0, 0, 0, 0.2)",
+  stroke: "rgba(255, 255, 255, 0.9)",
+  strokeWidth: "2.5",
+  strokeLinecap: "round",
+  strokeLinejoin: "round"
+};
+
+// Facial details
+const detailStyle: CSSProperties = {
+  fill: "transparent",
+  stroke: "rgba(255, 255, 255, 0.5)",
   strokeWidth: "1.5",
   strokeLinecap: "round",
   strokeLinejoin: "round"
@@ -34,7 +46,7 @@ const staticBaseStyle: CSSProperties = {
 const GlowFilter = () => (
   <defs>
     <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
-      <feGaussianBlur stdDeviation="2.5" result="coloredBlur" />
+      <feGaussianBlur stdDeviation="4" result="coloredBlur" />
       <feMerge>
         <feMergeNode in="coloredBlur" />
         <feMergeNode in="SourceGraphic" />
@@ -43,122 +55,96 @@ const GlowFilter = () => (
   </defs>
 );
 
+const PartPath = ({ d, id, highlightedPart }: { d: string, id: string, highlightedPart: string | null }) => {
+  const isHighlighted = highlightedPart === id;
+  return (
+    <motion.path
+      d={d}
+      initial={false}
+      animate={isHighlighted ? highlightStyle : normalPartStyle}
+    />
+  );
+};
+
 export const FemaleBodyFront = ({ highlightedPart, className = "" }: BodySVGProps) => {
   return (
     <svg viewBox="0 0 200 500" className={className} xmlns="http://www.w3.org/2000/svg">
       <GlowFilter />
       
-      {/* Base Body Outline - Realistic Female */}
+      {/* Base Silhouette - Female */}
       <path
-        d="M100,25 
-           C112,25 120,35 120,50 C120,62 115,70 108,73 
-           L108,85 
-           Q130,88 145,95 
-           C155,100 158,110 155,130 
-           L150,190 
-           C150,200 155,205 160,210 L162,215 L155,220 L145,215 C142,210 142,200 140,190 
-           L135,150 
-           Q132,180 135,200 
-           C140,215 142,230 135,250 
-           C130,270 125,300 122,330 
-           L118,400 L120,450 
-           C120,460 125,470 130,480 L110,480 L105,450 L102,350 
-           L98,350 L95,450 L90,480 L70,480 
-           C75,470 80,460 80,450 L82,400 
-           C78,330 75,300 70,270 
-           C60,240 58,215 65,200 
-           Q68,180 65,150 
-           L60,190 C58,200 58,210 55,215 L45,220 L38,215 L40,210 C45,205 50,200 50,190 
-           L45,130 C42,110 45,100 55,95 
-           Q70,88 92,85 
-           L92,73 
-           C85,70 80,62 80,50 C80,35 88,25 100,25 Z"
-        style={staticBaseStyle}
+        d="M100,20 
+           C118,20 128,32 128,55 C128,72 118,82 100,82 C82,82 72,72 72,55 C72,32 82,20 100,20 Z
+           M118,78 L118,92 
+           Q145,95 165,105 
+           Q170,115 165,145 
+           L160,200 
+           L165,245 
+           L172,255 L175,260 L170,265 L165,260 L162,265 L158,260 L155,265 L150,260 L145,210 
+           L140,150 
+           Q142,170 135,190 
+           Q130,210 148,235 
+           Q152,260 145,300 
+           L140,380 
+           L142,440 
+           L145,485 L125,485 L120,440 L120,380 L115,300 
+           L105,270 
+           L95,270 
+           L85,300 L80,380 L80,440 L75,485 L55,485 L58,440 L60,380 L55,300 
+           Q48,260 52,235 
+           Q70,210 65,190 
+           Q58,170 60,150 
+           L55,210 L50,260 L45,265 L42,260 L38,265 L35,260 L30,265 L28,255 L35,245 L40,200 
+           L35,145 
+           Q30,115 35,105 
+           Q55,95 82,92 
+           L82,78"
+        style={silhouetteStyle}
       />
 
-      {/* Detail Lines */}
-      <path d="M85,125 Q100,135 115,125" style={{...staticBaseStyle, strokeWidth: "0.5", opacity: 0.5}} /> {/* Breasts */}
-      <path d="M95,170 Q100,175 105,170" style={{...staticBaseStyle, strokeWidth: "0.5", opacity: 0.3}} /> {/* Navel */}
-      <path d="M90,350 L90,400 M110,350 L110,400" style={{...staticBaseStyle, strokeWidth: "0.5", opacity: 0.3}} /> {/* Knees */}
+      {/* Facial Features */}
+      <path d="M88,50 Q94,46 100,50" style={detailStyle} /> {/* Left Eye */}
+      <path d="M100,50 Q106,46 112,50" style={detailStyle} /> {/* Right Eye */}
+      <path d="M100,55 L98,65 L102,65" style={detailStyle} /> {/* Nose */}
+      <path d="M95,72 Q100,75 105,72" style={detailStyle} /> {/* Mouth */}
 
-      {/* Interactive Parts */}
+      {/* Interactive Parts - Overlay Shapes */}
       
       {/* Lips */}
-      <motion.path
-        d="M94,58 Q100,61 106,58 Q100,64 94,58 Z"
-        initial={baseStyle}
-        animate={highlightedPart === 'lips' ? highlightStyle : baseStyle}
-      />
+      <PartPath id="lips" highlightedPart={highlightedPart} d="M95,72 Q100,75 105,72 Q100,69 95,72 Z" />
 
       {/* Neck */}
-      <motion.path
-        d="M92,73 L108,73 L108,85 Q100,88 92,85 Z"
-        initial={baseStyle}
-        animate={highlightedPart === 'neck' ? highlightStyle : baseStyle}
-      />
+      <PartPath id="neck" highlightedPart={highlightedPart} d="M82,78 L118,78 L118,92 L82,92 Z" />
 
       {/* Ears */}
-      <motion.g initial={baseStyle} animate={highlightedPart === 'ears' ? highlightStyle : baseStyle}>
-        <path d="M80,48 Q76,45 76,55 Q80,60 80,58" />
-        <path d="M120,48 Q124,45 124,55 Q120,60 120,58" />
-      </motion.g>
+      <PartPath id="ears" highlightedPart={highlightedPart} d="M72,50 L78,50 L78,65 L72,65 Z M122,50 L128,50 L128,65 L122,65 Z" />
 
       {/* Shoulders */}
-      <motion.g initial={baseStyle} animate={highlightedPart === 'shoulders' ? highlightStyle : baseStyle}>
-        <path d="M92,85 Q70,88 55,95 L60,110 L92,95 Z" />
-        <path d="M108,85 Q130,88 145,95 L140,110 L108,95 Z" />
-      </motion.g>
+      <PartPath id="shoulders" highlightedPart={highlightedPart} d="M82,92 L118,92 L145,95 L165,105 L160,125 L140,115 L118,110 L82,110 L60,115 L40,125 L35,105 L55,95 Z" />
 
       {/* Chest */}
-      <motion.path
-        d="M65,110 C60,130 70,145 100,145 C130,145 140,130 135,110 Q100,120 65,110 Z"
-        initial={baseStyle}
-        animate={highlightedPart === 'chest' ? highlightStyle : baseStyle}
-      />
+      <PartPath id="chest" highlightedPart={highlightedPart} d="M60,115 L140,115 L135,160 L65,160 Z" />
 
       {/* Arms */}
-      <motion.g initial={baseStyle} animate={highlightedPart === 'arms' ? highlightStyle : baseStyle}>
-        <path d="M55,95 L45,130 L50,190 L60,190 L65,130 Z" />
-        <path d="M145,95 L155,130 L150,190 L140,190 L135,130 Z" />
-      </motion.g>
+      <PartPath id="arms" highlightedPart={highlightedPart} d="M35,105 L60,115 L55,210 L35,145 Z M165,105 L140,115 L145,210 L165,145 Z" />
 
       {/* Hands */}
-      <motion.g initial={baseStyle} animate={highlightedPart === 'hands' ? highlightStyle : baseStyle}>
-        <path d="M50,190 L40,210 L38,215 L45,220 L55,215 L60,190 Z" />
-        <path d="M150,190 L160,210 L162,215 L155,220 L145,215 L140,190 Z" />
-      </motion.g>
+      <PartPath id="hands" highlightedPart={highlightedPart} d="M55,210 L50,260 L28,255 L35,245 L40,200 Z M145,210 L150,260 L172,255 L165,245 L160,200 Z" />
 
       {/* Waist */}
-      <motion.path
-        d="M70,150 Q100,160 130,150 L135,180 Q100,190 65,180 Z"
-        initial={baseStyle}
-        animate={highlightedPart === 'waist' ? highlightStyle : baseStyle}
-      />
+      <PartPath id="waist" highlightedPart={highlightedPart} d="M65,160 L135,160 L135,190 L65,190 Z" />
 
       {/* Hips */}
-      <motion.path
-        d="M65,180 Q100,190 135,180 C140,200 142,215 135,230 Q100,240 65,230 C58,215 60,200 65,180 Z"
-        initial={baseStyle}
-        animate={highlightedPart === 'hips' ? highlightStyle : baseStyle}
-      />
+      <PartPath id="hips" highlightedPart={highlightedPart} d="M65,190 L135,190 L148,235 L105,270 L95,270 L52,235 Z" />
 
       {/* Thighs */}
-      <motion.g initial={baseStyle} animate={highlightedPart === 'thighs' ? highlightStyle : baseStyle}>
-        <path d="M65,230 C60,260 70,300 80,330 L98,330 L100,240 Z" />
-        <path d="M135,230 C140,260 130,300 120,330 L102,330 L100,240 Z" />
-      </motion.g>
+      <PartPath id="thighs" highlightedPart={highlightedPart} d="M52,235 L95,270 L85,300 L55,300 Z M148,235 L105,270 L115,300 L145,300 Z" />
 
       {/* Legs */}
-      <motion.g initial={baseStyle} animate={highlightedPart === 'legs' ? highlightStyle : baseStyle}>
-        <path d="M80,330 L82,400 L80,450 L95,450 L98,330 Z" />
-        <path d="M120,330 L118,400 L120,450 L105,450 L102,330 Z" />
-      </motion.g>
+      <PartPath id="legs" highlightedPart={highlightedPart} d="M55,300 L85,300 L80,440 L58,440 Z M145,300 L115,300 L120,440 L142,440 Z" />
 
       {/* Feet */}
-      <motion.g initial={baseStyle} animate={highlightedPart === 'feet' ? highlightStyle : baseStyle}>
-        <path d="M80,450 L70,480 L90,480 L95,450 Z" />
-        <path d="M120,450 L130,480 L110,480 L105,450 Z" />
-      </motion.g>
+      <PartPath id="feet" highlightedPart={highlightedPart} d="M58,440 L80,440 L75,485 L55,485 Z M142,440 L120,440 L125,485 L145,485 Z" />
     </svg>
   );
 };
@@ -168,104 +154,68 @@ export const FemaleBodyBack = ({ highlightedPart, className = "" }: BodySVGProps
     <svg viewBox="0 0 200 500" className={className} xmlns="http://www.w3.org/2000/svg">
       <GlowFilter />
       
-      {/* Base Body Outline - Realistic Female Back */}
+      {/* Base Silhouette - Female Back */}
       <path
-        d="M100,25 
-           C112,25 120,35 120,50 C120,62 115,70 108,73 
-           L108,85 
-           Q130,88 145,95 
-           C155,100 158,110 155,130 
-           L150,190 
-           C150,200 155,205 160,210 L162,215 L155,220 L145,215 C142,210 142,200 140,190 
-           L135,150 
-           Q132,180 135,200 
-           C140,215 142,230 135,250 
-           C130,270 125,300 122,330 
-           L118,400 L120,450 
-           C120,460 125,470 130,480 L110,480 L105,450 L102,350 
-           L98,350 L95,450 L90,480 L70,480 
-           C75,470 80,460 80,450 L82,400 
-           C78,330 75,300 70,270 
-           C60,240 58,215 65,200 
-           Q68,180 65,150 
-           L60,190 C58,200 58,210 55,215 L45,220 L38,215 L40,210 C45,205 50,200 50,190 
-           L45,130 C42,110 45,100 55,95 
-           Q70,88 92,85 
-           L92,73 
-           C85,70 80,62 80,50 C80,35 88,25 100,25 Z"
-        style={staticBaseStyle}
+        d="M100,20 
+           C118,20 128,32 128,55 C128,72 118,82 100,82 C82,82 72,72 72,55 C72,32 82,20 100,20 Z
+           M118,78 L118,92 
+           Q145,95 165,105 
+           Q170,115 165,145 
+           L160,200 
+           L165,245 
+           L172,255 L175,260 L170,265 L165,260 L162,265 L158,260 L155,265 L150,260 L145,210 
+           L140,150 
+           Q142,170 135,190 
+           Q130,210 148,235 
+           Q152,260 145,300 
+           L140,380 
+           L142,440 
+           L145,485 L125,485 L120,440 L120,380 L115,300 
+           L105,270 
+           L95,270 
+           L85,300 L80,380 L80,440 L75,485 L55,485 L58,440 L60,380 L55,300 
+           Q48,260 52,235 
+           Q70,210 65,190 
+           Q58,170 60,150 
+           L55,210 L50,260 L45,265 L42,260 L38,265 L35,260 L30,265 L28,255 L35,245 L40,200 
+           L35,145 
+           Q30,115 35,105 
+           Q55,95 82,92 
+           L82,78"
+        style={silhouetteStyle}
       />
-
-      {/* Detail Lines */}
-      <path d="M90,100 L90,160 M110,100 L110,160" style={{...staticBaseStyle, strokeWidth: "0.5", opacity: 0.3}} /> {/* Shoulder blades */}
-      <path d="M100,85 L100,200" style={{...staticBaseStyle, strokeWidth: "0.5", opacity: 0.3}} /> {/* Spine */}
-      <path d="M80,230 Q100,250 120,230" style={{...staticBaseStyle, strokeWidth: "0.5", opacity: 0.3}} /> {/* Buttocks crease */}
 
       {/* Interactive Parts */}
       
       {/* Neck */}
-      <motion.path
-        d="M92,73 L108,73 L108,85 Q100,88 92,85 Z"
-        initial={baseStyle}
-        animate={highlightedPart === 'neck' ? highlightStyle : baseStyle}
-      />
+      <PartPath id="neck" highlightedPart={highlightedPart} d="M82,78 L118,78 L118,92 L82,92 Z" />
 
       {/* Shoulders */}
-      <motion.g initial={baseStyle} animate={highlightedPart === 'shoulders' ? highlightStyle : baseStyle}>
-        <path d="M92,85 Q70,88 55,95 L60,110 L92,110 Z" />
-        <path d="M108,85 Q130,88 145,95 L140,110 L108,110 Z" />
-      </motion.g>
+      <PartPath id="shoulders" highlightedPart={highlightedPart} d="M82,92 L118,92 L145,95 L165,105 L160,125 L140,115 L118,110 L82,110 L60,115 L40,125 L35,105 L55,95 Z" />
 
       {/* Back */}
-      <motion.path
-        d="M65,110 L135,110 L130,180 L70,180 Z"
-        initial={baseStyle}
-        animate={highlightedPart === 'back' ? highlightStyle : baseStyle}
-      />
+      <PartPath id="back" highlightedPart={highlightedPart} d="M60,115 L140,115 L135,180 L65,180 Z" />
 
       {/* Arms */}
-      <motion.g initial={baseStyle} animate={highlightedPart === 'arms' ? highlightStyle : baseStyle}>
-        <path d="M55,95 L45,130 L50,190 L60,190 L65,130 Z" />
-        <path d="M145,95 L155,130 L150,190 L140,190 L135,130 Z" />
-      </motion.g>
+      <PartPath id="arms" highlightedPart={highlightedPart} d="M35,105 L60,115 L55,210 L35,145 Z M165,105 L140,115 L145,210 L165,145 Z" />
 
       {/* Hands */}
-      <motion.g initial={baseStyle} animate={highlightedPart === 'hands' ? highlightStyle : baseStyle}>
-        <path d="M50,190 L40,210 L38,215 L45,220 L55,215 L60,190 Z" />
-        <path d="M150,190 L160,210 L162,215 L155,220 L145,215 L140,190 Z" />
-      </motion.g>
+      <PartPath id="hands" highlightedPart={highlightedPart} d="M55,210 L50,260 L28,255 L35,245 L40,200 Z M145,210 L150,260 L172,255 L165,245 L160,200 Z" />
 
       {/* Waist */}
-      <motion.path
-        d="M70,180 L130,180 L135,200 L65,200 Z"
-        initial={baseStyle}
-        animate={highlightedPart === 'waist' ? highlightStyle : baseStyle}
-      />
+      <PartPath id="waist" highlightedPart={highlightedPart} d="M65,180 L135,180 L135,210 L65,210 Z" />
 
-      {/* Hips (Buttocks) */}
-      <motion.path
-        d="M65,200 Q100,210 135,200 C140,220 135,240 100,240 C65,240 60,220 65,200 Z"
-        initial={baseStyle}
-        animate={highlightedPart === 'hips' ? highlightStyle : baseStyle}
-      />
+      {/* Hips */}
+      <PartPath id="hips" highlightedPart={highlightedPart} d="M65,210 L135,210 L148,235 L105,270 L95,270 L52,235 Z" />
 
       {/* Thighs */}
-      <motion.g initial={baseStyle} animate={highlightedPart === 'thighs' ? highlightStyle : baseStyle}>
-        <path d="M65,240 C60,270 70,300 80,330 L98,330 L100,240 Z" />
-        <path d="M135,240 C140,270 130,300 120,330 L102,330 L100,240 Z" />
-      </motion.g>
+      <PartPath id="thighs" highlightedPart={highlightedPart} d="M52,235 L95,270 L85,300 L55,300 Z M148,235 L105,270 L115,300 L145,300 Z" />
 
       {/* Legs */}
-      <motion.g initial={baseStyle} animate={highlightedPart === 'legs' ? highlightStyle : baseStyle}>
-        <path d="M80,330 L82,400 L80,450 L95,450 L98,330 Z" />
-        <path d="M120,330 L118,400 L120,450 L105,450 L102,330 Z" />
-      </motion.g>
+      <PartPath id="legs" highlightedPart={highlightedPart} d="M55,300 L85,300 L80,440 L58,440 Z M145,300 L115,300 L120,440 L142,440 Z" />
 
       {/* Feet */}
-      <motion.g initial={baseStyle} animate={highlightedPart === 'feet' ? highlightStyle : baseStyle}>
-        <path d="M80,450 L70,480 L90,480 L95,450 Z" />
-        <path d="M120,450 L130,480 L110,480 L105,450 Z" />
-      </motion.g>
+      <PartPath id="feet" highlightedPart={highlightedPart} d="M58,440 L80,440 L75,485 L55,485 Z M142,440 L120,440 L125,485 L145,485 Z" />
     </svg>
   );
 };
@@ -275,117 +225,80 @@ export const MaleBodyFront = ({ highlightedPart, className = "" }: BodySVGProps)
     <svg viewBox="0 0 200 500" className={className} xmlns="http://www.w3.org/2000/svg">
       <GlowFilter />
       
-      {/* Base Body Outline - Realistic Male */}
+      {/* Base Silhouette - Male */}
       <path
-        d="M100,25 
-           C112,25 120,35 120,50 C120,62 115,70 108,73 
-           L110,85 
-           Q140,88 160,95 
-           C165,100 165,115 160,135 
-           L155,190 
-           C155,200 160,205 165,210 L167,215 L160,220 L150,215 C147,210 147,200 145,190 
-           L140,150 
-           L135,200 
-           C135,215 135,230 130,250 
-           C128,270 125,300 122,330 
-           L118,400 L120,450 
-           C120,460 125,470 130,480 L110,480 L105,450 L102,350 
-           L98,350 L95,450 L90,480 L70,480 
-           C75,470 80,460 80,450 L82,400 
-           C78,330 75,300 72,270 
-           C70,250 65,230 65,200 
-           L60,150 
-           L55,190 C53,200 53,210 50,215 L40,220 L33,215 L35,210 C40,205 45,200 45,190 
-           L40,135 C35,115 35,100 40,95 
-           Q60,88 90,85 
-           L92,73 
-           C85,70 80,62 80,50 C80,35 88,25 100,25 Z"
-        style={staticBaseStyle}
+        d="M100,20 
+           C118,20 128,32 128,55 C128,72 118,82 100,82 C82,82 72,72 72,55 C72,32 82,20 100,20 Z
+           M118,78 L118,95 
+           Q150,95 175,105 
+           Q180,115 175,145 
+           L170,200 
+           L175,245 
+           L182,255 L185,260 L180,265 L175,260 L172,265 L168,260 L165,265 L160,260 L155,210 
+           L150,150 
+           L150,190 
+           L145,220 
+           L140,280 
+           L135,360 
+           L138,420 
+           L140,485 L120,485 L115,420 L115,360 L110,280 
+           L105,250 
+           L95,250 
+           L90,280 L85,360 L85,420 L80,485 L60,485 L62,420 L65,360 L60,280 
+           L55,220 
+           L50,190 
+           L50,150 
+           L45,210 L40,260 L35,265 L32,260 L28,265 L25,260 L20,265 L18,255 L25,245 L30,200 
+           L25,145 
+           Q20,115 25,105 
+           Q50,95 82,95 
+           L82,78"
+        style={silhouetteStyle}
       />
 
-      {/* Detail Lines */}
-      <path d="M75,125 Q100,140 125,125" style={{...staticBaseStyle, strokeWidth: "0.5", opacity: 0.5}} /> {/* Pecs */}
-      <path d="M100,125 L100,170" style={{...staticBaseStyle, strokeWidth: "0.5", opacity: 0.3}} /> {/* Abs line */}
-      <path d="M90,350 L90,400 M110,350 L110,400" style={{...staticBaseStyle, strokeWidth: "0.5", opacity: 0.3}} /> {/* Knees */}
+      {/* Facial Features */}
+      <path d="M88,50 Q94,46 100,50" style={detailStyle} /> {/* Left Eye */}
+      <path d="M100,50 Q106,46 112,50" style={detailStyle} /> {/* Right Eye */}
+      <path d="M100,55 L98,65 L102,65" style={detailStyle} /> {/* Nose */}
+      <path d="M95,72 Q100,75 105,72" style={detailStyle} /> {/* Mouth */}
 
       {/* Interactive Parts */}
       
       {/* Lips */}
-      <motion.path
-        d="M94,58 Q100,61 106,58 Q100,64 94,58 Z"
-        initial={baseStyle}
-        animate={highlightedPart === 'lips' ? highlightStyle : baseStyle}
-      />
+      <PartPath id="lips" highlightedPart={highlightedPart} d="M95,72 Q100,75 105,72 Q100,69 95,72 Z" />
 
       {/* Neck */}
-      <motion.path
-        d="M92,73 L108,73 L110,85 Q100,88 90,85 Z"
-        initial={baseStyle}
-        animate={highlightedPart === 'neck' ? highlightStyle : baseStyle}
-      />
+      <PartPath id="neck" highlightedPart={highlightedPart} d="M82,78 L118,78 L118,95 L82,95 Z" />
 
       {/* Ears */}
-      <motion.g initial={baseStyle} animate={highlightedPart === 'ears' ? highlightStyle : baseStyle}>
-        <path d="M80,48 Q76,45 76,55 Q80,60 80,58" />
-        <path d="M120,48 Q124,45 124,55 Q120,60 120,58" />
-      </motion.g>
+      <PartPath id="ears" highlightedPart={highlightedPart} d="M72,50 L78,50 L78,65 L72,65 Z M122,50 L128,50 L128,65 L122,65 Z" />
 
       {/* Shoulders */}
-      <motion.g initial={baseStyle} animate={highlightedPart === 'shoulders' ? highlightStyle : baseStyle}>
-        <path d="M90,85 Q60,88 40,95 L45,115 L90,105 Z" />
-        <path d="M110,85 Q140,88 160,95 L155,115 L110,105 Z" />
-      </motion.g>
+      <PartPath id="shoulders" highlightedPart={highlightedPart} d="M82,95 L118,95 L150,95 L175,105 L170,125 L150,115 L118,110 L82,110 L50,115 L30,125 L25,105 L50,95 Z" />
 
       {/* Chest */}
-      <motion.path
-        d="M60,105 C55,120 65,135 100,135 C135,135 145,120 140,105 Q100,115 60,105 Z"
-        initial={baseStyle}
-        animate={highlightedPart === 'chest' ? highlightStyle : baseStyle}
-      />
+      <PartPath id="chest" highlightedPart={highlightedPart} d="M50,115 L150,115 L145,155 L55,155 Z" />
 
       {/* Arms */}
-      <motion.g initial={baseStyle} animate={highlightedPart === 'arms' ? highlightStyle : baseStyle}>
-        <path d="M40,95 L35,135 L45,190 L55,190 L60,135 Z" />
-        <path d="M160,95 L165,135 L155,190 L145,190 L140,135 Z" />
-      </motion.g>
+      <PartPath id="arms" highlightedPart={highlightedPart} d="M25,105 L50,115 L45,210 L25,145 Z M175,105 L150,115 L155,210 L175,145 Z" />
 
       {/* Hands */}
-      <motion.g initial={baseStyle} animate={highlightedPart === 'hands' ? highlightStyle : baseStyle}>
-        <path d="M45,190 L35,210 L33,215 L40,220 L50,215 L55,190 Z" />
-        <path d="M155,190 L165,210 L167,215 L160,220 L150,215 L145,190 Z" />
-      </motion.g>
+      <PartPath id="hands" highlightedPart={highlightedPart} d="M45,210 L40,260 L18,255 L25,245 L30,200 Z M155,210 L160,260 L182,255 L175,245 L170,200 Z" />
 
       {/* Waist */}
-      <motion.path
-        d="M65,135 Q100,145 135,135 L135,170 Q100,180 65,170 Z"
-        initial={baseStyle}
-        animate={highlightedPart === 'waist' ? highlightStyle : baseStyle}
-      />
+      <PartPath id="waist" highlightedPart={highlightedPart} d="M55,155 L145,155 L145,190 L55,190 Z" />
 
       {/* Hips */}
-      <motion.path
-        d="M65,170 Q100,180 135,170 C135,190 135,200 130,220 Q100,230 70,220 C65,200 65,190 65,170 Z"
-        initial={baseStyle}
-        animate={highlightedPart === 'hips' ? highlightStyle : baseStyle}
-      />
+      <PartPath id="hips" highlightedPart={highlightedPart} d="M55,190 L145,190 L140,220 L105,250 L95,250 L60,220 Z" />
 
       {/* Thighs */}
-      <motion.g initial={baseStyle} animate={highlightedPart === 'thighs' ? highlightStyle : baseStyle}>
-        <path d="M70,220 C68,250 72,300 80,330 L98,330 L100,230 Z" />
-        <path d="M130,220 C132,250 128,300 120,330 L102,330 L100,230 Z" />
-      </motion.g>
+      <PartPath id="thighs" highlightedPart={highlightedPart} d="M60,220 L95,250 L90,280 L60,280 Z M140,220 L105,250 L110,280 L140,280 Z" />
 
       {/* Legs */}
-      <motion.g initial={baseStyle} animate={highlightedPart === 'legs' ? highlightStyle : baseStyle}>
-        <path d="M80,330 L82,400 L80,450 L95,450 L98,330 Z" />
-        <path d="M120,330 L118,400 L120,450 L105,450 L102,330 Z" />
-      </motion.g>
+      <PartPath id="legs" highlightedPart={highlightedPart} d="M60,280 L90,280 L85,420 L62,420 Z M140,280 L110,280 L115,420 L138,420 Z" />
 
       {/* Feet */}
-      <motion.g initial={baseStyle} animate={highlightedPart === 'feet' ? highlightStyle : baseStyle}>
-        <path d="M80,450 L70,480 L90,480 L95,450 Z" />
-        <path d="M120,450 L130,480 L110,480 L105,450 Z" />
-      </motion.g>
+      <PartPath id="feet" highlightedPart={highlightedPart} d="M62,420 L85,420 L80,485 L60,485 Z M138,420 L115,420 L120,485 L140,485 Z" />
     </svg>
   );
 };
@@ -395,104 +308,70 @@ export const MaleBodyBack = ({ highlightedPart, className = "" }: BodySVGProps) 
     <svg viewBox="0 0 200 500" className={className} xmlns="http://www.w3.org/2000/svg">
       <GlowFilter />
       
-      {/* Base Body Outline - Realistic Male Back */}
+      {/* Base Silhouette - Male Back */}
       <path
-        d="M100,25 
-           C112,25 120,35 120,50 C120,62 115,70 108,73 
-           L110,85 
-           Q140,88 160,95 
-           C165,100 165,115 160,135 
-           L155,190 
-           C155,200 160,205 165,210 L167,215 L160,220 L150,215 C147,210 147,200 145,190 
-           L140,150 
-           L135,200 
-           C135,215 135,230 130,250 
-           C128,270 125,300 122,330 
-           L118,400 L120,450 
-           C120,460 125,470 130,480 L110,480 L105,450 L102,350 
-           L98,350 L95,450 L90,480 L70,480 
-           C75,470 80,460 80,450 L82,400 
-           C78,330 75,300 72,270 
-           C70,250 65,230 65,200 
-           L60,150 
-           L55,190 C53,200 53,210 50,215 L40,220 L33,215 L35,210 C40,205 45,200 45,190 
-           L40,135 C35,115 35,100 40,95 
-           Q60,88 90,85 
-           L92,73 
-           C85,70 80,62 80,50 C80,35 88,25 100,25 Z"
-        style={staticBaseStyle}
+        d="M100,20 
+           C118,20 128,32 128,55 C128,72 118,82 100,82 C82,82 72,72 72,55 C72,32 82,20 100,20 Z
+           M118,78 L118,95 
+           Q150,95 175,105 
+           Q180,115 175,145 
+           L170,200 
+           L175,245 
+           L182,255 L185,260 L180,265 L175,260 L172,265 L168,260 L165,265 L160,260 L155,210 
+           L150,150 
+           L150,190 
+           L145,220 
+           L140,280 
+           L135,360 
+           L138,420 
+           L140,485 L120,485 L115,420 L115,360 L110,280 
+           L105,250 
+           L95,250 
+           L90,280 L85,360 L85,420 L80,485 L60,485 L62,420 L65,360 L60,280 
+           L55,220 
+           L50,190 
+           L50,150 
+           L45,210 L40,260 L35,265 L32,260 L28,265 L25,260 L20,265 L18,255 L25,245 L30,200 
+           L25,145 
+           Q20,115 25,105 
+           Q50,95 82,95 
+           L82,78"
+        style={silhouetteStyle}
       />
-
-      {/* Detail Lines */}
-      <path d="M90,100 L90,150 M110,100 L110,150" style={{...staticBaseStyle, strokeWidth: "0.5", opacity: 0.3}} /> {/* Shoulder blades */}
-      <path d="M100,85 L100,200" style={{...staticBaseStyle, strokeWidth: "0.5", opacity: 0.3}} /> {/* Spine */}
-      <path d="M85,220 Q100,230 115,220" style={{...staticBaseStyle, strokeWidth: "0.5", opacity: 0.3}} /> {/* Buttocks crease */}
 
       {/* Interactive Parts */}
       
       {/* Neck */}
-      <motion.path
-        d="M92,73 L108,73 L110,85 Q100,88 90,85 Z"
-        initial={baseStyle}
-        animate={highlightedPart === 'neck' ? highlightStyle : baseStyle}
-      />
+      <PartPath id="neck" highlightedPart={highlightedPart} d="M82,78 L118,78 L118,95 L82,95 Z" />
 
       {/* Shoulders */}
-      <motion.g initial={baseStyle} animate={highlightedPart === 'shoulders' ? highlightStyle : baseStyle}>
-        <path d="M90,85 Q60,88 40,95 L45,115 L90,105 Z" />
-        <path d="M110,85 Q140,88 160,95 L155,115 L110,105 Z" />
-      </motion.g>
+      <PartPath id="shoulders" highlightedPart={highlightedPart} d="M82,95 L118,95 L150,95 L175,105 L170,125 L150,115 L118,110 L82,110 L50,115 L30,125 L25,105 L50,95 Z" />
 
       {/* Back */}
-      <motion.path
-        d="M60,105 L140,105 L135,170 L65,170 Z"
-        initial={baseStyle}
-        animate={highlightedPart === 'back' ? highlightStyle : baseStyle}
-      />
+      <PartPath id="back" highlightedPart={highlightedPart} d="M50,115 L150,115 L145,190 L55,190 Z" />
 
       {/* Arms */}
-      <motion.g initial={baseStyle} animate={highlightedPart === 'arms' ? highlightStyle : baseStyle}>
-        <path d="M40,95 L35,135 L45,190 L55,190 L60,135 Z" />
-        <path d="M160,95 L165,135 L155,190 L145,190 L140,135 Z" />
-      </motion.g>
+      <PartPath id="arms" highlightedPart={highlightedPart} d="M25,105 L50,115 L45,210 L25,145 Z M175,105 L150,115 L155,210 L175,145 Z" />
 
       {/* Hands */}
-      <motion.g initial={baseStyle} animate={highlightedPart === 'hands' ? highlightStyle : baseStyle}>
-        <path d="M45,190 L35,210 L33,215 L40,220 L50,215 L55,190 Z" />
-        <path d="M155,190 L165,210 L167,215 L160,220 L150,215 L145,190 Z" />
-      </motion.g>
+      <PartPath id="hands" highlightedPart={highlightedPart} d="M45,210 L40,260 L18,255 L25,245 L30,200 Z M155,210 L160,260 L182,255 L175,245 L170,200 Z" />
 
       {/* Waist */}
-      <motion.path
-        d="M65,170 L135,170 L135,190 L65,190 Z"
-        initial={baseStyle}
-        animate={highlightedPart === 'waist' ? highlightStyle : baseStyle}
-      />
+      <PartPath id="waist" highlightedPart={highlightedPart} d="M55,190 L145,190 L140,220 L60,220 Z" />
 
-      {/* Hips (Buttocks) */}
-      <motion.path
-        d="M65,190 Q100,200 135,190 C135,210 130,230 100,230 C70,230 65,210 65,190 Z"
-        initial={baseStyle}
-        animate={highlightedPart === 'hips' ? highlightStyle : baseStyle}
-      />
+      {/* Hips */}
+      <PartPath id="hips" highlightedPart={highlightedPart} d="M60,220 L140,220 L105,250 L95,250 Z" />
 
       {/* Thighs */}
-      <motion.g initial={baseStyle} animate={highlightedPart === 'thighs' ? highlightStyle : baseStyle}>
-        <path d="M70,230 C68,260 72,300 80,330 L98,330 L100,230 Z" />
-        <path d="M130,230 C132,260 128,300 120,330 L102,330 L100,230 Z" />
-      </motion.g>
+      <PartPath id="thighs" highlightedPart={highlightedPart} d="M60,220 L95,250 L90,280 L60,280 Z M140,220 L105,250 L110,280 L140,280 Z" />
 
       {/* Legs */}
-      <motion.g initial={baseStyle} animate={highlightedPart === 'legs' ? highlightStyle : baseStyle}>
-        <path d="M80,330 L82,400 L80,450 L95,450 L98,330 Z" />
-        <path d="M120,330 L118,400 L120,450 L105,450 L102,330 Z" />
-      </motion.g>
+      <PartPath id="legs" highlightedPart={highlightedPart} d="M60,280 L90,280 L85,420 L62,420 Z M140,280 L110,280 L115,420 L138,420 Z" />
 
       {/* Feet */}
-      <motion.g initial={baseStyle} animate={highlightedPart === 'feet' ? highlightStyle : baseStyle}>
-        <path d="M80,450 L70,480 L90,480 L95,450 Z" />
-        <path d="M120,450 L130,480 L110,480 L105,450 Z" />
-      </motion.g>
+      <PartPath id="feet" highlightedPart={highlightedPart} d="M62,420 L85,420 L80,485 L60,485 Z M138,420 L115,420 L120,485 L140,485 Z" />
     </svg>
   );
 };
+
+
