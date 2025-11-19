@@ -26,6 +26,7 @@ export default function Game() {
   const [selectedMiniGame, setSelectedMiniGame] = useState<MiniGameType | null>(null);
   const [showSettings, setShowSettings] = useState(false);
   const [showEndGameConfirm, setShowEndGameConfirm] = useState(false);
+  const [refreshKey, setRefreshKey] = useState(0);
 
   // Redirect to setup if no active game
   useEffect(() => {
@@ -91,6 +92,12 @@ export default function Game() {
     setShowEndGameConfirm(false);
   };
 
+  const handleSettingsClose = () => {
+    setShowSettings(false);
+    // Increment refresh key to force activities to reload with new settings
+    setRefreshKey(prev => prev + 1);
+  };
+
   if (!state.isGameActive) {
     return null;
   }
@@ -98,7 +105,7 @@ export default function Game() {
   return (
     <div className="min-h-screen">
       {/* Settings Modal */}
-      <Settings isOpen={showSettings} onClose={() => setShowSettings(false)} />
+      <Settings isOpen={showSettings} onClose={handleSettingsClose} />
 
       {/* End Game Confirmation Modal */}
       <AnimatePresence>
@@ -268,28 +275,28 @@ export default function Game() {
               transition={{ duration: 0.5 }}
             >
               {selectedActivity === 'mini-game' && selectedMiniGame === 'tap-battle' && (
-                <TapBattle onComplete={handleActivityComplete} onBack={handleBackToMiniGameSelector} />
+                <TapBattle key={refreshKey} onComplete={handleActivityComplete} onBack={handleBackToMiniGameSelector} />
               )}
               {selectedActivity === 'mini-game' && selectedMiniGame === 'reaction-test' && (
-                <ReactionTest onComplete={handleActivityComplete} onBack={handleBackToMiniGameSelector} />
+                <ReactionTest key={refreshKey} onComplete={handleActivityComplete} onBack={handleBackToMiniGameSelector} />
               )}
               {selectedActivity === 'mini-game' && selectedMiniGame === 'tic-tac-toe' && (
-                <TicTacToe onComplete={handleActivityComplete} onBack={handleBackToMiniGameSelector} />
+                <TicTacToe key={refreshKey} onComplete={handleActivityComplete} onBack={handleBackToMiniGameSelector} />
               )}
               {selectedActivity === 'would-you-rather' && (
-                <WouldYouRather onComplete={handleActivityComplete} />
+                <WouldYouRather key={refreshKey} onComplete={handleActivityComplete} />
               )}
               {selectedActivity === 'scratch-card' && (
-                <ScratchCard onComplete={handleActivityComplete} />
+                <ScratchCard key={refreshKey} onComplete={handleActivityComplete} />
               )}
               {selectedActivity === 'spin-wheel' && (
-                <SpinWheel onComplete={handleActivityComplete} />
+                <SpinWheel key={refreshKey} onComplete={handleActivityComplete} />
               )}
               {selectedActivity === 'body-explorer' && (
-                <BodyExplorer onComplete={handleActivityComplete} />
+                <BodyExplorer key={refreshKey} onComplete={handleActivityComplete} />
               )}
               {selectedActivity === 'strip-game' && (
-                <StripGame onComplete={handleActivityComplete} />
+                <StripGame key={refreshKey} onComplete={handleActivityComplete} />
               )}
             </motion.div>
           )}

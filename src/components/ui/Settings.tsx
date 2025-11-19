@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useGame } from '../../context/GameContext';
 import { Difficulty } from '../../types/game.types';
+import { FOCUS_CATEGORIES } from '../../constants/focusCategories';
 
 interface SettingsProps {
   isOpen: boolean;
@@ -9,7 +10,7 @@ interface SettingsProps {
 }
 
 export default function Settings({ isOpen, onClose }: SettingsProps) {
-  const { state, changeDifficulty } = useGame();
+  const { state, changeDifficulty, setGameMode, toggleFocusCategory } = useGame();
   const [difficulty, setDifficulty] = useState<Difficulty>(state.difficulty);
 
   const handleDifficultyChange = (value: number) => {
@@ -93,6 +94,89 @@ export default function Settings({ isOpen, onClose }: SettingsProps) {
                 </button>
               </div>
             </div>
+
+              {/* Game Mode Section */}
+              <div className="mb-8 md:mb-12">
+                <label className="block text-xs uppercase tracking-[0.2em] mb-4 md:mb-6 text-white/40 font-light">
+                  Game Mode
+                </label>
+                <div className="grid grid-cols-2 gap-3">
+                  <button
+                    onClick={() => setGameMode('normal')}
+                    className={`py-4 md:py-6 border transition-all duration-300 ${
+                      state.gameMode === 'normal'
+                        ? 'bg-white text-black border-white'
+                        : 'bg-transparent text-white/60 border-white/20 hover:border-white/40'
+                    }`}
+                  >
+                    <div className="text-lg md:text-xl font-thin uppercase">Normal</div>
+                    <div className="text-[9px] uppercase tracking-wider text-current opacity-60 mt-1">
+                      All Tasks
+                    </div>
+                  </button>
+                  <button
+                    onClick={() => setGameMode('focus')}
+                    className={`py-4 md:py-6 border transition-all duration-300 ${
+                      state.gameMode === 'focus'
+                        ? 'bg-white text-black border-white'
+                        : 'bg-transparent text-white/60 border-white/20 hover:border-white/40'
+                    }`}
+                  >
+                    <div className="text-lg md:text-xl font-thin uppercase">Focus</div>
+                    <div className="text-[9px] uppercase tracking-wider text-current opacity-60 mt-1">
+                      Target Areas
+                    </div>
+                  </button>
+                </div>
+              </div>
+
+              {/* Focus Categories (shown only in Focus Mode) */}
+              {state.gameMode === 'focus' && (
+                <div className="mb-8 md:mb-12">
+                  <label className="block text-xs uppercase tracking-[0.2em] mb-2 text-white/40 font-light">
+                    Focus Categories
+                    {state.focusCategories.length > 0 && (
+                      <span className="ml-2 text-white/60">
+                        ({state.focusCategories.length} selected)
+                      </span>
+                    )}
+                  </label>
+                  <p className="text-[10px] uppercase tracking-wider text-white/30 mb-4">
+                    Select one or more areas to focus on
+                  </p>
+                  <div className="space-y-2">
+                    {FOCUS_CATEGORIES.map(category => {
+                      const isSelected = state.focusCategories.includes(category.id);
+                      return (
+                        <button
+                          key={category.id}
+                          onClick={() => toggleFocusCategory(category.id)}
+                          className={`w-full py-3 px-4 border text-left flex items-center justify-between transition-all duration-200 ${
+                            isSelected
+                              ? 'border-white/40 bg-white/10'
+                              : 'border-white/20 hover:border-white/30 hover:bg-white/5'
+                          }`}
+                        >
+                          <div className="flex items-center gap-3">
+                            <span className="text-xl">{category.icon}</span>
+                            <div>
+                              <div className="text-sm font-light text-white/90">
+                                {category.name}
+                              </div>
+                              <div className="text-[9px] uppercase tracking-wider text-white/40 mt-0.5">
+                                {category.description}
+                              </div>
+                            </div>
+                          </div>
+                          {isSelected && (
+                            <span className="text-green-400 text-lg">✓</span>
+                          )}
+                        </button>
+                      );
+                    })}
+                  </div>
+                </div>
+              )}
 
               {/* Close Button */}
               <button

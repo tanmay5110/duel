@@ -5,7 +5,8 @@
     "gender": "neutral",
     "difficulty": "medium",
     "activity": "scratch-card",
-    "timer": 30
+    "timer": 30,
+    "categories": ["kissing"]
   },
   {
     "id": 602,
@@ -13,7 +14,8 @@
     "gender": "neutral",
     "difficulty": "medium",
     "activity": "scratch-card",
-    "timer": 20
+    "timer": 20,
+    "categories": ["visual", "teasing"]
   },
   {
     "id": 603,
@@ -21,7 +23,8 @@
     "gender": "neutral",
     "difficulty": "medium",
     "activity": "scratch-card",
-    "timer": 45
+    "timer": 45,
+    "categories": ["touch"]
   },
   {
     "id": 604,
@@ -29,7 +32,8 @@
     "gender": "neutral",
     "difficulty": "medium",
     "activity": "scratch-card",
-    "timer": 25
+    "timer": 25,
+    "categories": ["kissing", "teasing"]
   },
   {
     "id": 605,
@@ -37,7 +41,8 @@
     "gender": "neutral",
     "difficulty": "medium",
     "activity": "scratch-card",
-    "timer": 30
+    "timer": 30,
+    "categories": ["kissing"]
   },
   {
     "id": 606,

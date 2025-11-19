@@ -2,7 +2,7 @@ import { useState, useRef, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { useGame } from '../../context/GameContext';
 import { usePunishments } from '../../hooks/usePunishments';
-import PunishmentDisplay from '../ui/PunishmentDisplay';
+import TaskDisplay from '../ui/TaskDisplay';
 
 interface ScratchCardProps {
   onComplete: () => void;
@@ -293,12 +293,11 @@ export default function ScratchCard({ onComplete }: ScratchCardProps) {
   };
 
   if (showPunishment && currentCard) {
-    console.log('🎯 Showing punishment:', currentCard.punishment);
+    console.log('🎯 Showing task:', currentCard.punishment);
     console.log('Timer value:', currentCard.punishment.timer);
     return (
-      <PunishmentDisplay
-        punishment={currentCard.punishment}
-        playerName={currentPlayer.name}
+      <TaskDisplay
+        task={currentCard.punishment}
         onComplete={handlePunishmentComplete}
       />
     );
@@ -319,10 +318,6 @@ export default function ScratchCard({ onComplete }: ScratchCardProps) {
             <div className="text-center">
               <h2 className="text-4xl md:text-6xl font-thin tracking-tight uppercase text-white/90 mb-1 md:mb-2">Scratch</h2>
               <div className="flex items-center gap-2 md:gap-3 justify-center">
-                <span className="text-xs uppercase tracking-[0.2em] text-white/40 font-light">
-                  {currentPlayer.name}
-                </span>
-                <span className="text-white/20">•</span>
                 <span className="text-xs uppercase tracking-[0.2em] text-white/40 font-light">
                   {state.difficulty}
                 </span>

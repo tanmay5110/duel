@@ -5,7 +5,8 @@
     "gender": "male",
     "difficulty": "medium",
     "activity": "spin-wheel",
-    "timer": 30
+    "timer": 30,
+    "categories": ["kissing"]
   },
   {
     "id": 702,
@@ -13,7 +14,8 @@
     "gender": "female",
     "difficulty": "medium",
     "activity": "spin-wheel",
-    "timer": 0
+    "timer": 0,
+    "categories": ["visual"]
   },
   {
     "id": 703,
@@ -21,7 +23,8 @@
     "gender": "male",
     "difficulty": "medium",
     "activity": "spin-wheel",
-    "timer": 90
+    "timer": 90,
+    "categories": ["touch"]
   },
   {
     "id": 704,
@@ -29,7 +32,8 @@
     "gender": "female",
     "difficulty": "medium",
     "activity": "spin-wheel",
-    "timer": 30
+    "timer": 30,
+    "categories": ["visual", "teasing"]
   },
   {
     "id": 705,
@@ -37,7 +41,8 @@
     "gender": "male",
     "difficulty": "medium",
     "activity": "spin-wheel",
-    "timer": 20
+    "timer": 20,
+    "categories": ["kissing"]
   },
   {
     "id": 706,
@@ -45,7 +50,8 @@
     "gender": "female",
     "difficulty": "medium",
     "activity": "spin-wheel",
-    "timer": 15
+    "timer": 15,
+    "categories": ["teasing"]
   },
   {
     "id": 707,

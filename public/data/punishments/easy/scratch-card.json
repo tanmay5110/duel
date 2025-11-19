@@ -5,7 +5,8 @@
     "gender": "neutral",
     "difficulty": "easy",
     "activity": "scratch-card",
-    "timer": 30
+    "timer": 30,
+    "categories": ["touch"]
   },
   {
     "id": 202,
@@ -13,7 +14,8 @@
     "gender": "neutral",
     "difficulty": "easy",
     "activity": "scratch-card",
-    "timer": 20
+    "timer": 20,
+    "categories": ["teasing"]
   },
   {
     "id": 203,
@@ -21,7 +23,8 @@
     "gender": "neutral",
     "difficulty": "easy",
     "activity": "scratch-card",
-    "timer": 15
+    "timer": 15,
+    "categories": ["teasing"]
   },
   {
     "id": 204,
@@ -29,7 +32,8 @@
     "gender": "neutral",
     "difficulty": "easy",
     "activity": "scratch-card",
-    "timer": 30
+    "timer": 30,
+    "categories": ["touch", "teasing"]
   },
   {
     "id": 205,
@@ -37,7 +41,8 @@
     "gender": "neutral",
     "difficulty": "easy",
     "activity": "scratch-card",
-    "timer": 20
+    "timer": 20,
+    "categories": ["kissing"]
   },
   {
     "id": 206,
@@ -45,7 +50,8 @@
     "gender": "neutral",
     "difficulty": "easy",
     "activity": "scratch-card",
-    "timer": 25
+    "timer": 25,
+    "categories": ["teasing"]
   },
   {
     "id": 207,
@@ -53,7 +59,8 @@
     "gender": "neutral",
     "difficulty": "easy",
     "activity": "scratch-card",
-    "timer": 20
+    "timer": 20,
+    "categories": ["touch", "teasing"]
   },
   {
     "id": 208,

@@ -7,7 +7,8 @@
     "difficulty": "hard",
     "activity": "would-you-rather",
     "gender": "male",
-    "timer": 300
+    "timer": 300,
+    "categories": ["domination", "penetration"]
   },
   {
     "id": "wyr_hard_m2",
@@ -17,7 +18,8 @@
     "difficulty": "hard",
     "activity": "would-you-rather",
     "gender": "male",
-    "timer": 180
+    "timer": 180,
+    "categories": ["domination", "teasing"]
   },
   {
     "id": "wyr_hard_m3",
@@ -27,7 +29,8 @@
     "difficulty": "hard",
     "activity": "would-you-rather",
     "gender": "male",
-    "timer": 0
+    "timer": 0,
+    "categories": ["positions", "penetration"]
   },
   {
     "id": "wyr_hard_f1",
@@ -37,7 +40,8 @@
     "difficulty": "hard",
     "activity": "would-you-rather",
     "gender": "female",
-    "timer": 300
+    "timer": 300,
+    "categories": ["domination", "visual", "touch"]
   },
   {
     "id": "wyr_hard_f2",
@@ -47,7 +51,8 @@
     "difficulty": "hard",
     "activity": "would-you-rather",
     "gender": "female",
-    "timer": 300
+    "timer": 300,
+    "categories": ["domination", "penetration"]
   },
   {
     "id": "wyr_hard_f3",

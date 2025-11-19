@@ -15,6 +15,8 @@ interface GameContextType {
   endGame: () => void;
   resetGame: () => void;
   changeDifficulty: (difficulty: Difficulty) => void;
+  setGameMode: (mode: 'normal' | 'focus') => void;
+  toggleFocusCategory: (category: string) => void;
 }
 
 // ============================================
@@ -30,7 +32,9 @@ const initialState: GameState = {
   currentActivity: null,
   isGameActive: false,
   currentTurn: 0,
-  history: []
+  history: [],
+  gameMode: 'normal',
+  focusCategories: []
 };
 
 // ============================================
@@ -45,6 +49,8 @@ type GameAction =
   | { type: 'END_GAME' }
   | { type: 'RESET_GAME' }
   | { type: 'CHANGE_DIFFICULTY'; payload: Difficulty }
+  | { type: 'SET_GAME_MODE'; payload: 'normal' | 'focus' }
+  | { type: 'TOGGLE_FOCUS_CATEGORY'; payload: string }
   | { type: 'LOAD_STATE'; payload: GameState };
 
 // ============================================
@@ -94,6 +100,22 @@ function gameReducer(state: GameState, action: GameAction): GameState {
       return {
         ...state,
         difficulty: action.payload
+      };
+
+    case 'SET_GAME_MODE':
+      return {
+        ...state,
+        gameMode: action.payload
+      };
+
+    case 'TOGGLE_FOCUS_CATEGORY':
+      const category = action.payload;
+      const isSelected = state.focusCategories.includes(category);
+      return {
+        ...state,
+        focusCategories: isSelected
+          ? state.focusCategories.filter(c => c !== category)
+          : [...state.focusCategories, category]
       };
 
     case 'LOAD_STATE':
@@ -155,6 +177,12 @@ export function GameProvider({ children }: { children: ReactNode }) {
     },
     changeDifficulty: (difficulty) => {
       dispatch({ type: 'CHANGE_DIFFICULTY', payload: difficulty });
+    },
+    setGameMode: (mode) => {
+      dispatch({ type: 'SET_GAME_MODE', payload: mode });
+    },
+    toggleFocusCategory: (category) => {
+      dispatch({ type: 'TOGGLE_FOCUS_CATEGORY', payload: category });
     }
   };
 

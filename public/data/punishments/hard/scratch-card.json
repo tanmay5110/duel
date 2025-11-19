@@ -5,7 +5,8 @@
     "gender": "neutral",
     "difficulty": "hard",
     "activity": "scratch-card",
-    "timer": 60
+    "timer": 60,
+    "categories": ["touch"]
   },
   {
     "id": 1002,
@@ -13,7 +14,8 @@
     "gender": "neutral",
     "difficulty": "hard",
     "activity": "scratch-card",
-    "timer": 45
+    "timer": 45,
+    "categories": ["visual", "touch"]
   },
   {
     "id": 1003,
@@ -21,7 +23,8 @@
     "gender": "neutral",
     "difficulty": "hard",
     "activity": "scratch-card",
-    "timer": 60
+    "timer": 60,
+    "categories": ["kissing"]
   },
   {
     "id": 1004,
@@ -29,7 +32,8 @@
     "gender": "neutral",
     "difficulty": "hard",
     "activity": "scratch-card",
-    "timer": 45
+    "timer": 45,
+    "categories": ["visual", "teasing"]
   },
   {
     "id": 1005,
@@ -37,7 +41,8 @@
     "gender": "neutral",
     "difficulty": "hard",
     "activity": "scratch-card",
-    "timer": 60
+    "timer": 60,
+    "categories": ["kissing", "teasing", "domination"]
   },
   {
     "id": 1006,
@@ -69,7 +74,8 @@
     "gender": "neutral",
     "difficulty": "hard",
     "activity": "scratch-card",
-    "timer": 40
+    "timer": 40,
+    "categories": ["oral", "kissing"]
   },
   {
     "id": 1010,
@@ -77,6 +83,7 @@
     "gender": "neutral",
     "difficulty": "hard",
     "activity": "scratch-card",
-    "timer": 35
+    "timer": 35,
+    "categories": ["oral", "teasing"]
   }
 ]

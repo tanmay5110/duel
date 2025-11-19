@@ -7,7 +7,8 @@
     "difficulty": "medium",
     "activity": "would-you-rather",
     "gender": "male",
-    "timer": 60
+    "timer": 60,
+    "categories": ["kissing"]
   },
   {
     "id": "wyr_medium_m2",
@@ -17,7 +18,8 @@
     "difficulty": "medium",
     "activity": "would-you-rather",
     "gender": "male",
-    "timer": 0
+    "timer": 0,
+    "categories": ["visual", "domination"]
   },
   {
     "id": "wyr_medium_m3",
@@ -27,7 +29,8 @@
     "difficulty": "medium",
     "activity": "would-you-rather",
     "gender": "male",
-    "timer": 180
+    "timer": 180,
+    "categories": ["touch", "hands"]
   },
   {
     "id": "wyr_medium_f1",
@@ -37,7 +40,8 @@
     "difficulty": "medium",
     "activity": "would-you-rather",
     "gender": "female",
-    "timer": 120
+    "timer": 120,
+    "categories": ["kissing", "hands"]
   },
   {
     "id": "wyr_medium_f2",
@@ -47,7 +51,8 @@
     "difficulty": "medium",
     "activity": "would-you-rather",
     "gender": "female",
-    "timer": 0
+    "timer": 0,
+    "categories": ["visual", "teasing"]
   },
   {
     "id": "wyr_medium_f3",

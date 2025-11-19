@@ -1,4 +1,6 @@
 import { motion } from 'framer-motion';
+import { useGame } from '../../context/GameContext';
+import { FOCUS_CATEGORIES } from '../../constants/focusCategories';
 
 interface HeaderProps {
   onHomeClick: () => void;
@@ -15,6 +17,8 @@ export default function Header({
   showRoundCounter = false,
   currentRound = 0
 }: HeaderProps) {
+  const { state } = useGame();
+  
   return (
     <motion.header
       initial={{ opacity: 0, y: -20 }}
@@ -44,6 +48,25 @@ export default function Header({
               </span>
               <span className="text-lg font-thin text-white/90">
                 {currentRound}
+              </span>
+            </motion.div>
+          )}
+
+          {/* Center: Focus Mode Indicator */}
+          {state.gameMode === 'focus' && state.focusCategories.length > 0 && (
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              className="hidden md:flex items-center gap-2 px-4 py-2 border border-white/10 bg-white/5"
+            >
+              <span className="text-xs uppercase tracking-[0.2em] text-white/40 font-light">
+                🎯 Focus:
+              </span>
+              <span className="text-xs font-light text-white/90">
+                {state.focusCategories.length === 1
+                  ? FOCUS_CATEGORIES.find(c => c.id === state.focusCategories[0])?.name
+                  : `${state.focusCategories.length} Categories`
+                }
               </span>
             </motion.div>
           )}

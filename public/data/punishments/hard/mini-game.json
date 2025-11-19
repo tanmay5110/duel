@@ -5,7 +5,8 @@
     "gender": "male",
     "difficulty": "hard",
     "activity": "mini-game",
-    "timer": 90
+    "timer": 90,
+    "categories": ["visual"]
   },
   {
     "id": 902,
@@ -13,7 +14,8 @@
     "gender": "female",
     "difficulty": "hard",
     "activity": "mini-game",
-    "timer": 30
+    "timer": 30,
+    "categories": ["visual"]
   },
   {
     "id": 903,
@@ -21,7 +23,8 @@
     "gender": "male",
     "difficulty": "hard",
     "activity": "mini-game",
-    "timer": 45
+    "timer": 45,
+    "categories": ["visual"]
   },
   {
     "id": 904,
@@ -29,7 +32,8 @@
     "gender": "female",
     "difficulty": "hard",
     "activity": "mini-game",
-    "timer": 45
+    "timer": 45,
+    "categories": ["visual", "teasing"]
   },
   {
     "id": 905,
@@ -37,7 +41,8 @@
     "gender": "male",
     "difficulty": "hard",
     "activity": "mini-game",
-    "timer": 120
+    "timer": 120,
+    "categories": ["visual"]
   },
   {
     "id": 906,
@@ -45,6 +50,7 @@
     "gender": "female",
     "difficulty": "hard",
     "activity": "mini-game",
-    "timer": 40
+    "timer": 40,
+    "categories": ["visual"]
   }
 ]

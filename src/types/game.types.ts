@@ -25,6 +25,7 @@ export interface Punishment {
   difficulty: Difficulty;
   activity: ActivityType;
   timer?: number; // in seconds, 0 or undefined means no timer
+  categories?: string[]; // Focus mode categories (e.g., ['oral', 'kissing'])
 }
 
 // ============================================
@@ -38,6 +39,8 @@ export interface GameState {
   isGameActive: boolean;
   currentTurn: 0 | 1; // Index of player whose turn it is
   history: GameHistoryEntry[];
+  gameMode: 'normal' | 'focus'; // Focus mode for category-specific tasks
+  focusCategories: string[]; // Selected focus categories (e.g., ['oral', 'kissing'])
 }
 
 export interface GameHistoryEntry {
