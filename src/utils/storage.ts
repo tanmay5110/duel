@@ -41,7 +41,9 @@ export function loadGameState(): GameState | null {
       currentActivity: parsed.currentActivity,
       isGameActive: true,
       currentTurn: parsed.currentTurn,
-      history: parsed.history
+      history: parsed.history,
+      gameMode: 'normal',
+      focusCategories: []
     };
   } catch (error) {
     console.error('Error loading game state:', error);

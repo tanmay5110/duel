@@ -42,7 +42,7 @@ export function usePunishments(difficulty: Difficulty, activity: ActivityType) {
             const filtered = data.filter(punishment => {
               const hasCategories = !!punishment.categories;
               const matchesCategory = hasCategories && 
-                punishment.categories.some(cat => state.focusCategories.includes(cat));
+                punishment.categories?.some(cat => state.focusCategories.includes(cat));
               
               // Log first few for debugging
               if (data.indexOf(punishment) < 3) {
